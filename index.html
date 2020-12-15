@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>タイピングゲーム</title>
+    <meta name="author" content="YuSan357">
+    <style>
+      body {
+        margin: 0;
+        background-color: #ffd6e7;
+        font-family: sans-serif;
+      }
+      h1 {
+        margin: 5px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 35px;
+        color: #888;
+        border-bottom: 1px solid #aaa;
+      }
+
+      /* ゲーム操作画面関連 */
+      #gameController {
+        margin: 50px auto 0;
+        width: 400px;
+        color: #333;
+      }
+
+      /* 裏コマンド関連 */
+      .godmodeStyle {
+        background-color: #f8a1a1;
+      }
+
+      /* 結果レポート関連 */
+      #resultReport {
+        margin: 50px auto 0;
+        width: 500px;
+        padding: 5px;
+        background-color: #fff;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.8s;
+        transform: scale(0);
+      }
+      #reportTitle {
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      footer {
+        width: 100%;
+        text-align: center;
+        color: #777;
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>シンプル☆タイピングゲーム</h1>
+    </header>
+
+    <main>
+      <div id="gameController">
+        <p id="timerPara">default-string</p>
+        <p id="instructionPara">startボタンをクリックしてください</p>
+        <input type="text" id="inputText" value="" disabled>
+        <p id="inputMatchCounterPara">入力できた単語数：0</p>
+        <p id="highestRecordPara">最高記録：0</p>
+        <button id="startButton" onclick="startButtonClick()" autofocus>スタート</button>
+      </div>
+      <div id="resultReport">
+        <p id="reportTitle">結果レポート</p>
+        <p id="resultOfPlayTimePara"></p>
+        <p id="resultOfinputMatchCounterPara"></p>
+      </div>
+    </main>
+
+    <footer>
+      <p>©YuSan357</p>
+    </footer>
+
+    <script>
+      //単語用の配列
+      let wordList = [
+        "りんご","青りんご","イチゴ","にんじん","だいこん","スイカ","みかん","味噌汁",
+        "あさり","さくらんぼ","じゃがいも","たまご","きゅうり","ぶどう","なす",
+        "かぼちゃ","もやし","ねぎ","もやし","桃","ゆず","たまねぎ","しょうが","牛丼",
+        "コーンスープ","かつ丼","ハンバーグ","豚骨ラーメン","カレーライス","うどん","にゅうめん","フライドポテト","ピッツァ","天ぷら",
+        "肉まん","たこ焼き","明石焼き","オムライス","しらす","しらすラーメン","パスタ","ガパオライス","カルボナーラ","ペペロンチーノ","グラタン",
+        "ドリア","醤油ラーメン","味噌ラーメン","塩ラーメン","にぼし","つけめん","そうめん","寿司","サラダ","コーヒー","ドーナツ","ショートケーキ","バームクーヘン",
+        "ムース","マドレーヌ","刺身","親子丼","海鮮丼","焼肉","おでん","目玉焼き","卵焼き","チーズトースト","スクランブルエッグ","ツナ缶","パフェ","プリン","ソーダ",
+        "コーラ","ウーロン茶","牛乳","爽健美茶","緑茶","麦茶","天然水","ココア","トマトジュース","野菜ジュース"
+      ];
+
+      //各要素のidを取得して定数に格納
+      const body = document.body;
+      const timerPara = document.getElementById("timerPara");
+      const instructionPara = document.getElementById("instructionPara");
+      const inputText = document.getElementById("inputText");
+      const inputMatchCounterPara = document.getElementById("inputMatchCounterPara");
+      const startButton = document.getElementById("startButton");
+      const highestRecordPara = document.getElementById("highestRecordPara");
+
+      const resultReport = document.getElementById("resultReport");
+      const resultOfPlayTimePara = document.getElementById("resultOfPlayTimePara");
+      const resultOfinputMatchCounterPara = document.getElementById("resultOfinputMatchCounterPara");
+
+      //変数たち
+      let isGameStarting = false;
+      
+      let targetText; //目標の単語
+      let inputMatchCounter = 0; //入力に成功した単語数
+      let highestRecord = 0; //歴代の最高成績
+      
+      const defaultRemaingTime = 30; //残り時間の初期値
+      let remaingTime = defaultRemaingTime; //残り時間
+      
+      let isAddBigPoint = false; //入力成功単語数10倍モード
+      let isAutoInput = false; //自動入力モード
+      
+      timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+      
+      //Enterキーを押したら、inputTextCheckを行う
+      inputText.addEventListener("keypress",testEvent);
+      function testEvent(event){
+        if(event.key == "Enter"){
+          inputTextCheck();
+          inputText.value = "";
+        }
+      }
+
+
+      function startButtonClick(){
+        if(!isGameStarting){
+          gameStart();
+        }else{
+          gameFinish();
+        }
+      }
+      
+      
+      function gameStart(){
+        isGameStarting = true;
+        timerStart();
+        inputText.disabled = false;
+        inputText.focus();
+        inputMatchCounter = 0;
+        nextQuiz();
+
+        timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+        scaleup(timerPara);
+        inputMatchCounterPara.textContent = "入力できた単語数：" + 0;
+        scaleup(inputMatchCounterPara);
+        startButton.textContent = "リタイア";
+        resultReport.style.transform = "scale(0)";
+      }
+      
+      
+      function gameFinish(){
+        isGameStarting = false;
+        clearInterval(timer);
+        isAutoInput = false;
+        isAddBigPoint = false;
+        inputText.disabled = true;
+        body.classList.remove("godmodeStyle");
+        
+        if(inputMatchCounter >= highestRecord){
+          highestRecord = inputMatchCounter;
+          highestRecordPara.textContent = "最高記録：" + highestRecord;
+          scaleup(highestRecordPara);
+        }
+
+        startButton.textContent = "もう一度プレイ";
+        resultReport.style.display = "block";
+        resultOfPlayTimePara.textContent = "プレイ時間：" + (defaultRemaingTime - remaingTime) + "秒";
+        resultOfinputMatchCounterPara.textContent = "入力できた単語数：" + inputMatchCounter;
+        resultReport.style.transform = "scale(1.2)";
+      }
+      
+      
+      function timerStart(){
+        let countup = function(){
+          remaingTime--;
+          timerPara.textContent = "残り時間：" + remaingTime + "秒";
+          scaleup(timerPara);
+          if(remaingTime <= 0){
+            clearInterval(timer);
+            gameFinish();
+          }
+        }
+        remaingTime = defaultRemaingTime;
+        timer = setInterval(countup,1000); //countup開始
+      }
+      
+
+      function inputTextCheck(){
+        if(inputText.value == targetText){
+          updateinputMatchCounter();
+          nextQuiz();
+        }
+        if(inputText.value == "auto input;"){
+          isAutoInput = true;
+          body.classList.add("godmodeStyle");
+          nextQuiz();
+        }
+        if(inputText.value == "add big point;"){
+          isAddBigPoint = true;
+          body.classList.add("godmodeStyle");
+        }
+        if(isAutoInput){
+          inputText.value = targetText;
+          setTimeout(() => {
+            inputTextCheck();
+          }, 100);
+        }
+      }
+
+      
+      function nextQuiz(){
+        let randomNum = Math.floor(Math.random() * wordList.length);
+        targetText = wordList[randomNum];
+        instructionPara.textContent = "「" + targetText + "」 と入力してください";
+        scaleup(instructionPara);
+        inputText.value = "";
+      }
+
+
+      function updateinputMatchCounter(){
+        if(isAddBigPoint){
+          inputMatchCounter += 10;
+        }else{
+          inputMatchCounter++;
+        }
+        inputMatchCounterPara.textContent = "入力できた単語数：" + inputMatchCounter;
+        scaleup(inputMatchCounterPara);
+      }
+
+
+      function scaleup(para){
+        //JavaScriptでCSSスタイルを追加できる！
+        para.style.transition = "0.2s";
+        para.style.transform = "scale(1.02)";
+        setTimeout(() => {
+          para.style.transform = "scale(1)";
+        }, 200);
+      }
+
+
+    </script>
+  </body>
+</html>
