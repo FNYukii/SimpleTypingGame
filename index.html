@@ -7,8 +7,9 @@
     <style>
       body {
         margin: 0;
-        background-color: #ffd6e7;
+        background-color: #ffe1e1;
         font-family: sans-serif;
+        font-size: 17px;
       }
       h1 {
         margin: 5px;
@@ -23,7 +24,7 @@
       #gameController {
         margin: 50px auto 0;
         width: 400px;
-        color: #333;
+        /* color: #333; */
       }
 
       /* 裏コマンド関連 */
@@ -40,7 +41,6 @@
         border-radius: 10px;
         text-align: center;
         transition: 0.8s;
-        transform: scale(0);
       }
       #reportTitle {
         font-size: 25px;
@@ -66,14 +66,14 @@
         <p id="timerPara">default-string</p>
         <p id="instructionPara">default-string</p>
         <input type="text" id="textbox" value="default-string" disabled>
-        <p id="typedWordCountPara">default-string</p>
+        <p id="typedWordsCountPara">default-string</p>
         <p id="highestRecordPara">default-string</p>
         <button id="startButton" onclick="startButtonClick()" autofocus>default-string</button>
       </div>
       <div id="resultReport">
         <p id="reportTitle">結果レポート</p>
         <p id="resultOfPlayTimePara">default-string</p>
-        <p id="resultOfTypedWordCountPara">default-string</p>
+        <p id="resultOfTypedWordsCountPara">default-string</p>
       </div>
     </main>
 
@@ -82,7 +82,7 @@
     </footer>
 
     <script>
-      let wordList = [
+      const wordList = [
         "りんご","青りんご","イチゴ","人参","大根","スイカ","みかん","味噌汁",
         "あさり","さくらんぼ","じゃがいも","卵","きゅうり","ぶどう","なす",
         "かぼちゃ","もやし","ねぎ","もやし","桃","ゆず","たまねぎ","しょうが","牛丼",
@@ -93,24 +93,25 @@
         "コーラ","ウーロン茶","牛乳","爽健美茶","緑茶","麦茶","天然水","ココア","トマトジュース","野菜ジュース"
       ];
 
+
       //bodyタグのid取得
       const body = document.body;
       //gameController部の各要素のid取得
       const timerPara = document.getElementById("timerPara");
       const instructionPara = document.getElementById("instructionPara");
       const textbox = document.getElementById("textbox");
-      const typedWordCountPara = document.getElementById("typedWordCountPara");
+      const typedWordsCountPara = document.getElementById("typedWordsCountPara");
       const startButton = document.getElementById("startButton");
       const highestRecordPara = document.getElementById("highestRecordPara");
       //resultReport部の各要素のid取得
       const resultReport = document.getElementById("resultReport");
       const resultOfPlayTimePara = document.getElementById("resultOfPlayTimePara");
-      const resultOfTypedWordCountPara = document.getElementById("resultOfTypedWordCountPara");
+      const resultOfTypedWordsCountPara = document.getElementById("resultOfTypedWordsCountPara");
 
       
       //ゲーム関連の変数
       let targetText; //目標の単語
-      let typedWordCount = 0; //入力に成功した単語数
+      let typedWordsCount = 0; //入力に成功した単語数
       let highestRecord = 0; //歴代の最高成績
       //タイマー関連の変数
       const defaultRemaingTime = 30; //残り時間の初期値
@@ -126,9 +127,10 @@
       instructionPara.textContent = "startボタンをクリックしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
-      typedWordCountPara.textContent = "入力できた単語数：0";
+      typedWordsCountPara.textContent = "入力できた単語数：0";
       highestRecordPara.textContent = "最高記録：0";
       startButton.textContent = "ゲームスタート";
+      resultReport.style.transform = "scale(0)";
       
 
       function startButtonClick(){
@@ -141,40 +143,39 @@
       
       
       function gameStart(){
-        isGamePlaying = true;
         timerStart();
+        isGamePlaying = true;
+        typedWordsCount = 0;
         textbox.disabled = false;
         textbox.focus();
-        typedWordCount = 0;
         nextQuiz();
 
         timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
         scaleup(timerPara);
-        typedWordCountPara.textContent = "入力できた単語数：" + 0;
-        scaleup(typedWordCountPara);
-        startButton.textContent = "リタイア";
+        typedWordsCountPara.textContent = "入力できた単語数：" + 0;
+        scaleup(typedWordsCountPara);
+        startButton.textContent = "リタイアする";
         resultReport.style.transform = "scale(0)";
       }
       
       
       function gameFinish(){
-        isGamePlaying = false;
         clearInterval(timer);
+        isGamePlaying = false;
         isAutoInput = false;
         isInput10 = false;
-        textbox.disabled = true;
         body.classList.remove("godmodeStyle");
+        textbox.disabled = true;
         
-        if(typedWordCount >= highestRecord){
-          highestRecord = typedWordCount;
+        if(typedWordsCount >= highestRecord){
+          highestRecord = typedWordsCount; //最高記録を更新！
           highestRecordPara.textContent = "最高記録：" + highestRecord;
           scaleup(highestRecordPara);
         }
 
         startButton.textContent = "もう一度プレイ";
-        resultReport.style.display = "block";
         resultOfPlayTimePara.textContent = "プレイ時間：" + (defaultRemaingTime - remaingTime) + "秒";
-        resultOfTypedWordCountPara.textContent = "入力できた単語数：" + typedWordCount;
+        resultOfTypedWordsCountPara.textContent = "入力できた単語数：" + typedWordsCount;
         resultReport.style.transform = "scale(1.2)";
       }
       
@@ -204,7 +205,7 @@
 
       function textboxCheck(){
         if(textbox.value == targetText){
-          updateTypedWordCount();
+          updateTypedWordsCount();
           nextQuiz();
         }
         if(textbox.value == "auto input"){
@@ -233,14 +234,14 @@
       }
 
 
-      function updateTypedWordCount(){
+      function updateTypedWordsCount(){
         if(isInput10){
-          typedWordCount += 10;
+          typedWordsCount += 10;
         }else{
-          typedWordCount++;
+          typedWordsCount++;
         }
-        typedWordCountPara.textContent = "入力できた単語数：" + typedWordCount;
-        scaleup(typedWordCountPara);
+        typedWordsCountPara.textContent = "入力できた単語数：" + typedWordsCount;
+        scaleup(typedWordsCountPara);
       }
 
 
@@ -255,5 +256,6 @@
 
 
     </script>
+    
   </body>
 </html>
