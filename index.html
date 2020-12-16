@@ -64,16 +64,16 @@
     <main>
       <div id="gameController">
         <p id="timerPara">default-string</p>
-        <p id="instructionPara">startボタンをクリックしてください</p>
-        <input type="text" id="inputText" value="" disabled>
-        <p id="inputMatchCounterPara">入力できた単語数：0</p>
-        <p id="highestRecordPara">最高記録：0</p>
-        <button id="startButton" onclick="startButtonClick()" autofocus>スタート</button>
+        <p id="instructionPara">default-string</p>
+        <input type="text" id="inputText" value="default-string" disabled>
+        <p id="inputMatchCounterPara">default-string</p>
+        <p id="highestRecordPara">default-string</p>
+        <button id="startButton" onclick="startButtonClick()" autofocus>default-string</button>
       </div>
       <div id="resultReport">
         <p id="reportTitle">結果レポート</p>
-        <p id="resultOfPlayTimePara"></p>
-        <p id="resultOfinputMatchCounterPara"></p>
+        <p id="resultOfPlayTimePara">default-string</p>
+        <p id="resultOfinputMatchCounterPara">default-string</p>
       </div>
     </main>
 
@@ -93,34 +93,43 @@
         "コーラ","ウーロン茶","牛乳","爽健美茶","緑茶","麦茶","天然水","ココア","トマトジュース","野菜ジュース"
       ];
 
-      //各要素のidを取得して定数に格納
+      //bodyタグのid取得
       const body = document.body;
+      //gameController部の各要素のid取得
       const timerPara = document.getElementById("timerPara");
       const instructionPara = document.getElementById("instructionPara");
       const inputText = document.getElementById("inputText");
       const inputMatchCounterPara = document.getElementById("inputMatchCounterPara");
       const startButton = document.getElementById("startButton");
       const highestRecordPara = document.getElementById("highestRecordPara");
-
+      //resultReport部の各要素のid取得
       const resultReport = document.getElementById("resultReport");
       const resultOfPlayTimePara = document.getElementById("resultOfPlayTimePara");
       const resultOfinputMatchCounterPara = document.getElementById("resultOfinputMatchCounterPara");
 
-      //変数たち
-      let isGameStarting = false;
       
+      //ゲーム関連
       let targetText; //目標の単語
       let inputMatchCounter = 0; //入力に成功した単語数
       let highestRecord = 0; //歴代の最高成績
-      
+      //タイマー関連
       const defaultRemaingTime = 30; //残り時間の初期値
       let remaingTime = defaultRemaingTime; //残り時間
+      //状態管理用の変数
+      let isGameStarting = false; //true = ゲームプレイ中
+      let isInput10 = false; //true = 入力成功単語数10倍モードON
+      let isAutoInput = false; //true = 自動入力モードON
       
-      let isAddBigPoint = false; //入力成功単語数10倍モード
-      let isAutoInput = false; //自動入力モード
-      
+
+      //各要素のテキストを初期化
       timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+      instructionPara.textContent = "startボタンをクリックしてください";
+      inputText.value = "";
+      inputMatchCounterPara.textContent = "入力できた単語数：0";
+      highestRecordPara.textContent = "最高記録：0";
+      startButton.textContent = "ゲームスタート";
       
+
       //Enterキーを押したら、inputTextCheckを行う
       inputText.addEventListener("keypress",testEvent);
       function testEvent(event){
@@ -161,7 +170,7 @@
         isGameStarting = false;
         clearInterval(timer);
         isAutoInput = false;
-        isAddBigPoint = false;
+        isInput10 = false;
         inputText.disabled = true;
         body.classList.remove("godmodeStyle");
         
@@ -199,13 +208,13 @@
           updateinputMatchCounter();
           nextQuiz();
         }
-        if(inputText.value == "auto input;"){
+        if(inputText.value == "auto input"){
           isAutoInput = true;
           body.classList.add("godmodeStyle");
           nextQuiz();
         }
-        if(inputText.value == "add big point;"){
-          isAddBigPoint = true;
+        if(inputText.value == "input * 10"){
+          isInput10 = true;
           body.classList.add("godmodeStyle");
         }
         if(isAutoInput){
@@ -227,7 +236,7 @@
 
 
       function updateinputMatchCounter(){
-        if(isAddBigPoint){
+        if(isInput10){
           inputMatchCounter += 10;
         }else{
           inputMatchCounter++;
