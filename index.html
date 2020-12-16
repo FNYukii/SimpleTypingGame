@@ -11,6 +11,8 @@
         font-family: sans-serif;
         font-size: 17px;
       }
+
+      /* header関連 */
       h1 {
         margin: 5px;
         text-align: center;
@@ -24,12 +26,8 @@
       #gameController {
         margin: 50px auto 0;
         width: 400px;
+        /* text-align: center; */
         /* color: #333; */
-      }
-
-      /* 裏コマンド関連 */
-      .godmodeStyle {
-        background-color: #f8a1a1;
       }
 
       /* 結果レポート関連 */
@@ -47,6 +45,12 @@
         font-weight: bold;
       }
 
+      /* コマンド関連 */
+      .godmodeStyle {
+        background-color: #f8a1a1;
+      }
+
+      /* footer関連 */
       footer {
         width: 100%;
         text-align: center;
@@ -74,6 +78,7 @@
         <p id="reportTitle">結果レポート</p>
         <p id="resultOfPlayTimePara">default-string</p>
         <p id="resultOfTypedWordsCountPara">default-string</p>
+        <!-- <p>評価：★★★☆☆</p> -->
       </div>
     </main>
 
@@ -174,9 +179,14 @@
         }
 
         startButton.textContent = "もう一度プレイ";
+        updateResultReport();
+        resultReport.style.transform = "scale(1.2)";
+      }
+      
+      
+      function updateResultReport(){
         resultOfPlayTimePara.textContent = "プレイ時間：" + (defaultRemaingTime - remaingTime) + "秒";
         resultOfTypedWordsCountPara.textContent = "入力できた単語数：" + typedWordsCount;
-        resultReport.style.transform = "scale(1.2)";
       }
       
       
