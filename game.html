@@ -13,12 +13,10 @@
         /* text-align: center; */
         /* color: #333; */
       }
-      #remaingTimeSpan {
+      #remaingTimeSpan,#typedWordsCountSpan,#highestRecordSpan {
         color: red;
       }
-      #typedWordsCountSpan {
-        color: red;
-      }
+     
 
       /* 結果レポート関連 */
       #resultReport {
@@ -53,7 +51,7 @@
         <p id="instructionPara">default-string</p>
         <input type="text" id="textbox" value="default-string" disabled>
         <p id="typedWordsCountPara">入力できた単語数：<span id="typedWordsCountSpan">0</span></p>
-        <p id="highestRecordPara">default-string</p>
+        <p id="highestRecordPara">最高記録：<span id="highestRecordSpan">0</span></p>
         <button id="startButton" onclick="startButtonClick()" autofocus>default-string</button>
       </div>
       <div id="resultReport">
@@ -91,7 +89,8 @@
       // const typedWordsCountPara = document.getElementById("typedWordsCountPara");
       const typedWordsCountSpan = document.getElementById("typedWordsCountSpan");
       const startButton = document.getElementById("startButton");
-      const highestRecordPara = document.getElementById("highestRecordPara");
+      // const highestRecordPara = document.getElementById("highestRecordPara");
+      const highestRecordSpan = document.getElementById("highestRecordSpan");
       //resultReport部の各要素のid取得
       const resultReport = document.getElementById("resultReport");
       const resultOfPlayTimePara = document.getElementById("resultOfPlayTimePara");
@@ -119,7 +118,7 @@
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
       // typedWordsCountPara.innerHTML = "入力できた単語数：0";
-      highestRecordPara.innerHTML = "最高記録：0";
+      // highestRecordPara.innerHTML = "最高記録：0";
       startButton.innerHTML = "ゲームスタート";
       resultReport.style.transform = "scale(0)";
       
@@ -163,7 +162,8 @@
         
         if(typedWordsCount >= highestRecord){
           highestRecord = typedWordsCount; //最高記録を更新！
-          highestRecordPara.innerHTML = "最高記録：" + highestRecord;
+          // highestRecordPara.innerHTML = "最高記録：" + highestRecord;
+          highestRecordSpan.innerHTML = highestRecord;
           scaleup(highestRecordPara);
         }
 
