@@ -13,7 +13,7 @@
         /* text-align: center; */
         /* color: #333; */
       }
-      #remaingTimeSpan,#typedWordsCountSpan,#highestRecordSpan {
+      #remaingTimeSpan,#typedWordsCountSpan,#highestRecordSpan,#targetTextSpan {
         color: red;
       }
      
@@ -48,7 +48,7 @@
       <div id="gameController">
         <!-- <p id="timerPara">default-string</p> -->
         <p id="timerPara">残り時間：<span id="remaingTimeSpan">default-string</span>秒</p>
-        <p id="instructionPara">default-string</p>
+        <p id="instructionPara"><span id="targetTextSpan"></span><span id="instructionSpan"> と入力してください</span></p>
         <input type="text" id="textbox" value="default-string" disabled>
         <p id="typedWordsCountPara">入力できた単語数：<span id="typedWordsCountSpan">0</span></p>
         <p id="highestRecordPara">最高記録：<span id="highestRecordSpan">0</span></p>
@@ -85,6 +85,8 @@
       // const timerPara = document.getElementById("timerPara");
       const remaingTimeSpan = document.getElementById("remaingTimeSpan");
       const instructionPara = document.getElementById("instructionPara");
+      const targetTextSpan = document.getElementById("targetTextSpan");
+      const instructionSpan = document.getElementById("instructionSpan");
       const textbox = document.getElementById("textbox");
       // const typedWordsCountPara = document.getElementById("typedWordsCountPara");
       const typedWordsCountSpan = document.getElementById("typedWordsCountSpan");
@@ -114,7 +116,8 @@
       // timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
       // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
       remaingTimeSpan.innerHTML = defaultRemaingTime;
-      instructionPara.innerHTML = "startボタンをクリックしてください";
+      // instructionPara.innerHTML = "startボタンをクリックしてください";
+      instructionSpan.innerHTML = "スタートボタンをおしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
       // typedWordsCountPara.innerHTML = "入力できた単語数：0";
@@ -144,6 +147,7 @@
         // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
         remaingTimeSpan.innerHTML = defaultRemaingTime;
         scaleup(timerPara);
+        instructionSpan.innerHTML = " と入力してください";
         // typedWordsCountPara.innerHTML = "入力できた単語数：" + 0;
         typedWordsCountSpan.innerHTML = 0;
         scaleup(typedWordsCountPara);
@@ -231,7 +235,8 @@
       function nextQuiz(){
         let randomNum = Math.floor(Math.random() * wordList.length);
         targetText = wordList[randomNum];
-        instructionPara.innerHTML = "「" + targetText + "」 と入力してください";
+        // instructionPara.innerHTML = "「" + targetText + "」 と入力してください";
+        targetTextSpan.innerHTML = targetText;
         scaleup(instructionPara);
       }
 
@@ -248,12 +253,12 @@
       }
 
 
-      function scaleup(para){
+      function scaleup(parameter){
         //JavaScriptでCSSスタイルを追加できる！
-        para.style.transition = "0.2s";
-        para.style.transform = "scale(1.02)";
+        parameter.style.transition = "0.2s";
+        parameter.style.transform = "scale(1.02)";
         setTimeout(() => {
-          para.style.transform = "scale(1)";
+          parameter.style.transform = "scale(1)";
         }, 200);
       }
 
