@@ -42,7 +42,7 @@
 
     <main>
       <div id="gameController">
-        <p id="timerPara">default-string</p>
+        <p id="timerPara">残り時間：{{ message }}秒</p>
         <p id="instructionPara">default-string</p>
         <input type="text" id="textbox" value="default-string" disabled>
         <p id="typedWordsCountPara">default-string</p>
@@ -61,7 +61,12 @@
       <p>©YuSan357</p>
     </footer>
 
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">//vue.jsを読み込む</script>
     <script>
+      
+  
+
       const wordList = [
         "りんご","青りんご","イチゴ","人参","大根","スイカ","みかん","味噌汁",
         "あさり","さくらんぼ","じゃがいも","卵","きゅうり","ぶどう","なす",
@@ -104,7 +109,14 @@
 
       //ゲーム開始準備
       // timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
-      timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+      // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+
+      let vueTimer = new Vue({
+        el: "#timerPara",
+        data: {
+          message: defaultRemaingTime
+        }
+      })
       instructionPara.textContent = "startボタンをクリックしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
@@ -132,7 +144,13 @@
         nextQuiz();
 
         // timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
-        timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+        // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+        vueTimer = new Vue({
+        el: "#timerPara",
+        data: {
+          message: defaultRemaingTime
+        }
+      })
         scaleup(timerPara);
         typedWordsCountPara.textContent = "入力できた単語数：" + 0;
         scaleup(typedWordsCountPara);
@@ -171,7 +189,13 @@
         let countup = function(){
           remaingTime--;
           // timerPara.textContent = "残り時間：" + remaingTime + "秒";
-          timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
+          // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
+          vueTimer = new Vue({
+            el: "#timerPara",
+            data: {
+              message: remaingTime
+            }
+          })
 
           scaleup(timerPara);
           if(remaingTime <= 0){
@@ -245,6 +269,6 @@
 
 
     </script>
-    
+     -->
   </body>
 </html>
