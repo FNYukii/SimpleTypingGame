@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  background-color: #ffe1e1;
+  font-family: sans-serif;
+  font-size: 17px;
+}
+
+/* header関連 */
+h1 {
+  margin: 5px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 35px;
+  color: #888;
+  border-bottom: 1px solid #aaa;
+}
+
+/* footer関連 */
+footer {
+  width: 100%;
+  text-align: center;
+  color: #777;
+  position: absolute;
+  bottom: 0;
+}
