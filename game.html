@@ -45,8 +45,7 @@
 
     <main>
       <div id="gameController">
-        <!-- <p id="timerPara">default-string</p> -->
-        <p id="timerPara">残り時間：<span id="remaingTimeSpan">default-string</span>秒</p>
+        <p id="timerPara">default-string</p>
         <p id="instructionPara">default-string</p>
         <input type="text" id="textbox" value="default-string" disabled>
         <p id="typedWordsCountPara">default-string</p>
@@ -81,8 +80,7 @@
       //bodyタグのid取得
       const body = document.body;
       //gameController部の各要素のid取得
-      // const timerPara = document.getElementById("timerPara");
-      const remaingTimeSpan = document.getElementById("remaingTimeSpan");
+      const timerPara = document.getElementById("timerPara");
       const instructionPara = document.getElementById("instructionPara");
       const textbox = document.getElementById("textbox");
       const typedWordsCountPara = document.getElementById("typedWordsCountPara");
@@ -109,8 +107,7 @@
 
       //ゲーム開始準備
       // timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
-      // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
-      remaingTimeSpan.innerHTML = defaultRemaingTime;
+      timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
       instructionPara.innerHTML = "startボタンをクリックしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
@@ -138,8 +135,7 @@
         nextQuiz();
 
         // timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
-        // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
-        remaingTimeSpan.innerHTML = defaultRemaingTime;
+        timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
         scaleup(timerPara);
         typedWordsCountPara.innerHTML = "入力できた単語数：" + 0;
         scaleup(typedWordsCountPara);
@@ -178,8 +174,7 @@
         let countup = function(){
           remaingTime--;
           // timerPara.innerHTML = "残り時間：" + remaingTime + "秒";
-          // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
-          remaingTimeSpan.innerHTML = remaingTime;
+          timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
 
           scaleup(timerPara);
           if(remaingTime <= 0){
