@@ -16,6 +16,9 @@
       #remaingTimeSpan {
         color: red;
       }
+      #typedWordsCountSpan {
+        color: red;
+      }
 
       /* 結果レポート関連 */
       #resultReport {
@@ -49,7 +52,7 @@
         <p id="timerPara">残り時間：<span id="remaingTimeSpan">default-string</span>秒</p>
         <p id="instructionPara">default-string</p>
         <input type="text" id="textbox" value="default-string" disabled>
-        <p id="typedWordsCountPara">default-string</p>
+        <p id="typedWordsCountPara">入力できた単語数：<span id="typedWordsCountSpan">0</span></p>
         <p id="highestRecordPara">default-string</p>
         <button id="startButton" onclick="startButtonClick()" autofocus>default-string</button>
       </div>
@@ -85,7 +88,8 @@
       const remaingTimeSpan = document.getElementById("remaingTimeSpan");
       const instructionPara = document.getElementById("instructionPara");
       const textbox = document.getElementById("textbox");
-      const typedWordsCountPara = document.getElementById("typedWordsCountPara");
+      // const typedWordsCountPara = document.getElementById("typedWordsCountPara");
+      const typedWordsCountSpan = document.getElementById("typedWordsCountSpan");
       const startButton = document.getElementById("startButton");
       const highestRecordPara = document.getElementById("highestRecordPara");
       //resultReport部の各要素のid取得
@@ -114,7 +118,7 @@
       instructionPara.innerHTML = "startボタンをクリックしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
-      typedWordsCountPara.innerHTML = "入力できた単語数：0";
+      // typedWordsCountPara.innerHTML = "入力できた単語数：0";
       highestRecordPara.innerHTML = "最高記録：0";
       startButton.innerHTML = "ゲームスタート";
       resultReport.style.transform = "scale(0)";
@@ -141,7 +145,8 @@
         // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
         remaingTimeSpan.innerHTML = defaultRemaingTime;
         scaleup(timerPara);
-        typedWordsCountPara.innerHTML = "入力できた単語数：" + 0;
+        // typedWordsCountPara.innerHTML = "入力できた単語数：" + 0;
+        typedWordsCountSpan.innerHTML = 0;
         scaleup(typedWordsCountPara);
         startButton.innerHTML = "リタイアする";
         resultReport.style.transform = "scale(0)";
@@ -237,7 +242,8 @@
         }else{
           typedWordsCount++;
         }
-        typedWordsCountPara.innerHTML = "入力できた単語数：" + typedWordsCount;
+        // typedWordsCountPara.innerHTML = "入力できた単語数：" + typedWordsCount;
+        typedWordsCountSpan.innerHTML = typedWordsCount;
         scaleup(typedWordsCountPara);
       }
 
