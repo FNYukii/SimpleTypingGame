@@ -13,6 +13,9 @@
         /* text-align: center; */
         /* color: #333; */
       }
+      #remaingTimeText {
+        color: red;
+      }
 
       /* 結果レポート関連 */
       #resultReport {
@@ -42,7 +45,8 @@
 
     <main>
       <div id="gameController">
-        <p id="timerPara">default-string</p>
+        <!-- <p id="timerPara">default-string</p> -->
+        <p id="timerPara">残り時間：<span id="remaingTimeText">default-string</span>秒</p>
         <p id="instructionPara">default-string</p>
         <input type="text" id="textbox" value="default-string" disabled>
         <p id="typedWordsCountPara">default-string</p>
@@ -77,7 +81,8 @@
       //bodyタグのid取得
       const body = document.body;
       //gameController部の各要素のid取得
-      const timerPara = document.getElementById("timerPara");
+      // const timerPara = document.getElementById("timerPara");
+      const remaingTimeText = document.getElementById("remaingTimeText");
       const instructionPara = document.getElementById("instructionPara");
       const textbox = document.getElementById("textbox");
       const typedWordsCountPara = document.getElementById("typedWordsCountPara");
@@ -104,7 +109,8 @@
 
       //ゲーム開始準備
       // timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
-      timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+      // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+      remaingTimeText.innerHTML = defaultRemaingTime;
       instructionPara.textContent = "startボタンをクリックしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
@@ -132,7 +138,8 @@
         nextQuiz();
 
         // timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
-        timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+        // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+        remaingTimeText.innerHTML = defaultRemaingTime;
         scaleup(timerPara);
         typedWordsCountPara.textContent = "入力できた単語数：" + 0;
         scaleup(typedWordsCountPara);
@@ -171,7 +178,8 @@
         let countup = function(){
           remaingTime--;
           // timerPara.textContent = "残り時間：" + remaingTime + "秒";
-          timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
+          // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
+          remaingTimeText.innerHTML = remaingTime;
 
           scaleup(timerPara);
           if(remaingTime <= 0){
