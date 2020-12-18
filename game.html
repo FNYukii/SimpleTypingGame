@@ -13,7 +13,7 @@
         /* text-align: center; */
         /* color: #333; */
       }
-      #remaingTimeText {
+      #remaingTimeSpan {
         color: red;
       }
 
@@ -46,7 +46,7 @@
     <main>
       <div id="gameController">
         <!-- <p id="timerPara">default-string</p> -->
-        <p id="timerPara">残り時間：<span id="remaingTimeText">default-string</span>秒</p>
+        <p id="timerPara">残り時間：<span id="remaingTimeSpan">default-string</span>秒</p>
         <p id="instructionPara">default-string</p>
         <input type="text" id="textbox" value="default-string" disabled>
         <p id="typedWordsCountPara">default-string</p>
@@ -82,7 +82,7 @@
       const body = document.body;
       //gameController部の各要素のid取得
       // const timerPara = document.getElementById("timerPara");
-      const remaingTimeText = document.getElementById("remaingTimeText");
+      const remaingTimeSpan = document.getElementById("remaingTimeSpan");
       const instructionPara = document.getElementById("instructionPara");
       const textbox = document.getElementById("textbox");
       const typedWordsCountPara = document.getElementById("typedWordsCountPara");
@@ -108,15 +108,15 @@
       
 
       //ゲーム開始準備
-      // timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+      // timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
       // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
-      remaingTimeText.innerHTML = defaultRemaingTime;
-      instructionPara.textContent = "startボタンをクリックしてください";
+      remaingTimeSpan.innerHTML = defaultRemaingTime;
+      instructionPara.innerHTML = "startボタンをクリックしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
-      typedWordsCountPara.textContent = "入力できた単語数：0";
-      highestRecordPara.textContent = "最高記録：0";
-      startButton.textContent = "ゲームスタート";
+      typedWordsCountPara.innerHTML = "入力できた単語数：0";
+      highestRecordPara.innerHTML = "最高記録：0";
+      startButton.innerHTML = "ゲームスタート";
       resultReport.style.transform = "scale(0)";
       
 
@@ -137,13 +137,13 @@
         textbox.focus();
         nextQuiz();
 
-        // timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+        // timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
         // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
-        remaingTimeText.innerHTML = defaultRemaingTime;
+        remaingTimeSpan.innerHTML = defaultRemaingTime;
         scaleup(timerPara);
-        typedWordsCountPara.textContent = "入力できた単語数：" + 0;
+        typedWordsCountPara.innerHTML = "入力できた単語数：" + 0;
         scaleup(typedWordsCountPara);
-        startButton.textContent = "リタイアする";
+        startButton.innerHTML = "リタイアする";
         resultReport.style.transform = "scale(0)";
       }
       
@@ -158,28 +158,28 @@
         
         if(typedWordsCount >= highestRecord){
           highestRecord = typedWordsCount; //最高記録を更新！
-          highestRecordPara.textContent = "最高記録：" + highestRecord;
+          highestRecordPara.innerHTML = "最高記録：" + highestRecord;
           scaleup(highestRecordPara);
         }
 
-        startButton.textContent = "もう一度プレイ";
+        startButton.innerHTML = "もう一度プレイ";
         updateResultReport();
         resultReport.style.transform = "scale(1.2)";
       }
       
       
       function updateResultReport(){
-        resultOfPlayTimePara.textContent = "プレイ時間：" + (defaultRemaingTime - remaingTime) + "秒";
-        resultOfTypedWordsCountPara.textContent = "入力できた単語数：" + typedWordsCount;
+        resultOfPlayTimePara.innerHTML = "プレイ時間：" + (defaultRemaingTime - remaingTime) + "秒";
+        resultOfTypedWordsCountPara.innerHTML = "入力できた単語数：" + typedWordsCount;
       }
       
       
       function timerStart(){
         let countup = function(){
           remaingTime--;
-          // timerPara.textContent = "残り時間：" + remaingTime + "秒";
+          // timerPara.innerHTML = "残り時間：" + remaingTime + "秒";
           // timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
-          remaingTimeText.innerHTML = remaingTime;
+          remaingTimeSpan.innerHTML = remaingTime;
 
           scaleup(timerPara);
           if(remaingTime <= 0){
@@ -226,7 +226,7 @@
       function nextQuiz(){
         let randomNum = Math.floor(Math.random() * wordList.length);
         targetText = wordList[randomNum];
-        instructionPara.textContent = "「" + targetText + "」 と入力してください";
+        instructionPara.innerHTML = "「" + targetText + "」 と入力してください";
         scaleup(instructionPara);
       }
 
@@ -237,7 +237,7 @@
         }else{
           typedWordsCount++;
         }
-        typedWordsCountPara.textContent = "入力できた単語数：" + typedWordsCount;
+        typedWordsCountPara.innerHTML = "入力できた単語数：" + typedWordsCount;
         scaleup(typedWordsCountPara);
       }
 
