@@ -6,13 +6,19 @@ body {
 }
 
 /* header関連 */
-h1 {
-  margin: 5px;
+header {
   text-align: center;
-  line-height: 40px;
-  font-size: 35px;
-  color: #888;
   border-bottom: 1px solid #aaa;
+}
+header #logo {
+  text-decoration: none;
+  color: #888;
+  font-size: 35px;
+}
+
+main {
+  width: 600px;
+  margin: 0 auto;
 }
 
 /* footer関連 */
