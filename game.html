@@ -37,7 +37,7 @@
   </head>
   <body>
     <header>
-      <a id="logo" href="index.html">シンプル☆タイピングゲーム</a>
+      <a id="logo" href="index.html">シンプル☆タイピング</a>
     </header>
 
     <main>
@@ -103,7 +103,8 @@
       
 
       //ゲーム開始準備
-      timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+      // timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+      timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
       instructionPara.textContent = "startボタンをクリックしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
@@ -130,7 +131,8 @@
         textbox.focus();
         nextQuiz();
 
-        timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+        // timerPara.textContent = "残り時間：" + defaultRemaingTime + "秒";
+        timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
         scaleup(timerPara);
         typedWordsCountPara.textContent = "入力できた単語数：" + 0;
         scaleup(typedWordsCountPara);
@@ -168,7 +170,9 @@
       function timerStart(){
         let countup = function(){
           remaingTime--;
-          timerPara.textContent = "残り時間：" + remaingTime + "秒";
+          // timerPara.textContent = "残り時間：" + remaingTime + "秒";
+          timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
+
           scaleup(timerPara);
           if(remaingTime <= 0){
             clearInterval(timer);
