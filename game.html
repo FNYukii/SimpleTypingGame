@@ -8,10 +8,8 @@
     <style>
       /* ゲーム操作画面関連 */
       #gameController {
-        margin: 50px auto 0;
+        margin: 0 auto;
         width: 400px;
-        /* text-align: center; */
-        /* color: #333; */
       }
       #remaingTimeSpan {
         color: red;
@@ -56,7 +54,6 @@
         <p id="reportTitle">結果レポート</p>
         <p id="resultOfPlayTimePara">default-string</p>
         <p id="resultOfTypedWordsCountPara">default-string</p>
-        <!-- <p>評価：★★★☆☆</p> -->
       </div>
     </main>
 
@@ -106,8 +103,7 @@
       
 
       //ゲーム開始準備
-      // timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
-      timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+      timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
       instructionPara.innerHTML = "startボタンをクリックしてください";
       textbox.value = "";
       textbox.addEventListener("keypress",enterKeyListener);
@@ -134,8 +130,7 @@
         textbox.focus();
         nextQuiz();
 
-        // timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
-        timerPara.innerHTML = "残り時間：<span style='color:red;'>" + defaultRemaingTime + "</span>";
+        timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
         scaleup(timerPara);
         typedWordsCountPara.innerHTML = "入力できた単語数：" + 0;
         scaleup(typedWordsCountPara);
@@ -173,8 +168,7 @@
       function timerStart(){
         let countup = function(){
           remaingTime--;
-          // timerPara.innerHTML = "残り時間：" + remaingTime + "秒";
-          timerPara.innerHTML = "残り時間：<span style='color:red;'>" + remaingTime + "</span>";
+          timerPara.innerHTML = "残り時間：" + remaingTime + "秒";
 
           scaleup(timerPara);
           if(remaingTime <= 0){

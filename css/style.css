@@ -12,13 +12,19 @@ header {
 }
 header #logo {
   text-decoration: none;
-  color: #888;
   font-size: 35px;
+  font-weight: bold;
+  color: #777;
 }
 
+/* main関連 */
 main {
   width: 600px;
   margin: 0 auto;
+  /* background-color: #fff; */
+}
+p {
+  margin: 0;
 }
 
 /* footer関連 */
