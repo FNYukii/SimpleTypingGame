@@ -12,13 +12,29 @@ header {
   border-bottom: 2px solid #aaa;
   text-align: center;
 }
-header #logo {
+nav {
+  width: 900px;
+  margin: 0 auto;
+}
+#logo,#ranking,#information {
   height: 100%;
-  line-height: 50px;
-  font-size: 35px;
-  font-weight: bold;
   color: #fff;
   text-decoration: none;
+  line-height: 50px;
+
+}
+#logo {
+  float: left;
+  font-size: 35px;
+  font-weight: bold;
+}
+#ranking,#information {
+  float: right;
+  margin: auto 10px;
+  font-size: 17px;
+}
+#ranking:hover,#information:hover {
+  text-decoration: underline;
 }
 
 /* main関連 */
