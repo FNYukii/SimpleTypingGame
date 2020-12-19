@@ -4,21 +4,21 @@ const body = document.body;
 const timerPara = document.getElementById("timerPara");
 const instructionPara = document.getElementById("instructionPara");
 const textbox = document.getElementById("textbox");
-const typedWordsCountPara = document.getElementById("typedWordsCountPara");
+const typedCountPara = document.getElementById("typedCountPara");
 const startButton = document.getElementById("startButton");
 const highestRecordPara = document.getElementById("highestRecordPara");
 //resultReport部の各要素のid取得
 const resultReport = document.getElementById("resultReport");
 const resultOfPlayTimePara = document.getElementById("resultOfPlayTimePara");
-const resultOfTypedWordsCountPara = document.getElementById("resultOfTypedWordsCountPara");
+const resultOfTypedCountPara = document.getElementById("resultOfTypedCountPara");
 
 
 //ゲーム関連の変数
 let targetText; //目標の単語
-let typedWordsCount = 0; //入力に成功した単語数
+let typedCount = 0; //入力に成功した単語数
 let highestRecord = 0; //歴代の最高成績
 //タイマー関連の変数
-const defaultRemaingTime = 30; //残り時間の初期値
+const defaultRemaingTime = 30.00; //残り時間の初期値
 let remaingTime = defaultRemaingTime; //残り時間
 //状態管理用のboolean型変数
 let isGamePlaying = false; //true = ゲームプレイ中
@@ -31,7 +31,7 @@ timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
 instructionPara.innerHTML = "startボタンをクリックしてください";
 textbox.value = "";
 textbox.addEventListener("keypress",enterKeyListener);
-typedWordsCountPara.innerHTML = "入力できた単語数：0";
+typedCountPara.innerHTML = "入力できた単語数：0";
 highestRecordPara.innerHTML = "最高記録：0";
 startButton.innerHTML = "ゲームスタート";
 resultReport.style.transform = "scale(0)";
@@ -49,15 +49,15 @@ function startButtonClick(){
 function gameStart(){
   timerStart();
   isGamePlaying = true;
-  typedWordsCount = 0;
+  typedCount = 0;
   textbox.disabled = false;
   textbox.focus();
   nextQuiz();
 
   timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
   scaleup(timerPara);
-  typedWordsCountPara.innerHTML = "入力できた単語数：" + 0;
-  scaleup(typedWordsCountPara);
+  typedCountPara.innerHTML = "入力できた単語数：" + 0;
+  scaleup(typedCountPara);
   startButton.innerHTML = "リタイアする";
   resultReport.style.transform = "scale(0)";
 }
@@ -71,8 +71,8 @@ function gameFinish(){
   body.classList.remove("godmodeStyle");
   textbox.disabled = true;
   
-  if(typedWordsCount >= highestRecord){
-    highestRecord = typedWordsCount; //最高記録を更新！
+  if(typedCount >= highestRecord){
+    highestRecord = typedCount; //最高記録を更新！
     highestRecordPara.innerHTML = "最高記録：" + highestRecord;
     scaleup(highestRecordPara);
   }
@@ -85,23 +85,23 @@ function gameFinish(){
 
 function updateResultReport(){
   resultOfPlayTimePara.innerHTML = "プレイ時間：" + (defaultRemaingTime - remaingTime) + "秒";
-  resultOfTypedWordsCountPara.innerHTML = "入力できた単語数：" + typedWordsCount;
+  resultOfTypedCountPara.innerHTML = "入力できた単語数：" + typedCount;
 }
 
 
 function timerStart(){
   let countup = function(){
-    remaingTime--;
-    timerPara.innerHTML = "残り時間：" + remaingTime + "秒";
-
-    scaleup(timerPara);
+    // remaingTime--;
+    remaingTime -= 0.01;
+    timerPara.innerHTML = "残り時間：" + remaingTime.toFixed(2) + "秒";
     if(remaingTime <= 0){
       clearInterval(timer);
       gameFinish();
     }
   }
+
   remaingTime = defaultRemaingTime;
-  timer = setInterval(countup,1000); //countup開始
+  timer = setInterval(countup,10); //countup開始
 }
 
 
@@ -115,7 +115,7 @@ function enterKeyListener(event){
 
 function textboxCheck(){
   if(textbox.value == targetText){
-    updateTypedWordsCount();
+    updateTypedCount();
     nextQuiz();
   }
   if(textbox.value == "auto input"){
@@ -144,14 +144,14 @@ function nextQuiz(){
 }
 
 
-function updateTypedWordsCount(){
+function updateTypedCount(){
   if(isInput10){
-    typedWordsCount += 10;
+    typedCount += 10;
   }else{
-    typedWordsCount++;
+    typedCount++;
   }
-  typedWordsCountPara.innerHTML = "入力できた単語数：" + typedWordsCount;
-  scaleup(typedWordsCountPara);
+  typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
+  scaleup(typedCountPara);
 }
 
 
