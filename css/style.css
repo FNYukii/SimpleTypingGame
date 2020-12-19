@@ -1,25 +1,30 @@
 body {
   margin: 0;
-  background-color: #ffe1e1;
+  background-color: #dcf5ff;
   font-family: sans-serif;
   font-size: 17px;
 }
 
 /* header関連 */
 header {
+  height: 50px;
+  background-color: #9dcbff;
+  border-bottom: 2px solid #aaa;
   text-align: center;
-  border-bottom: 1px solid #aaa;
 }
 header #logo {
-  text-decoration: none;
+  height: 100%;
+  line-height: 50px;
   font-size: 35px;
   font-weight: bold;
-  color: #777;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* main関連 */
 main {
-  width: 600px;
+  width: 900px;
+  padding: 50px 100px;
   margin: 0 auto;
   /* background-color: #fff; */
 }
@@ -27,11 +32,3 @@ p {
   margin: 0;
 }
 
-/* footer関連 */
-footer {
-  width: 100%;
-  text-align: center;
-  color: #777;
-  position: absolute;
-  bottom: 0;
-}

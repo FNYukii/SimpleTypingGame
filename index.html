@@ -9,6 +9,39 @@
       main {
         background-color: #fff;
       }
+      .largeText {
+        margin-top: 15px;
+        font-size: 25px;
+        font-weight: bold;
+      }
+      #information,#selectStage{
+        width: 700px;
+        margin: 0 auto 50px;
+        /* border-bottom: 1px solid #aaa; */
+      }
+      
+      /* ゲームステージ */
+      .stage {
+        width: 100%;
+        height: 100px;
+        background-color: aliceblue;
+        margin: 10px auto;
+      }
+      .jumpToGame {
+        float: right;
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+      }
+
+      footer {
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        border-top: 1px solid #aaa;
+        background-color: #9dcbff;
+
+      }
     </style>
   </head>
   <body>
@@ -16,7 +49,56 @@
       <a id="logo" href="index.html">シンプルタイピング☆</a>
     </header>
     <main>
-      <p>Hello World</p>
+
+      <div id="information">
+        <p class="largeText">Information</p>
+        <p class="largeText">概要</p>
+        <p>「シンプルタイピング☆」はその名のとおり、無駄な機能を省いたシンプルなタイピング練習ゲームです。ぜひここであなたのタイピングスキルを証明してみてください。</p>
+        <p class="largeText">遊び方</p>
+        <p>ゲーム画面に表示された指示に従って単語や文章を入力してください。正しく入力されていれば次の指示が表示されます。</p>
+      </div>
+
+      <div id="selectStage">
+        <p class="largeText">ステージ選択</p>
+
+        <div id="stage01" class="stage">
+          <button class="jumpToGame">プレイ</button>
+          <p>レベル1</p>
+          <P>2文字以下の短い単語が出題されます。<br>クリア条件：30秒間で10単語入力</P>
+        </div>
+        <div id="stage02" class="stage">
+          <button class="jumpToGame">プレイ</button>
+          <p>レベル2</p>
+          <p>3～4文字の単語が出題されます。<br>クリア条件：30秒間で10単語入力</p>
+        </div>
+        <div is="stage03" class="stage">
+          <button class="jumpToGame">プレイ</button>
+          <p>レベル3</p>
+          <p>5～6文字の単語が出題されます。<br>クリア条件：30秒間で10単語入力</p>
+        </div>
+        <div id="stage04" class="stage">
+          <button class="jumpToGame">プレイ</button>
+          <p>レベル4</p>
+          <p>7文字以上の単語が出題されます。<br>クリア条件：30秒間で10単語入力</p>
+        </div>
+        <div id="stage05" class="stage">
+          <button class="jumpToGame">プレイ</button>
+          <p>レベル5</p>
+          <p>簡単な文章が出題されます。<br>クリア条件：30秒間で10文入力</p>
+        </div>
+        <div id="stage05" class="stage">
+          <button class="jumpToGame">プレイ</button>
+          <p>タイムアタック</p>
+          <p>30秒でどれだけ多くの単語を入力できるか挑戦！</p>
+        </div>
+        <div id="stage06" class="stage">
+          <button class="jumpToGame">プレイ</button>
+          <p>サバイバル</p>
+          <p>単語の入力に成功すると、残り時間が2秒回復します！<br>出題される単語は少しずつ難しくなっていきます。<br>何秒間プレイし続けられるか、あなたの限界に挑戦してみてください！</p>
+        </div>
+
+      </div>
+
     </main>
     <footer>
       <p>©YuSan357</p>
