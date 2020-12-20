@@ -1,3 +1,4 @@
+/* ページ全体関連 */
 * {
   margin: 0;
   padding: 0;
@@ -42,18 +43,4 @@ nav {
 }
 #ranking:hover,#information:hover {
   text-decoration: underline;
-}
-
-
-
-/* footer関連 */
-footer {
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  border-top: 1px solid #aaa;
-  background-color: #9dcbff;
-}
-footer p {
-  margin: 0;
 }
