@@ -20,12 +20,13 @@
         margin: 50px auto 0;
         width: 500px;
         padding: 5px;
-        background-color: #fff;
+        background-color: #fff1eb;
         border-radius: 10px;
         text-align: center;
         transition: 0.8s;
+        transform: scale(0);
       }
-      #reportTitle {
+      #reportTitlePara {
         font-size: 25px;
         font-weight: bold;
       }
@@ -60,13 +61,15 @@
         <p id="instructionPara">default-string</p>
         <input type="text" id="textbox" value="default-string" disabled>
         <p id="typedCountPara">default-string</p>
-        <p id="highestRecordPara">default-string</p>
+        <!-- <p id="highestRecordPara">default-string</p> -->
         <button id="startButton" onclick="startButtonClick()" autofocus>default-string</button>
       </div>
       <div id="resultReport">
-        <p id="reportTitle">結果レポート</p>
-        <p id="resultOfPlayTimePara">default-string</p>
-        <p id="resultOfTypedWordsCountPara">default-string</p>
+        <p id="reportTitlePara">default-string</p>
+        <p id="playedTimePara">default-string</p>
+        <p id="reportMessagePara">default-string</p>
+        <!-- <p id="resultOfTypedCountPara">default-string</p> -->
+        <a href="index.html">トップページへ戻る</a>
       </div>
     </main>
 
@@ -77,28 +80,19 @@
     
     <script>
       const words = [
-        "りんご","青りんご","イチゴ","人参","大根","スイカ","みかん","味噌汁",
-        "あさり","さくらんぼ","じゃがいも","卵","きゅうり","ぶどう","なす",
-        "かぼちゃ","もやし","ねぎ","もやし","桃","ゆず","たまねぎ","しょうが","牛丼",
-        "コーンスープ","かつ丼","ハンバーグ","豚骨ラーメン","カレーライス","うどん","にゅうめん","フライドポテト","ピッツァ","天ぷら",
-        "肉まん","たこ焼き","明石焼き","オムライス","しらす","しらすラーメン","パスタ","ガパオライス","カルボナーラ","ペペロンチーノ","グラタン",
-        "ドリア","醤油ラーメン","味噌ラーメン","塩ラーメン","にぼし","つけめん","そうめん","寿司","サラダ","コーヒー","ドーナツ","ショートケーキ","バームクーヘン",
-        "ムース","マドレーヌ","刺身","親子丼","海鮮丼","焼肉","おでん","目玉焼き","卵焼き","チーズトースト","スクランブルエッグ","ツナ缶","パフェ","プリン","ソーダ",
-        "コーラ","ウーロン茶","牛乳","爽健美茶","緑茶","麦茶","天然水","ココア","トマトジュース","野菜ジュース"
+        "赤","青","桃","白","黒","灰","水","空",
+        "紺","藍","黄","肌","紅","緋",
+        "海","山","川","陸","砂","土","草","花",
+        "晴れ","雨","雪","雲",
+        "バラ","菊",
+        "塩","湯","粉","貝","ねぎ","米","海苔","肉",
+        "牛","鳥","馬","豚","鹿","熊","獅子","鷹",
+        "滋賀","佐賀","岐阜","三重","奈良","千葉"
       ];
 
-      // const words = [
-      //   "赤","青","桃","白","黒","灰","水","空",
-      //   "紺","藍","黄","肌","紅","緋",
-      //   "海","山","川","陸","砂","土","草","花",
-      //   "晴れ","雨","雪","雲",
-      //   "バラ","菊",
-      //   "塩","湯","粉","貝","ねぎ","米","海苔","肉",
-      //   "牛","鳥","馬","豚","鹿","熊","獅子","鷹",
-      //   "滋賀","佐賀","岐阜","三重","奈良","千葉"
-      // ];
+      const defaultRemaingTime = 30.00;
+      const goalCount = 3;
 
-      let goalCount = 10;
     </script>
 
     <script src="js/script.js"></script>

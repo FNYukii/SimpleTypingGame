@@ -1,4 +1,8 @@
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   margin: 0;
   background-color: #dcf5ff;
   font-family: sans-serif;
@@ -21,12 +25,11 @@ nav {
   color: #fff;
   text-decoration: none;
   line-height: 50px;
-
 }
 #logo {
+  font-weight: bold;
   float: left;
   font-size: 35px;
-  font-weight: bold;
 }
 #ranking,#information {
   float: right;
@@ -40,7 +43,20 @@ nav {
 /* main関連 */
 main {
   width: 900px;
+  /* min-height: 100%; */
   padding: 50px 100px;
   margin: 0 auto;
-  /* background-color: #fff; */
+  background-color: #fff;
+}
+
+/* footer関連 */
+footer {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  border-top: 1px solid #aaa;
+  background-color: #9dcbff;
+}
+footer p {
+  margin: 0;
 }
