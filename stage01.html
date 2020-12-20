@@ -9,7 +9,7 @@
       main {
         margin: 30px auto 0;;
         width: 900px;
-        height: 500px;
+        height: 550px;
         background-color: #fff;
       }
       #stageName {
@@ -28,6 +28,28 @@
       #gameController p {
         margin: 10px 0;
       }
+      #instructionPara {
+        font-weight: bold;
+      }
+      #textbox {
+        width: 100%;
+        height: 30px;
+        font-size: 20px;
+        margin: 10px auto;
+      }
+      #startButton {
+        margin-top: 10px;
+        width: 150px;
+        height: 50px;
+        background-color: #f8a1a1;
+        color: #fff;
+        border: 1px solid #f8a1a1;
+        border-radius: 10px;
+      }
+      #startButton:hover {
+        opacity: 0.9;
+      }
+
 
       /* 結果レポート関連 */
       #resultReport {
@@ -77,16 +99,14 @@
         <p id="timerPara">default-string</p>
         <p id="typedCountPara">default-string</p>
         <p id="instructionPara">default-string</p>
-        <input type="text" id="textbox" value="default-string" disabled><br>
-        <!-- <p id="highestRecordPara">default-string</p> -->
-        <button id="startButton" onclick="startButtonClick()" autofocus>default-string</button>
+        <input id="textbox" type="text" size=30 value="default-string" disabled><br>
+        <button id="startButton" onclick="startButtonClick()">default-string</button>
       </div>
 
       <div id="resultReport">
         <p id="reportTitlePara">default-string</p>
         <p id="playedTimePara">default-string</p>
         <p id="reportMessagePara">default-string</p>
-        <!-- <p id="resultOfTypedCountPara">default-string</p> -->
         <a href="index.html">トップページへ戻る</a>
       </div>
 

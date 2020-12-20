@@ -30,7 +30,7 @@ let isGamePlaying = false; //true = ゲームプレイ中
 
 //ゲーム開始準備
 timerPara.innerHTML = "残り時間：" + defaultRemaingTime.toFixed(2) + "秒";
-instructionPara.innerHTML = "startボタンをクリックしてください";
+instructionPara.innerHTML = "startボタンをクリックしてください。";
 textbox.value = "";
 textbox.addEventListener("keypress",enterKeyListener);
 typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
@@ -157,7 +157,7 @@ function textboxCheck(){
 function updateInstruction(){
   let randomNum = Math.floor(Math.random() * words.length);
   targetText = words[randomNum];
-  instructionPara.innerHTML = "「" + targetText + "」 と入力してください";
+  instructionPara.innerHTML = "「" + targetText + "」 と入力してください。";
   scaleup(instructionPara);
 }
 
