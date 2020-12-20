@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 html {
   height: 100%;
 }
@@ -40,14 +44,7 @@ nav {
   text-decoration: underline;
 }
 
-/* main関連 */
-main {
-  width: 900px;
-  /* min-height: 100%; */
-  padding: 50px 100px;
-  margin: 0 auto;
-  background-color: #fff;
-}
+
 
 /* footer関連 */
 footer {

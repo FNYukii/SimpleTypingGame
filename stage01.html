@@ -6,13 +6,27 @@
     <meta name="author" content="YuSan357">
     <link rel="stylesheet" href="css/style.css">
     <style>
+      main {
+        margin: 30px auto 0;;
+        width: 900px;
+        height: 500px;
+        background-color: #fff;
+      }
+      #stageName {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 40px;
+        color: #fff;
+        background-color: #f8a1a1;
+      }
       /* ゲーム操作画面関連 */
       #gameController {
         margin: 50px auto 0;
         width: 400px;
       }
-      #remaingTimeSpan {
-        color: red;
+      #gameController p {
+        margin: 10px 0;
       }
 
       /* 結果レポート関連 */
@@ -56,14 +70,18 @@
     </header>
 
     <main>
+
+      <p id="stageName">Level 1</p>
+
       <div id="gameController">
         <p id="timerPara">default-string</p>
-        <p id="instructionPara">default-string</p>
-        <input type="text" id="textbox" value="default-string" disabled>
         <p id="typedCountPara">default-string</p>
+        <p id="instructionPara">default-string</p>
+        <input type="text" id="textbox" value="default-string" disabled><br>
         <!-- <p id="highestRecordPara">default-string</p> -->
         <button id="startButton" onclick="startButtonClick()" autofocus>default-string</button>
       </div>
+
       <div id="resultReport">
         <p id="reportTitlePara">default-string</p>
         <p id="playedTimePara">default-string</p>
@@ -71,6 +89,7 @@
         <!-- <p id="resultOfTypedCountPara">default-string</p> -->
         <a href="index.html">トップページへ戻る</a>
       </div>
+
     </main>
 
     <footer>
@@ -91,8 +110,10 @@
       ];
 
       const defaultRemaingTime = 30.00;
-      const goalCount = 3;
-
+      const goalCount = 10;
+      
+      // const goalCount = 3; //デバッグ用の仮の数値 
+      
     </script>
 
     <script src="js/script.js"></script>

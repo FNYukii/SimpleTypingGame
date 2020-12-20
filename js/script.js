@@ -33,7 +33,7 @@ timerPara.innerHTML = "残り時間：" + defaultRemaingTime.toFixed(2) + "秒";
 instructionPara.innerHTML = "startボタンをクリックしてください";
 textbox.value = "";
 textbox.addEventListener("keypress",enterKeyListener);
-typedCountPara.innerHTML = "入力できた単語数：0";
+typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
 // highestRecordPara.innerHTML = "最高記録：0";
 startButton.innerHTML = "ゲームスタート";
 // resultReport.style.transform = "scale(0)";
@@ -57,7 +57,7 @@ function gameStart(){
 
   timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
   scaleup(timerPara);
-  typedCountPara.innerHTML = "入力できた単語数：" + 0;
+  typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
   scaleup(typedCountPara);
   startButton.innerHTML = "リタイアする";
   resultReport.style.transform = "scale(0)";
@@ -167,7 +167,7 @@ function updateTypedCount(){
   // if(isInput10){
   //   typedCount += 9;
   // }
-  typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
+  typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
   scaleup(typedCountPara);
 }
 
