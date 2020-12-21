@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>LEVEL5</title>
+    <title>LEVEL4</title>
     <meta name="author" content="YuSan357">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/gameStyle.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game.css">
   </head>
   <body>
     <header>
@@ -17,13 +17,15 @@
     </header>
 
     <main>
-      <p id="stageName">Level 5</p>
+      <p id="stageName">Level 4</p>
       <div id="gameController">
         <p id="timerPara">default-string</p>
         <p id="typedCountPara">default-string</p>
         <p id="instructionPara">default-string</p>
         <input id="textbox" type="text" size=30 value="default-string" disabled><br>
-        <button id="startButton" onclick="startButtonClick()">default-string</button>
+        <div id="buttonDiv">
+          <button id="startButton" onclick="startButtonClick()">default-string</button>
+        </div>
       </div>
       <div id="resultReport">
         <p id="reportTitlePara">default-string</p>
@@ -38,14 +40,16 @@
     </footer>
 
     <script>
-      //簡単な文章たち
+      //7文字以上の単語たち
       const words = [
-        "今日は晴れています。","明日はお正月です。"
+        "電動ドライバー","電気ストーブ","無線マウス","無線キーボード","ノートパソコン","リュックサック","クローゼット","パソコンケース",
+        "コンセントプラグ","電気自動車","アルコールランプ","ウェブブラウザ","フロントエンド","バックエンド","オブジェクト指向","フレームワーク",
+        "スマートフォン","ガソリンスタンド","正面玄関","高速道路","洗濯ばさみ","発泡スチロール","オレンジジュース","アップルジュース"
       ];
       const defaultRemaingTime = 30.00;
       const goalCount = 10;
     </script>
-    <script src="../js/timeAttack.js"></script>
+    <script src="scripts/timeAttack.js"></script>
 
   </body>
 </html>

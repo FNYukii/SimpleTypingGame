@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>LEVEL2</title>
+    <title>LEVEL3</title>
     <meta name="author" content="YuSan357">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/gameStyle.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game.css">
   </head>
   <body>
     <header>
@@ -17,14 +17,15 @@
     </header>
 
     <main>
-      <p id="stageName">Level 2</p>
+      <p id="stageName">Level 3</p>
       <div id="gameController">
         <p id="timerPara">default-string</p>
         <p id="typedCountPara">default-string</p>
         <p id="instructionPara">default-string</p>
         <input id="textbox" type="text" size=30 value="default-string" disabled><br>
-        <button id="startButton" onclick="startButtonClick()">default-string</button>
-      </div>
+        <div id="buttonDiv">
+          <button id="startButton" onclick="startButtonClick()">default-string</button>
+        </div>
       <div id="resultReport">
         <p id="reportTitlePara">default-string</p>
         <p id="playedTimePara">default-string</p>
@@ -36,23 +37,18 @@
     <footer>
       <p>©YuSan357</p>
     </footer>
-
-    
   </body>
 </html>
 
 <script>
-  //3～4文字の単語たち
+  //5～6文字の単語たち
   const words = [
-    "あさり","ごはん","きのこ","昆布","たけのこ","おかゆ","野菜","キャベツ",
-    "レタス","大根","人参","もやし","トマト","玉ねぎ","大豆","納豆",
-    "パソコン","水筒","マウス","モニター","電池","メモリ","CPU","HDD",
-    "青森","岩手","宮城","秋田","山形","福島","茨城","栃木","群馬",
-    "埼玉","神奈川","新潟","富山","石川","福井","山梨","長野",
-    "静岡","愛知","京都","大阪","兵庫","和歌山","鳥取","島根"
-
+    "東京","じゃがいも","キーボード","スクリーン","炊飯器","ドライヤー","フライパン","紙袋",
+    "カレンダー","コンセント","洗濯機","洗面台","シャンプー","インターホン","洗面器","食器棚",
+    "ティッシュ","アルコール","消毒","ユーチューブ","チューリップ","スパゲッティ","ピッツァ","カルボナーラ",
+    "オムライス","明石焼き","タコライス","ガパオライス","味噌ラーメン","マシンガン","ハンバーガー","ハンバーグ"
   ];
   const defaultRemaingTime = 30.00;
   const goalCount = 10;
 </script>
-<script src="../js/timeAttack.js"></script>
+<script src="scripts/timeAttack.js>

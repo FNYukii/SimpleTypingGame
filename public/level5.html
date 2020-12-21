@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>LEVEL1</title>
+    <title>LEVEL5</title>
     <meta name="author" content="YuSan357">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/gameStyle.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game.css">
   </head>
   <body>
     <header>
@@ -17,7 +17,7 @@
     </header>
 
     <main>
-      <p id="stageName">Level 1</p>
+      <p id="stageName">Level 5</p>
       <div id="gameController">
         <p id="timerPara">default-string</p>
         <p id="typedCountPara">default-string</p>
@@ -38,26 +38,16 @@
     <footer>
       <p>©YuSan357</p>
     </footer>
+
+    <script>
+      //簡単な文章たち
+      const words = [
+        "今日は晴れています。","明日はお正月です。"
+      ];
+      const defaultRemaingTime = 30.00;
+      const goalCount = 10;
+    </script>
+    <script src="scripts/timeAttack.js"></script>
+
   </body>
 </html>
-
-<script>
-  //2文字以下の単語たち
-
-  const words = [
-    "愛","網","鮎","案","イカ","石","犬","居間",
-    "海老","貝","亀","ゴミ","鹿","島","舌","鯛",
-    "鷹","なす","猫","灰","鳩","花","浜","富士",
-
-    "赤","青","白","黒","桃","肌","虹","色",
-    "ねぎ","塩","空","陸","海","雲","雪","雨",
-    "棒","板","弓","矢","家","塀","部屋","蓋",
-    "牛","馬","鳥","豚","鷹","鳩","犬","猫"
-    // "","","","","","","","",
-    // "","","","","","","","",
-    // "","","","","","","","",
-  ];
-  const defaultRemaingTime = 30.00;
-  const goalCount = 10;
-</script>
-<script src="../js/timeAttack.js"></script>
