@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>スコアアタック</title>
+    <meta name="author" content="YuSan357">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gameStyle.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a id="logo" href="../index.html">シンプルタイピング☆</a>
+        <a id="information" href="">Information</a>
+        <a id="ranking" href="">Ranking</a>
+      </nav>
+    </header>
+
+    <main>
+      <p id="stageName">スコアアタック</p>
+      <div id="gameController">
+        <p id="timerPara">default-string</p>
+        <p id="typedCountPara">default-string</p>
+        <p id="instructionPara">default-string</p>
+        <input id="textbox" type="text" size=30 value="default-string" disabled><br>
+        <button id="startButton" onclick="startButtonClick()">default-string</button>
+      </div>
+      <div id="resultReport">
+        <p id="reportTitlePara">default-string</p>
+        <p id="playedTimePara">default-string</p>
+        <p id="reportMessagePara">default-string</p>
+        <a href="../index.html">トップページへ戻る</a>
+      </div>
+    </main>
+
+    <footer>
+      <p>©YuSan357</p>
+    </footer>
+
+    <script>
+      //単語たち(仮)
+      const words = [
+       "りんご","青りんご","イチゴ","人参","大根","スイカ","みかん","味噌汁",
+        "あさり","さくらんぼ","じゃがいも","卵","きゅうり","ぶどう","なす",
+        "かぼちゃ","もやし","ねぎ","もやし","桃","ゆず","たまねぎ","しょうが","牛丼",
+        "コーンスープ","かつ丼","ハンバーグ","豚骨ラーメン","カレーライス","うどん","にゅうめん","フライドポテト","ピッツァ","天ぷら",
+        "肉まん","たこ焼き","明石焼き","オムライス","しらす","しらすラーメン","パスタ","ガパオライス","カルボナーラ","ペペロンチーノ","グラタン",
+        "ドリア","醤油ラーメン","味噌ラーメン","塩ラーメン","にぼし","つけめん","そうめん","寿司","サラダ","コーヒー","ドーナツ","ショートケーキ","バームクーヘン",
+        "ムース","マドレーヌ","刺身","親子丼","海鮮丼","焼肉","おでん","目玉焼き","卵焼き","チーズトースト","スクランブルエッグ","ツナ缶","パフェ","プリン","ソーダ",
+        "コーラ","ウーロン茶","牛乳","爽健美茶","緑茶","麦茶","天然水","ココア","トマトジュース","野菜ジュース"
+      ];
+      const defaultRemaingTime = 30.00;
+      const goalCount = 10;
+    </script>
+    <script src="../js/scoreAttack.js"></script>
+
+  </body>
+</html>

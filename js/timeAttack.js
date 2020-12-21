@@ -22,7 +22,7 @@ let isGamePlaying = false; //true = ゲームプレイ中
 
 
 //ゲーム開始準備
-timerPara.innerHTML = "残り時間：" + defaultRemaingTime.toFixed(2) + "秒";
+timerPara.innerHTML = defaultRemaingTime.toFixed(2);
 instructionPara.innerHTML = "startボタンをクリックしてください。";
 textbox.value = "";
 textbox.addEventListener("keypress",enterKeyListener);
@@ -38,6 +38,7 @@ function startButtonClick(){
   }
 }
 
+
 function gameStart(){
   timerStart();
   isGamePlaying = true;
@@ -46,7 +47,7 @@ function gameStart(){
   textbox.focus();
   updateInstruction();
 
-  timerPara.innerHTML = "残り時間：" + defaultRemaingTime + "秒";
+  timerPara.innerHTML = defaultRemaingTime;
   scaleup(timerPara);
   typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
   scaleup(typedCountPara);
@@ -91,16 +92,10 @@ function gameStop(){
 }
 
 
-function updateResultReport(){
-  playedTimePara.innerHTML = "プレイ時間：" + (defaultRemaingTime - remaingTime).toFixed(2) + "秒";
-  resultReport.style.transform = "scale(1.2)";
-}
-
-
 function timerStart(){
   let countup = function(){
     remaingTime -= 0.01;
-    timerPara.innerHTML = "残り時間：" + remaingTime.toFixed(2) + "秒";
+    timerPara.innerHTML = remaingTime.toFixed(2);
     if(remaingTime <= 0){
       clearInterval(timer);
       gameFailed();
@@ -126,6 +121,9 @@ function textboxCheck(){
       gameCleared();
     }
     updateInstruction();
+  }else{
+    instructionPara.innerHTML = "<span style='color: red;'>✕</span>「" + targetText + "」と入力してください。";
+    scaleup(instructionPara);
   }
 }
 
