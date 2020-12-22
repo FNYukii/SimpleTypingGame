@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <title>LEVEL4</title>
     <meta name="author" content="YuSan357">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/gameStyle.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game.css">
   </head>
   <body>
     <header>
       <nav>
-        <a id="logo" href="../index.html">シンプルタイピング☆</a>
+        <a id="logo" href="index.html">シンプルタイピング☆</a>
         <a id="information" href="">Information</a>
         <a id="ranking" href="">Ranking</a>
       </nav>
@@ -23,31 +23,27 @@
         <p id="typedCountPara">default-string</p>
         <p id="instructionPara">default-string</p>
         <input id="textbox" type="text" size=30 value="default-string" disabled><br>
-        <button id="startButton" onclick="startButtonClick()">default-string</button>
+        <div id="buttonDiv">
+          <button id="startButton" onclick="startButtonClick()">default-string</button>
+        </div>
       </div>
       <div id="resultReport">
         <p id="reportTitlePara">default-string</p>
         <p id="playedTimePara">default-string</p>
         <p id="reportMessagePara">default-string</p>
-        <a href="../index.html">トップページへ戻る</a>
+        <a href="index.html">トップページへ戻る</a>
       </div>
     </main>
 
     <footer>
       <p>©YuSan357</p>
     </footer>
-
-    <script>
-      //7文字以上の単語たち
-      const words = [
-        "電動ドライバー","電気ストーブ","無線マウス","無線キーボード","ノートパソコン","リュックサック","クローゼット","パソコンケース",
-        "コンセントプラグ","電気自動車","アルコールランプ","ウェブブラウザ","フロントエンド","バックエンド","オブジェクト指向","フレームワーク",
-        "スマートフォン","ガソリンスタンド","正面玄関","高速道路","洗濯ばさみ","発泡スチロール","オレンジジュース","アップルジュース"
-      ];
-      const defaultRemaingTime = 30.00;
-      const goalCount = 10;
-    </script>
-    <script src="../js/timeAttack.js"></script>
-
   </body>
 </html>
+
+<script>
+  const stageNumber = 3;
+  const defaultRemaingTime = 30.00;
+  const goalCount = 10;
+</script>
+<script src="scripts/timeAttack.js"></script>
