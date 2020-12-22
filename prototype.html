@@ -1,11 +1,58 @@
+<!-- タイピングゲーム試作品 外部ファイル必要なし -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>タイピングゲーム</title>
     <meta name="author" content="YuSan357">
-    <link rel="stylesheet" href="css/style.css">
     <style>
+      /* ページ全体関連 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: #dcf5ff;
+        font-family: sans-serif;
+        font-size: 17px;
+      }
+
+      /* header関連 */
+      header {
+        height: 50px;
+        background-color: #9dcbff;
+        /* border-bottom: 2px solid #aaa; */
+        text-align: center;
+      }
+      div {
+        width: 900px;
+        margin: 0 auto;
+      }
+      #logo,#ranking,#information {
+        height: 100%;
+        color: #fff;
+        text-decoration: none;
+        line-height: 50px;
+      }
+      #logo {
+        font-weight: bold;
+        float: left;
+        font-size: 35px;
+      }
+      #ranking,#information {
+        float: right;
+        margin: auto 10px;
+        font-size: 17px;
+      }
+      #ranking:hover,#information:hover {
+        text-decoration: underline;
+      }
+
       /* ゲーム操作画面関連 */
       #gameController {
         margin: 50px auto 0;
