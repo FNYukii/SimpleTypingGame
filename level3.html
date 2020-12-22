@@ -4,50 +4,27 @@
     <meta charset="utf-8">
     <title>LEVEL3</title>
     <meta name="author" content="YuSan357">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/gameStyle.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game.css">
+    <!-- CDN Libraries -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- components -->
+    <script type="text/babel" src="components/Header.jsx" defer></script>
+    <script type="text/babel" src="components/Footer.jsx" defer></script>
+    <script type="text/babel" src="components/GameMain.jsx" defer></script>
   </head>
   <body>
-    <header>
-      <nav>
-        <a id="logo" href="../index.html">シンプルタイピング☆</a>
-        <a id="information" href="">Information</a>
-        <a id="ranking" href="">Ranking</a>
-      </nav>
-    </header>
-
-    <main>
-      <p id="stageName">Level 3</p>
-      <div id="gameController">
-        <p id="timerPara">default-string</p>
-        <p id="typedCountPara">default-string</p>
-        <p id="instructionPara">default-string</p>
-        <input id="textbox" type="text" size=30 value="default-string" disabled><br>
-        <button id="startButton" onclick="startButtonClick()">default-string</button>
-      </div>
-      <div id="resultReport">
-        <p id="reportTitlePara">default-string</p>
-        <p id="playedTimePara">default-string</p>
-        <p id="reportMessagePara">default-string</p>
-        <a href="../index.html">トップページへ戻る</a>
-      </div>
-    </main>
-
-    <footer>
-      <p>©YuSan357</p>
-    </footer>
+    <header></header>
+    <main></main>
+    <footer></footer>
   </body>
 </html>
 
 <script>
-  //5～6文字の単語たち
-  const words = [
-    "東京","じゃがいも","キーボード","スクリーン","炊飯器","ドライヤー","フライパン","紙袋",
-    "カレンダー","コンセント","洗濯機","洗面台","シャンプー","インターホン","洗面器","食器棚",
-    "ティッシュ","アルコール","消毒","ユーチューブ","チューリップ","スパゲッティ","ピッツァ","カルボナーラ",
-    "オムライス","明石焼き","タコライス","ガパオライス","味噌ラーメン","マシンガン","ハンバーガー","ハンバーグ"
-  ];
+  const stageNumber = 2;
   const defaultRemaingTime = 30.00;
   const goalCount = 10;
 </script>
-<script src="../js/timeAttack.js"></script>
+<script src="scripts/timeAttack.js"></script>

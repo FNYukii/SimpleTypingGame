@@ -9,13 +9,3 @@ function Header() {
 }
 const header = document.getElementsByTagName("header")[0];
 ReactDOM.render(<Header/>, header);
-
-function Footer() {
-  return(
-    <div>
-      <p>©YuSan357</p>
-    </div>
-  );
-}
-const footer = document.getElementsByTagName("footer")[0];
-ReactDOM.render(<Footer/>, footer);
