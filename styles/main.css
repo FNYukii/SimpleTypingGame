@@ -21,7 +21,7 @@ header {
   /* border-bottom: 2px solid #aaa; */
   text-align: center;
 }
-header div {
+div {
   width: 900px;
   margin: 0 auto;
 }

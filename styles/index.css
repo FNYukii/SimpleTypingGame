@@ -6,11 +6,16 @@ main {
   margin: 0 auto;
   background-color: #fff;
 }
+main p {
+  margin: 0 auto;
+}
 .largeText {
   margin: 10px auto 0;
   font-size: 25px;
   font-weight: bold;
 }
+
+
 
 /* ステージ関連 */
 .stage {
@@ -37,4 +42,7 @@ footer {
   color: #fff;
   /* border-top: 1px solid #aaa; */
   background-color: #9dcbff;
+}
+footer p {
+  margin: 0;
 }
