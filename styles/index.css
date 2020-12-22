@@ -33,6 +33,15 @@ main p {
   width: 80px;
   height: 80px;
   margin: 10px;
+
+  text-align: center;
+  line-height: 80px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #9adaff;
+}
+.jumpToGame:hover {
+  opacity: 0.7;
 }
 
 /* footer関連 */
