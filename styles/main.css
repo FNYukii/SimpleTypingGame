@@ -10,37 +10,46 @@ body {
   height: 100%;
   margin: 0;
   background-color: #dcf5ff;
-  font-family: sans-serif;
-  font-size: 17px;
 }
 
 /* header関連 */
-header {
-  height: 50px;
-  background-color: #9dcbff;
-  /* border-bottom: 2px solid #aaa; */
-  text-align: center;
-}
-div {
-  width: 900px;
-  margin: 0 auto;
-}
-#logo,#ranking,#information {
-  height: 100%;
+header a {
   color: #fff;
   text-decoration: none;
+}
+header {
+  height: 50px;
+  width: 100%;
+  background-color: #9dcbff;
+}
+.logoAndNav {
+  height: 100%;
+  width: 700px;
+  margin: 0 auto;
+}
+.headline{
+  height: 100%;
+  float: left;
+  margin-left: 20px;
+  line-height: 50px;
+  font-size: 30px;
+}
+.nav {
+  height: 100%;
+  float: right;
+  margin-right: 30px;
   line-height: 50px;
 }
-#logo {
-  font-weight: bold;
-  float: left;
-  font-size: 35px;
+.nav-item {
+  width: 80px;
+  /* background-color: antiquewhite; */
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+  /* margin: 0 20px; */
+  transition: 0.3s;
+  cursor: pointer;
 }
-#ranking,#information {
-  float: right;
-  margin: auto 10px;
-  font-size: 17px;
-}
-#ranking:hover,#information:hover {
-  text-decoration: underline;
+.nav-item:hover {
+  background-color: #b4d7ff;
 }
