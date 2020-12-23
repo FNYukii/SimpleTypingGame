@@ -47,7 +47,7 @@ timerPara.innerHTML = defaultRemaingTime.toFixed(2);
 instructionPara.innerHTML = "startボタンをクリックしてください。";
 textbox.value = "";
 textbox.addEventListener("keypress",enterKeyListener);
-typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
+typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
 startButton.innerHTML = "ゲームスタート";
 
 
@@ -70,7 +70,7 @@ function gameStart(){
 
   timerPara.innerHTML = defaultRemaingTime;
   scaleup(timerPara);
-  typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
+  typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
   scaleup(typedCountPara);
   startButton.innerHTML = "リタイアする";
   resultReport.style.transform = "scale(0)";
@@ -162,7 +162,7 @@ function updateInstruction(){
 
 function updateTypedCount(){
   typedCount++;
-  typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
+  typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
   scaleup(typedCountPara);
 }
 
