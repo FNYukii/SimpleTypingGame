@@ -51,8 +51,8 @@ switch(stageName){
   case "level1":
   gameType = 0;
   difficultyLevel = 0;
-  defaultRemaingTime = 10.00;
-  goalCount = 5;
+  defaultRemaingTime = 300.00;
+  goalCount = 30;
   break;
 
   case "level2":
@@ -79,7 +79,7 @@ switch(stageName){
   case "scoreAttack":
   gameType = 1;
   difficultyLevel = 0;
-  defaultRemaingTime = 10.00;
+  defaultRemaingTime = 30.00;
   break;
 
   case "survival":
@@ -91,6 +91,7 @@ switch(stageName){
 
 //その他の変数を宣言
 let targetText;
+let lastRandomNum = 0;
 let typedCount = 0;
 let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
@@ -223,8 +224,7 @@ function updateInstructionPara(){
     difficultyLevel = Math.floor(Math.random() * words.length);
   }
   
-  let randomNum = Math.floor(Math.random() * words[difficultyLevel].length);
-  targetText = words[difficultyLevel][randomNum];
+  targetText = words[difficultyLevel][getRandomNum()];
   instructionPara.innerHTML = "「" + targetText + "」 と入力してください。";
   scaleup(instructionPara, 1.05);
 }
@@ -294,4 +294,14 @@ function scaleup(para, expansionRate){
   setTimeout(() => {
     para.style.transform = "scale(1)";
   }, 200);
+}
+
+
+function getRandomNum(){
+  let newRandomNum = Math.floor(Math.random() * words[difficultyLevel].length);
+  while(newRandomNum == lastRandomNum){
+    newRandomNum = Math.floor(Math.random() * words[difficultyLevel].length);
+  }
+  lastRandomNum = newRandomNum;
+  return newRandomNum;
 }
