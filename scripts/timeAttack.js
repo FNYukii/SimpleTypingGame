@@ -83,9 +83,9 @@ function gameStart(){
   updateInstruction();
 
   timerPara.innerHTML = defaultRemaingTime;
-  scaleup(timerPara);
+  // scaleup(timerPara);
   typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
-  scaleup(typedCountPara);
+  scaleup(typedCountPara, 1.05);
   startButton.innerHTML = "リタイアする";
   resultReport.style.transform = "scale(0)";
 }
@@ -159,7 +159,7 @@ function textboxCheck(){
     updateInstruction();
   }else{
     instructionPara.innerHTML = "<span style='color: red;'>✕</span>「" + targetText + "」と入力してください。";
-    scaleup(instructionPara);
+    scaleup(instructionPara, 1.2);
   }
 }
 
@@ -168,20 +168,20 @@ function updateInstruction(){
   let randomNum = Math.floor(Math.random() * words[difficultyLevel].length);
   targetText = words[difficultyLevel][randomNum];
   instructionPara.innerHTML = "「" + targetText + "」 と入力してください。";
-  scaleup(instructionPara);
+  scaleup(instructionPara, 1.05);
 }
 
 
 function updateTypedCount(){
   typedCount++;
   typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
-  scaleup(typedCountPara);
+  scaleup(typedCountPara, 1.05);
 }
 
 
-function scaleup(para){
+function scaleup(para, expansionRate){
   para.style.transition = "0.2s";
-  para.style.transform = "scale(1.02)";
+  para.style.transform = "scale(" + expansionRate + ")";
   setTimeout(() => {
     para.style.transform = "scale(1)";
   }, 200);
