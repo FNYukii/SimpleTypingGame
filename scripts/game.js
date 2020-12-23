@@ -96,6 +96,7 @@ let typedCount = 0;
 let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
 let isGamePlaying = false;
+let gameResult; //0 = retired, 1 = timeUp, 2 = clear 
 
 
 //ゲーム開始準備
@@ -132,7 +133,7 @@ function gameStart(){
 
 
 function timerStart(){
-
+  //countupメソッド
   let countup = function(){
     if(remaingTime > 0.00){
       remaingTime -= 0.01;
@@ -153,19 +154,19 @@ function timerStart(){
 function gameRetired(){
   clearInterval(timer);
   gameStop();
-  updateResultReport("retired");
+  updateResultReport(0);
 }
 //時間切れ
 function gameTimeUp(){
   timerPara.innerHTML = "0.00";
   gameStop();
-  updateResultReport("timeUped");
+  updateResultReport(1);
 }
 //ゲームクリア
 function gameCleared(){
   clearInterval(timer);
   gameStop();
-  updateResultReport("cleared");
+  updateResultReport(2);
 }
 
 
@@ -183,7 +184,6 @@ function enterKeyListener(event){
   }
 }
 
-
 function textboxCheck(){
   if(textbox.value == targetText){
     typedCount++;
@@ -199,6 +199,7 @@ function textboxCheck(){
       }
     }
     updateInstructionPara();
+
   }else if(textbox.value != targetText){
     instructionPara.innerHTML = "<span style='color: red;'>✕</span>「" + targetText + "」と入力してください。";
     scaleup(instructionPara, 1.2);
@@ -223,7 +224,7 @@ function updateInstructionPara(){
   if(gameType == 1){
     difficultyLevel = Math.floor(Math.random() * words.length);
   }
-  
+
   targetText = words[difficultyLevel][getRandomNum()];
   instructionPara.innerHTML = "「" + targetText + "」 と入力してください。";
   scaleup(instructionPara, 1.05);
@@ -245,9 +246,8 @@ function updateTypedCountPara(){
 
 function updateResultReport(gameResult){
   resultReport.style.transform = "scale(1.2)";
-
-  //リタイア
-  if(gameResult == "retired"){
+  //リタイア処理
+  if(gameResult == 0){
     reportTitlePara.innerHTML = "リタイア";
     switch(gameType){
       case 0:
@@ -262,9 +262,8 @@ function updateResultReport(gameResult){
       reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
     }
   }
-
-  //時間切れ
-  if(gameResult == "timeUped"){
+  //時間切れ処理
+  if(gameResult == 1){
     reportTitlePara.innerHTML = "時間切れ";
     switch(gameType){
       case 0:
@@ -279,9 +278,8 @@ function updateResultReport(gameResult){
       reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
     }
   }
-
-  //クリア
-  if(gameResult == "cleared"){
+  //クリア処理
+  if(gameResult == 2){
     reportTitlePara.innerHTML = "クリア";
     reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
   }
