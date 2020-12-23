@@ -132,42 +132,61 @@ function gameStart(){
 // リタイアボタンを押した
 function gameRetired(){
   gameStop();
-  reportTitlePara.innerHTML = "リタイア";
-  reportMessagePara.innerHTML = "次は最後までやり遂げてください…";
+  updateResultReport("retired");
 }
 
 
 // 時間切れ
 function gameTimeUp(){
   gameStop();
-  reportTitlePara.innerHTML = "時間切れ!";
-  if(stageName == "survival"){
-    reportMessagePara.innerHTML = "次はもっと長く生き残りましょう!";
-  }else if(stageName == "scoreAttack"){
-    reportMessagePara.innerHTML = "入力できた単語数：" + typedCount;
-  }else{
-    reportMessagePara.innerHTML = "もう少し速くタイピングできるようになりましょう!";
-  }
+  updateResultReport("timeUped");
 }
 
 
 // ゲームクリア
 function gameCleared(){
   gameStop();
-  reportTitlePara.innerHTML = "ステージクリア!";
-  reportMessagePara.innerHTML = "おめでとうございます！";
+  updateResultReport("cleared");
 }
 
 
 function gameStop(){
   isGamePlaying = false;
   textbox.disabled = true;
-  clearInterval(timer);
-  // body.classList.remove("godmodeStyle");
-  
   startButton.innerHTML = "もう一度プレイ";
-  playedTimePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
+  clearInterval(timer);
+}
+
+
+function updateResultReport(gameResult){
   resultReport.style.transform = "scale(1.2)";
+  //リタイア
+  if(gameResult == "retired"){
+    reportTitlePara.innerHTML = "リタイア";
+    if(stageName == "survival"){
+      reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
+    }else if(stageName == "scoreAttack"){
+      reportMessagePara.innerHTML = "スコア：" + typedCount;
+    }else{
+      reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
+    }
+  }
+  //時間切れ
+  if(gameResult == "timeUped"){
+    reportTitlePara.innerHTML = "時間切れ";
+    if(stageName == "survival"){
+      reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
+    }else if(stageName == "scoreAttack"){
+      reportMessagePara.innerHTML = "スコア：" + typedCount;
+    }else{
+      reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
+    }
+  }
+  //クリア
+  if(gameResult == "cleared"){
+    reportTitlePara.innerHTML = "クリア";
+    reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
+  }
 }
 
 
@@ -200,6 +219,7 @@ function textboxCheck(){
     typedCount++;
     if(stageName == "survival"){
       updateTypedCountPara();
+      scaleup(typedCountPara, 1.05);
       updateInstructionPara();
       remaingTime += 2;
       scaleup(timerPara, 1.1);
@@ -249,7 +269,6 @@ function updateTypedCountPara(){
   }else{
     typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
   }
-  scaleup(typedCountPara, 1.05);
 }
 
 
