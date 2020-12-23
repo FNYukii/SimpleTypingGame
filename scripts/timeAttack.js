@@ -165,8 +165,8 @@ function textboxCheck(){
 
 
 function updateInstruction(){
-  let randomNum = Math.floor(Math.random() * words[stageNumber].length);
-  targetText = words[stageNumber][randomNum];
+  let randomNum = Math.floor(Math.random() * words[difficultyLevel].length);
+  targetText = words[difficultyLevel][randomNum];
   instructionPara.innerHTML = "「" + targetText + "」 と入力してください。";
   scaleup(instructionPara);
 }
