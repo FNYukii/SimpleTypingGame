@@ -3,7 +3,6 @@ const words = [
     "愛","網","鮎","案","イカ","石","犬","居間",
     "海老","貝","亀","ゴミ","鹿","島","舌","鯛",
     "鷹","なす","猫","灰","鳩","花","浜","富士",
-
     "赤","青","白","黒","桃","肌","虹","色",
     "ねぎ","塩","空","陸","海","雲","雪","雨",
     "棒","板","弓","矢","家","塀","部屋","蓋",
@@ -134,6 +133,7 @@ function timerStart(){
     timerPara.innerHTML = remaingTime.toFixed(2);
     if(remaingTime <= 0){
       clearInterval(timer);
+      timerPara.innerHTML = "00.00";
       gameFailed();
     }
   }
