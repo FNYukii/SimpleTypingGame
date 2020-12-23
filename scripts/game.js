@@ -51,8 +51,8 @@ switch(stageName){
   case "level1":
   gameType = 0;
   difficultyLevel = 0;
-  defaultRemaingTime = 300.00;
-  goalCount = 30;
+  defaultRemaingTime = 30.00;
+  goalCount = 10;
   break;
 
   case "level2":
