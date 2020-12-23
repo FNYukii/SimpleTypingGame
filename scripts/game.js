@@ -29,18 +29,16 @@ const words = [
   ]
 ];
 
-//bodyタグのid取得
+
+//各要素のid取得
 const body = document.body;
-//gameController部の各要素のid取得
 const timerPara = document.getElementById("timerPara");
 const instructionPara = document.getElementById("instructionPara");
 const textbox = document.getElementById("textbox");
 const typedCountPara = document.getElementById("typedCountPara");
 const startButton = document.getElementById("startButton");
-//resultReport部の各要素のid取得
 const resultReport = document.getElementById("resultReport");
 const reportTitlePara = document.getElementById("reportTitlePara");
-const playedTimePara = document.getElementById("playedTimePara");
 const reportMessagePara = document.getElementById("reportMessagePara");
 
 
@@ -51,7 +49,7 @@ let goalCount;
 switch(stageName){
   case "level1":
   difficultyLevel = 0;
-  defaultRemaingTime = 30.00;
+  defaultRemaingTime = 10.00;
   goalCount = 10;
   break;
 
@@ -75,7 +73,7 @@ switch(stageName){
 
   case "scoreAttack":
   difficultyLevel = 0;
-  defaultRemaingTime = 30.00;
+  defaultRemaingTime = 10.00;
   break;
 
   case "survival":
@@ -84,7 +82,7 @@ switch(stageName){
 }
 
 
-//その他の変数宣言
+//その他の変数を宣言
 let targetText;
 let typedCount = 0;
 let remaingTime = defaultRemaingTime;
@@ -94,10 +92,9 @@ let isGamePlaying = false;
 
 //ゲーム開始準備
 timerPara.innerHTML = defaultRemaingTime.toFixed(2);
-instructionPara.innerHTML = "startボタンをクリックしてください。";
-textbox.value = "";
-textbox.addEventListener("keypress",enterKeyListener);
 updateTypedCountPara();
+instructionPara.innerHTML = "startボタンをクリックしてください。";
+textbox.addEventListener("keypress",enterKeyListener);
 startButton.innerHTML = "ゲームスタート";
 
 
@@ -117,34 +114,48 @@ function gameStart(){
   textbox.disabled = false;
   textbox.value = "";
   textbox.focus();
-
-  timerStart();
-  updateInstructionPara();
-
-  timerPara.innerHTML = defaultRemaingTime;
-  updateTypedCountPara();
-  scaleup(typedCountPara, 1.05);
   startButton.innerHTML = "リタイアする";
   resultReport.style.transform = "scale(0)";
+  updateInstructionPara();
+  updateTypedCountPara();
+  scaleup(typedCountPara, 1.05);
+  timerStart();
 }
 
 
-// リタイアボタンを押した
+function timerStart(){
+
+  let countup = function(){
+    if(remaingTime > 0.00){
+      remaingTime -= 0.01;
+      playedTime += 0.01;
+      timerPara.innerHTML = remaingTime.toFixed(2);
+    }else{
+      clearInterval(timer);
+      gameTimeUp();
+    }
+  }
+
+  remaingTime = defaultRemaingTime;
+  timer = setInterval(countup,10);
+}
+
+
+//リタイア
 function gameRetired(){
+  clearInterval(timer);
   gameStop();
   updateResultReport("retired");
 }
-
-
-// 時間切れ
+//時間切れ
 function gameTimeUp(){
+  timerPara.innerHTML = "0.00";
   gameStop();
   updateResultReport("timeUped");
 }
-
-
-// ゲームクリア
+//ゲームクリア
 function gameCleared(){
+  clearInterval(timer);
   gameStop();
   updateResultReport("cleared");
 }
@@ -154,55 +165,6 @@ function gameStop(){
   isGamePlaying = false;
   textbox.disabled = true;
   startButton.innerHTML = "もう一度プレイ";
-  clearInterval(timer);
-}
-
-
-function updateResultReport(gameResult){
-  resultReport.style.transform = "scale(1.2)";
-  //リタイア
-  if(gameResult == "retired"){
-    reportTitlePara.innerHTML = "リタイア";
-    if(stageName == "survival"){
-      reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
-    }else if(stageName == "scoreAttack"){
-      reportMessagePara.innerHTML = "スコア：" + typedCount;
-    }else{
-      reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
-    }
-  }
-  //時間切れ
-  if(gameResult == "timeUped"){
-    reportTitlePara.innerHTML = "時間切れ";
-    if(stageName == "survival"){
-      reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
-    }else if(stageName == "scoreAttack"){
-      reportMessagePara.innerHTML = "スコア：" + typedCount;
-    }else{
-      reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
-    }
-  }
-  //クリア
-  if(gameResult == "cleared"){
-    reportTitlePara.innerHTML = "クリア";
-    reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
-  }
-}
-
-
-function timerStart(){
-  let countup = function(){
-    remaingTime -= 0.01;
-    playedTime += 0.01;
-    timerPara.innerHTML = remaingTime.toFixed(2);
-    if(remaingTime <= 0){
-      clearInterval(timer);
-      timerPara.innerHTML = "00.00";
-      gameTimeUp();
-    }
-  }
-  remaingTime = defaultRemaingTime;
-  timer = setInterval(countup,10); //countup開始
 }
 
 
@@ -217,22 +179,20 @@ function enterKeyListener(event){
 function textboxCheck(){
   if(textbox.value == targetText){
     typedCount++;
+    updateTypedCountPara();
+    scaleup(typedCountPara, 1.05);
+
     if(stageName == "survival"){
-      updateTypedCountPara();
-      scaleup(typedCountPara, 1.05);
-      updateInstructionPara();
       remaingTime += 2;
       scaleup(timerPara, 1.1);
     }else if(stageName == "scoreAttack"){
-      updateTypedCountPara();
-      updateInstructionPara();
+
     }else{
-      updateTypedCountPara();
       if(typedCount >= goalCount){
         gameCleared();
       }
-      updateInstructionPara();
     }
+    updateInstructionPara();
   }else if(textbox.value != targetText){
     instructionPara.innerHTML = "<span style='color: red;'>✕</span>「" + targetText + "」と入力してください。";
     scaleup(instructionPara, 1.2);
@@ -268,6 +228,38 @@ function updateTypedCountPara(){
     typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
   }else{
     typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
+  }
+}
+
+
+function updateResultReport(gameResult){
+  resultReport.style.transform = "scale(1.2)";
+  //リタイア
+  if(gameResult == "retired"){
+    reportTitlePara.innerHTML = "リタイア";
+    if(stageName == "survival"){
+      reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
+    }else if(stageName == "scoreAttack"){
+      reportMessagePara.innerHTML = "スコア：" + typedCount;
+    }else{
+      reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
+    }
+  }
+  //時間切れ
+  if(gameResult == "timeUped"){
+    reportTitlePara.innerHTML = "時間切れ";
+    if(stageName == "survival"){
+      reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
+    }else if(stageName == "scoreAttack"){
+      reportMessagePara.innerHTML = "スコア：" + typedCount;
+    }else{
+      reportMessagePara.innerHTML = "プレイ時間：" + defaultRemaingTime.toFixed(2) + "秒";
+    }
+  }
+  //クリア
+  if(gameResult == "cleared"){
+    reportTitlePara.innerHTML = "クリア";
+    reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
   }
 }
 
