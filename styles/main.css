@@ -8,19 +8,18 @@ html {
 }
 body {
   height: 100%;
-  margin: 0;
-  background-color: #dcf5ff;
+  background-color: #d7e9fd;
 }
 
 /* header関連 */
-header a {
-  color: #fff;
-  text-decoration: none;
-}
 header {
   height: 50px;
   width: 100%;
   background-color: #9dcbff;
+}
+header a {
+  color: #fff;
+  text-decoration: none;
 }
 .logoAndNav {
   height: 100%;
@@ -52,4 +51,14 @@ header {
 }
 .nav-item:hover {
   background-color: #b4d7ff;
+}
+
+/* footer関連 */
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  color: #fff;
+  background-color: #9dcbff;
 }

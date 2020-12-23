@@ -75,13 +75,3 @@ main {
   font-size: 25px;
   font-weight: bold;
 }
-
-/* footer関連 */
-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  color: #fff;
-  background-color: #9dcbff;
-}
