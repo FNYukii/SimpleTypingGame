@@ -43,42 +43,49 @@ const reportMessagePara = document.getElementById("reportMessagePara");
 
 
 //どのステージなのか取得して難易度や制限時間を決定
+let gameType; //0 = timeAttack, 1 = scoreAttack, 2 = survival
 let difficultyLevel;
 let defaultRemaingTime;
 let goalCount;
 switch(stageName){
   case "level1":
-  difficultyLevel = 0;
-  defaultRemaingTime = 10.00;
-  goalCount = 10;
-  break;
+    gameType = 0;
+    difficultyLevel = 0;
+    defaultRemaingTime = 10.00;
+    goalCount = 5;
+    break;
 
   case "level2":
-  difficultyLevel = 1;
-  defaultRemaingTime = 30.00;
-  goalCount = 10;
-  break;
+    gameType = 0;
+    difficultyLevel = 1;
+    defaultRemaingTime = 30.00;
+    goalCount = 10;
+    break;
 
   case "level3":
-  difficultyLevel = 2;
-  defaultRemaingTime = 30.00;
-  goalCount = 10;
-  break;
+    gameType = 0;
+    difficultyLevel = 2;
+    defaultRemaingTime = 30.00;
+    goalCount = 10;
+    break;
 
   case "level4":
-  difficultyLevel = 3;
-  defaultRemaingTime = 30.00;
-  goalCount = 10;
-  break;
+    gameType = 0;
+    difficultyLevel = 3;
+    defaultRemaingTime = 30.00;
+    goalCount = 10;
+    break;
 
   case "scoreAttack":
-  difficultyLevel = 0;
-  defaultRemaingTime = 10.00;
-  break;
+    gameType = 1;
+    difficultyLevel = 0;
+    defaultRemaingTime = 10.00;
+    break;
 
   case "survival":
-  difficultyLevel = 0;
-  defaultRemaingTime = 30.00;
+    gameType = 2;
+    difficultyLevel = 0;
+    defaultRemaingTime = 30.00;
 }
 
 
@@ -182,12 +189,10 @@ function textboxCheck(){
     updateTypedCountPara();
     scaleup(typedCountPara, 1.05);
 
-    if(stageName == "survival"){
+    if(gameType == 2){
       remaingTime += 2;
       scaleup(timerPara, 1.1);
-    }else if(stageName == "scoreAttack"){
-
-    }else{
+    }else if(gameType == 0){
       if(typedCount >= goalCount){
         gameCleared();
       }
@@ -201,7 +206,7 @@ function textboxCheck(){
 
 
 function updateInstructionPara(){
-  if(stageName == "survival"){
+  if(gameType == 2){
     if(typedCount < 10){
       difficultyLevel = 0;
     }else if(typedCount < 20){
@@ -212,7 +217,7 @@ function updateInstructionPara(){
       difficultyLevel = 3;
     }
   }
-  if(stageName == "scoreAttack"){
+  if(gameType == 1){
     difficultyLevel = Math.floor(Math.random() * words.length);
   }
   
@@ -237,9 +242,9 @@ function updateResultReport(gameResult){
   //リタイア
   if(gameResult == "retired"){
     reportTitlePara.innerHTML = "リタイア";
-    if(stageName == "survival"){
+    if(gameType == 2){
       reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
-    }else if(stageName == "scoreAttack"){
+    }else if(gameType == 1){
       reportMessagePara.innerHTML = "スコア：" + typedCount;
     }else{
       reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
@@ -248,9 +253,9 @@ function updateResultReport(gameResult){
   //時間切れ
   if(gameResult == "timeUped"){
     reportTitlePara.innerHTML = "時間切れ";
-    if(stageName == "survival"){
+    if(gameType == 0){
       reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
-    }else if(stageName == "scoreAttack"){
+    }else if(gameType == 1){
       reportMessagePara.innerHTML = "スコア：" + typedCount;
     }else{
       reportMessagePara.innerHTML = "プレイ時間：" + defaultRemaingTime.toFixed(2) + "秒";
