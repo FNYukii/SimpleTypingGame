@@ -1,6 +1,3 @@
-//timeAttack.jsとscoreAttack.jsとsurvival.jsはコードの9割以上が同じなので、
-//保守性を高めるために共通化したい!
-
 const words = [
   [
     "愛","網","鮎","案","イカ","石","犬","居間",
@@ -47,36 +44,10 @@ const playedTimePara = document.getElementById("playedTimePara");
 const reportMessagePara = document.getElementById("reportMessagePara");
 
 
-//ゲーム関連の変数
-// let difficultyLevel = 0;
-// let targetText; //目標の単語
-// let typedCount = 0; //入力に成功した単語数
-// //タイマー関連の変数
-// let remaingTime = defaultRemaingTime; //残り時間
-// //状態管理用のboolean型変数
-// let isGamePlaying = false; //true = ゲームプレイ中
-
-//出題される単語の難易度
-// let difficultyLevel = 0;
-// if(gameType == "timeAttack"){
-//   difficultyLevel = levelNumber;
-// }
-// if(stageName == "level1"){
-//   const difficultyLevel = 0;
-//   const defaultRemaingTime = 30.00;
-//   const goalCount = 10;
-// }(stageName == "level2"){
-//   const difficultyLevel = 0;
-//   const defaultRemaingTime = 30.00;
-//   const goalCount = 10;
-// }
-
-// alert("stageName = " + stageName);
+//どのステージなのか取得して難易度や制限時間を決定
 let difficultyLevel;
 let defaultRemaingTime;
 let goalCount;
-
-//どのステージなのか取得して難易度や制限時間を決定
 switch(stageName){
   case "level1":
   difficultyLevel = 0;
@@ -113,7 +84,7 @@ switch(stageName){
 }
 
 
-//変数宣言
+//その他の変数宣言
 let targetText;
 let typedCount = 0;
 let remaingTime = defaultRemaingTime;
@@ -121,17 +92,12 @@ let playedTime = 0.00;
 let isGamePlaying = false;
 
 
-
 //ゲーム開始準備
 timerPara.innerHTML = defaultRemaingTime.toFixed(2);
 instructionPara.innerHTML = "startボタンをクリックしてください。";
 textbox.value = "";
 textbox.addEventListener("keypress",enterKeyListener);
-if(stageName == "scoreAttack" || stageName == "survival"){
-  typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
-}else{
-  typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
-}
+updateTypedCountPara();
 startButton.innerHTML = "ゲームスタート";
 
 
@@ -153,14 +119,10 @@ function gameStart(){
   textbox.focus();
 
   timerStart();
-  updateInstruction();
+  updateInstructionPara();
 
   timerPara.innerHTML = defaultRemaingTime;
-  if(stageName == "scoreAttack" || stageName == "survival"){
-    typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
-  }else{
-    typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
-  }
+  updateTypedCountPara();
   scaleup(typedCountPara, 1.05);
   startButton.innerHTML = "リタイアする";
   resultReport.style.transform = "scale(0)";
@@ -235,20 +197,21 @@ function enterKeyListener(event){
 
 function textboxCheck(){
   if(textbox.value == targetText){
+    typedCount++;
     if(stageName == "survival"){
-      updateTypedCount();
-      updateInstruction();
+      updateTypedCountPara();
+      updateInstructionPara();
       remaingTime += 2;
       scaleup(timerPara, 1.1);
     }else if(stageName == "scoreAttack"){
-      updateTypedCount();
-      updateInstruction();
+      updateTypedCountPara();
+      updateInstructionPara();
     }else{
-      updateTypedCount();
+      updateTypedCountPara();
       if(typedCount >= goalCount){
         gameCleared();
       }
-      updateInstruction();
+      updateInstructionPara();
     }
   }else if(textbox.value != targetText){
     instructionPara.innerHTML = "<span style='color: red;'>✕</span>「" + targetText + "」と入力してください。";
@@ -257,7 +220,7 @@ function textboxCheck(){
 }
 
 
-function updateInstruction(){
+function updateInstructionPara(){
   if(stageName == "survival"){
     if(typedCount < 10){
       difficultyLevel = 0;
@@ -280,8 +243,7 @@ function updateInstruction(){
 }
 
 
-function updateTypedCount(){
-  typedCount++;
+function updateTypedCountPara(){
   if(stageName == "scoreAttack" || stageName == "survival"){
     typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
   }else{
