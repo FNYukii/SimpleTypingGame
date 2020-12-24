@@ -46,3 +46,25 @@
   color: #fff;
   background-color: #94c29c;
 }
+
+.score-attack {
+  border: 2px solid #ffa755;
+}
+.score-attack .stageName {
+  color: #ffa755;
+  background-color: #ffe695;
+}
+.score-attack .stageInfo {
+  background-color: #ffa755;
+}
+
+.survival {
+  border: 2px solid #ff7070;
+}
+.survival .stageName {
+  color: #ff7070;
+  background-color: #ffacac;
+}
+.survival .stageInfo {
+  background-color: #ff7070;
+}
