@@ -39,7 +39,7 @@ const instructionPara = document.getElementById("instructionPara");
 const textbox = document.getElementById("textbox");
 const typedCountPara = document.getElementById("typedCountPara");
 const startButton = document.getElementById("startButton");
-const resultReport = document.getElementById("resultReport");
+const popupReport = document.getElementById("popupReport");
 const reportTitlePara = document.getElementById("reportTitlePara");
 const reportMessagePara = document.getElementById("reportMessagePara");
 
@@ -106,7 +106,7 @@ timerPara.innerHTML = defaultRemaingTime.toFixed(2);
 updateTypedCountPara();
 instructionPara.innerHTML = "startボタンをクリックしてください。";
 textbox.addEventListener("keypress",enterKeyListener);
-startButton.innerHTML = "ゲームスタート";
+startButton.innerHTML = "スタート";
 
 
 function startButtonClick(){
@@ -125,8 +125,8 @@ function gameStart(){
   textbox.disabled = false;
   textbox.value = "";
   textbox.focus();
-  startButton.innerHTML = "リタイアする";
-  resultReport.style.transform = "scale(0)";
+  startButton.innerHTML = "リタイア";
+  popupReport.style.display = "none";
   updateInstructionPara();
   updateTypedCountPara();
   scaleup(typedCountPara, 1.05);
@@ -156,26 +156,26 @@ function timerStart(){
 function gameRetired(){
   clearInterval(timer);
   gameStop();
-  updateResultReport(0);
+  updateReport(0);
 }
 //時間切れ
 function gameTimeUp(){
   timerPara.innerHTML = "0.00";
   gameStop();
-  updateResultReport(1);
+  updateReport(1);
 }
 //ゲームクリア
 function gameCleared(){
   clearInterval(timer);
   gameStop();
-  updateResultReport(2);
+  updateReport(2);
 }
 
 
 function gameStop(){
   isGamePlaying = false;
   textbox.disabled = true;
-  startButton.innerHTML = "もう一度プレイ";
+  startButton.innerHTML = "リトライ";
 }
 
 
@@ -246,8 +246,8 @@ function updateTypedCountPara(){
 }
 
 
-function updateResultReport(gameResult){
-  resultReport.style.transform = "scale(1.2)";
+function updateReport(gameResult){
+  popupReport.style.display = "block";
   //リタイア処理
   if(gameResult == 0){
     reportTitlePara.innerHTML = "リタイア";
