@@ -1,0 +1,27 @@
+.gameBoard {
+  border: 2px solid #ffa755;
+}
+
+.display {
+  background-color: #ffe695;
+}
+.stageName {
+  color: #ffa755;
+}
+#timerPara {
+  color: #ffa755;
+}
+#typedCountPara {
+  color: #ffa755;
+}
+#instructionPara {
+  color: #fa7a02;
+}
+
+.controller {
+  background-color: #ffa755;
+}
+#startButton {
+  background-color: #ffa755;
+}
+

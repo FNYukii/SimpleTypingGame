@@ -122,6 +122,7 @@ function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
   playedTime = 0.00;
+  wrongIcon.style.display = "none";
   textbox.disabled = false;
   textbox.value = "";
   textbox.focus();
@@ -243,7 +244,7 @@ function updateTypedCountPara(){
 
     case 1:
     case 2:
-    typedCountPara.innerHTML = "入力できた単語数：" + typedCount;
+    typedCountPara.innerHTML = typedCount;
   }
 }
 
