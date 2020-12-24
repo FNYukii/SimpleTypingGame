@@ -41,11 +41,9 @@ header a {
 }
 .nav-item {
   width: 80px;
-  /* background-color: antiquewhite; */
   height: 100%;
   display: inline-block;
   text-align: center;
-  /* margin: 0 20px; */
   transition: 0.3s;
   cursor: pointer;
 }
