@@ -9,7 +9,7 @@
   width: 400px;
   height: 200px;
   margin: 30px auto;
-  border: 2px solid #94c29c;
+  border: 2px solid #66ca6b;
   position: relative;
   /* transition: 0.3s; */
 }
@@ -35,8 +35,8 @@
   line-height: 140px;
   font-size: 70px;
   font-family: fantasy;
-  color: #94c29c;
-  background-color: #cdecd2;
+  color: #66ca6b;
+  background-color: #ace4a3;
 }
 .stageInfo {
   width: 100%;
@@ -44,27 +44,27 @@
   text-align: center;
   line-height: 60px;
   color: #fff;
-  background-color: #94c29c;
+  background-color: #66ca6b;
 }
 
 .score-attack {
-  border: 2px solid #ffb065;
+  border: 2px solid #ffad5f;
 }
 .score-attack .stageName {
-  color: #ffb065;
-  background-color: #ffe695;
+  color: #ffad5f;
+  background-color: #ffe0b3;
 }
 .score-attack .stageInfo {
-  background-color: #ffb065;
+  background-color: #ffad5f;
 }
 
 .survival {
-  border: 2px solid #ff7c7c;
+  border: 2px solid #ff9b9b;
 }
 .survival .stageName {
-  color: #ff7c7c;
-  background-color: #ffacac;
+  color: #ff9b9b;
+  background-color: #ffd0d0;
 }
 .survival .stageInfo {
-  background-color: #ff7c7c;
+  background-color: #ff9b9b;
 }

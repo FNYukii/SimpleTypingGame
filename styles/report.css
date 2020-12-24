@@ -3,7 +3,7 @@
   height: 220px;
   margin: 50px auto 0;
   background-color: #fff;
-  border: 2px solid #9dcbff;
+  border: 2px solid #7bcaff;
   transition: 0.5s;
   transform: scale(0);
 }
@@ -11,7 +11,7 @@
 .reportHeader {
   width: 100%;
   height: 40px;
-  background-color: #9dcbff;
+  background-color: #7bcaff;
   font-size: 30px;
   color: #fff;
   text-align: center;
@@ -28,7 +28,7 @@
   line-height: 40px;
   font-size: 20px;
   font-weight: bold;
-  color: #9dcbff;
+  color: #7bcaff;
 }
 .dataKey {
   float: left;

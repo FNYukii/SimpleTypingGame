@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>LEVEL2</title>
+    <title>LEVEL 2</title>
     <meta name="author" content="YuSan357">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/gameBoard.css">
     <link rel="stylesheet" href="styles/report.css">
   </head>
   <body>
+    
     <header>
       <div class="logoAndNav">
         <h1 class="logo">
@@ -21,12 +22,12 @@
         </ul>
       </div>
     </header>
-    
+
     <main>
 
       <div class="gameBoard">
-        <div class="display">
-          <p class="stageName">LEVEL 2</p>
+        <div class="gameBoardHeader">LEVEL 2</div>
+        <div class="gameBoardContent">
           <p id="timerPara">xx.xx</p>
           <p id="typedCountPara">xx</p>
           <p id="instructionPara">スタートボタンをクリックしてください</p>
@@ -34,8 +35,6 @@
             <p id="wrongIcon">×</p>
             <input id="textbox" type="text" autocomplete="off" disabled/>
           </div>
-        </div>
-        <div class="controller">
           <div class="button-container">
             <button id="startButton" onclick="startButtonClick()">スタート</button>
           </div>
@@ -54,9 +53,6 @@
 
     </main>
 
-    <footer>
-      <p>©YuSan357</p>
-    </footer>
   </body>
 </html>
 

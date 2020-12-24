@@ -8,14 +8,15 @@ html {
 }
 body {
   height: 100%;
-  background-color: #d7e9fd;
+  background-color: #eee;
 }
 
 /* header関連 */
 header {
-  height: 50px;
   width: 100%;
-  background-color: #9dcbff;
+  height: 50px;
+  /* background-color: #9dcbff; */
+  background-color: #7bcaff;
 }
 header a {
   color: #fff;
@@ -48,15 +49,6 @@ header a {
   cursor: pointer;
 }
 .nav-item:hover {
-  background-color: #b4d7ff;
-}
-
-/* footer関連 */
-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  color: #fff;
-  background-color: #9dcbff;
+  /* background-color: #b4d7ff; */
+  background-color: #a1d8fd;
 }
