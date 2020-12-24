@@ -2,35 +2,45 @@
   margin: 30px auto;
   width: 700px;
   height: 400px;
-  border: 2px solid #94c29c;
-}
-
-
-.display {
-  width: 100;
-  height: 300px;
-  background-color: #cdecd2;
+  border: 3px solid #52a556;
   text-align: center;
 }
 
-.stageName {
+
+/* .display {
+  width: 100%;
+  height: 300px;
+  background-color: #cdecd2;
+  text-align: center;
+} */
+
+.gameBoardHeader {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
   font-size:50px;
   font-family: fantasy;
-  color: #94c29c;
-  margin-bottom: 20px;
+  color: #ffffff;
+  background-color: #52a556;
 }
+.gameBoardContent {
+  width: 100%;
+  height: 330px;
+  background-color: #fff;
+}
+
 #timerPara {
-  margin: 5px auto;
-  color: #94c29c;
+  margin: 0 auto;
+  color: #52a556;
   font-size: 40px;
 }
 #typedCountPara {
-  margin: 5px auto;
-  color: #94c29c;
+  margin: 0 auto;
+  color: #52a556;
   font-size:25px;
 }
 #instructionPara {
-  margin: 5px auto;
+  margin: 20px auto;
   font-weight: bold;
   color: #5a805f;
 }
@@ -38,7 +48,7 @@
 
 .textbox-container {
   width: 450px;
-  margin: 20px auto;
+  margin: 30px auto;
   position: relative;
 }
 #textbox {
@@ -49,6 +59,7 @@
   border-radius: 5px;
   padding: 10px;
   color: #888;
+  background-color: #eee;
 }
 #textbox:disabled {
   background-color: #f3f3f3;
@@ -64,27 +75,22 @@
 
 
 
-.controller {
+/* .controller {
   width: 100%;
   height: 100px;
-  background-color: #94c29c;
+  background-color: #52a556;
   position: relative;
-}
+} */
 
 .button-container {
   width: 170px;
   height: 50px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
+  margin: 30px auto;
 }
 #startButton {
   width: 100%;
   height: 100%;
-  background-color: #94c29c;
+  background-color: #81c585;
   border: 2px solid #fff;
   border-radius: 10px;
   color: #fff;

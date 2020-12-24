@@ -26,6 +26,22 @@
     <main>
 
       <div class="gameBoard">
+        <div class="gameBoardHeader">LEVEL 1</div>
+        <div class="gameBoardContent">
+          <p id="timerPara">xx.xx</p>
+          <p id="typedCountPara">xx</p>
+          <p id="instructionPara">スタートボタンをクリックしてください</p>
+          <div class="textbox-container">
+            <p id="wrongIcon">×</p>
+            <input id="textbox" type="text" autocomplete="off" disabled/>
+          </div>
+          <div class="button-container">
+            <button id="startButton" onclick="startButtonClick()">スタート</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="gameBoard">
         <div class="display">
           <p class="stageName">LEVEL 1</p>
           <p id="timerPara">xx.xx</p>
@@ -41,7 +57,7 @@
             <button id="startButton" onclick="startButtonClick()">スタート</button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div id="report">
         <div class="reportHeader">結果レポート</div>
