@@ -9,10 +9,9 @@
   width: 400px;
   height: 200px;
   margin: 30px auto;
-  background-color: #94c29c;
   border: 2px solid #94c29c;
-  transition: 0.3s;
   position: relative;
+  /* transition: 0.3s; */
 }
 .panel a {
   position: absolute;
@@ -25,9 +24,11 @@
   opacity: 0.8;
   /* transform: scale(1.05); */
 }
+.panel:active {
+  opacity: 0.5;
+}
 
 .stageName {
-  background-color: #cdecd2;
   width: 100%;
   height: 140px;
   text-align: center;
@@ -35,6 +36,7 @@
   font-size: 70px;
   font-family: fantasy;
   color: #94c29c;
+  background-color: #cdecd2;
 }
 .stageInfo {
   width: 100%;
@@ -42,4 +44,5 @@
   text-align: center;
   line-height: 60px;
   color: #fff;
+  background-color: #94c29c;
 }
