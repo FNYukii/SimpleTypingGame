@@ -5,7 +5,7 @@
   background-color: #fff;
   border: 2px solid #9dcbff;
   transition: 0.5s;
-  /* transform: scale(0); */
+  transform: scale(0);
 }
 
 .reportHeader {
@@ -21,7 +21,6 @@
   height: 40px;
   margin: 0 auto;
   line-height: 40px;
-  /* background-color: aliceblue; */
   border-bottom: 1px solid #eee;
 }
 .result {
@@ -30,7 +29,6 @@
   font-size: 20px;
   font-weight: bold;
   color: #9dcbff;
-  /* background-color: aliceblue; */
 }
 .dataKey {
   float: left;

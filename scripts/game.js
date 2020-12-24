@@ -32,17 +32,19 @@ const words = [
 ];
 
 
-//各要素のid取得
-const body = document.body;
+//gameBoardの要素のid取得
 const timerPara = document.getElementById("timerPara");
 const typedCountPara = document.getElementById("typedCountPara");
 const instructionPara = document.getElementById("instructionPara");
 const wrongIcon = document.getElementById("wrongIcon");
 const textbox = document.getElementById("textbox");
 const startButton = document.getElementById("startButton");
+//reportの要素のid取得
 const report = document.getElementById("report");
-const reportTitlePara = document.getElementById("reportTitlePara");
-const reportMessagePara = document.getElementById("reportMessagePara");
+const resultSpan = document.getElementById("resultSpan");
+const playedTimeSpan = document.getElementById("playedTimeSpan");
+const typedCountSpan = document.getElementById("typedCountSpan");
+const averageTypingTimeSpan = document.getElementById("averageTypingTimeSpan");
 
 
 //どのステージなのか取得して難易度や制限時間を決定
@@ -99,15 +101,12 @@ let typedCount = 0;
 let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
 let isGamePlaying = false;
-let gameResult; //0 = retired, 1 = timeUp, 2 = clear 
-
+// let result;
 
 //ゲーム開始準備
 timerPara.innerHTML = defaultRemaingTime.toFixed(2);
 updateTypedCountPara();
-instructionPara.innerHTML = "startボタンをクリックしてください。";
 textbox.addEventListener("keypress",enterKeyListener);
-startButton.innerHTML = "スタート";
 
 
 function startButtonClick(){
@@ -157,19 +156,19 @@ function timerStart(){
 function gameRetired(){
   clearInterval(timer);
   gameStop();
-  updateReport(0);
+  openReport("リタイア");
 }
 //時間切れ
 function gameTimeUp(){
   timerPara.innerHTML = "0.00";
   gameStop();
-  updateReport(1);
+  openReport("タイムアップ!");
 }
 //ゲームクリア
 function gameCleared(){
   clearInterval(timer);
   gameStop();
-  updateReport(2);
+  openReport("ステージクリア!");
 }
 
 
@@ -249,44 +248,15 @@ function updateTypedCountPara(){
 }
 
 
-function updateReport(gameResult){
+function openReport(result){
   report.style.transform = "scale(1)";
-  //リタイア処理
-  if(gameResult == 0){
-    reportTitlePara.innerHTML = "リタイア";
-    switch(gameType){
-      case 0:
-      reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
-      break;
-      
-      case 1:
-      reportMessagePara.innerHTML = "スコア：" + typedCount;
-      break;
-      
-      case 2:
-      reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
-    }
-  }
-  //時間切れ処理
-  if(gameResult == 1){
-    reportTitlePara.innerHTML = "時間切れ";
-    switch(gameType){
-      case 0:
-      reportMessagePara.innerHTML = "プレイ時間：" + defaultRemaingTime.toFixed(2) + "秒";
-      break;
-
-      case 1:
-      reportMessagePara.innerHTML = "スコア：" + typedCount;
-      break;
-
-      case 2:
-      reportMessagePara.innerHTML = "生き残った時間：" + playedTime.toFixed(2) + "秒";
-    }
-  }
-  //クリア処理
-  if(gameResult == 2){
-    reportTitlePara.innerHTML = "クリア";
-    reportMessagePara.innerHTML = "プレイ時間：" + playedTime.toFixed(2) + "秒";
+  resultSpan.innerHTML = result;
+  playedTimeSpan.innerHTML = playedTime.toFixed(2) + "秒";
+  typedCountSpan.innerHTML = typedCount;
+  if(typedCount == 0){
+    averageTypingTimeSpan.innerHTML = "0.00秒";
+  }else{
+    averageTypingTimeSpan.innerHTML = (playedTime.toFixed(2) / typedCount).toFixed(2) + "秒";
   }
 }
 

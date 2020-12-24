@@ -29,9 +29,9 @@
 
         <div class="display">
           <p class="stageName">LEVEL 1</p>
-          <p id="timerPara">default-string</p>
-          <p id="typedCountPara">default-string</p>
-          <p id="instructionPara">default-string</p>
+          <p id="timerPara">xx.xx</p>
+          <p id="typedCountPara">xx</p>
+          <p id="instructionPara">スタートボタンをクリックしてください</p>
           <div class="textbox-container">
             <p id="wrongIcon">×</p>
             <input id="textbox" type="text" autocomplete="off" disabled/>
@@ -41,7 +41,7 @@
         <div class="controller">
           
           <div class="button-container">
-            <button id="startButton" onclick="startButtonClick()">default-string</button>
+            <button id="startButton" onclick="startButtonClick()">スタート</button>
           </div>
         </div>
 
@@ -50,10 +50,10 @@
       <div id="report">
         <div class="reportHeader">結果レポート</div>
         <div class="reportContent">
-          <div class="result">リタイア</div>
-          <div><span class="dataKey">プレイ時間</span><span class="dataValue">30秒</span></div>
-          <div><span class="dataKey">入力できた単語数</span><span class="dataValue">20</span></div>
-          <div><span class="dataKey">平均タイピング時間</span><span class="dataValue">1.5秒</span></div>
+          <div class="result"><span id="resultSpan">xxxx</span></div>
+          <div><span class="dataKey">プレイ時間</span><span id="playedTimeSpan" class="dataValue">xx.xx秒</span></div>
+          <div><span class="dataKey">入力できた単語数</span><span id="typedCountSpan" class="dataValue">xx</span></div>
+          <div><span class="dataKey">平均タイピング時間</span><span id="averageTypingTimeSpan" class="dataValue">xx.xx秒</span></div>
         </div>
       </div>
 
