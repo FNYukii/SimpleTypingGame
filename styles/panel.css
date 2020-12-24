@@ -25,7 +25,7 @@
   /* transform: scale(1.05); */
 }
 .panel:active {
-  opacity: 0.5;
+  transform: scale(0.98);
 }
 
 .stageName {
