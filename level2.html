@@ -5,7 +5,8 @@
     <title>LEVEL2</title>
     <meta name="author" content="YuSan357">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/game.css">
+    <link rel="stylesheet" href="styles/gameBoard.css">
+    <link rel="stylesheet" href="styles/report.css">
   </head>
   <body>
     <header>
@@ -22,21 +23,35 @@
     </header>
     
     <main>
-      <p id="stageName">Level 2</p>
-      <div id="gameController">
-        <p id="timerPara">default-string</p>
-        <p id="typedCountPara">default-string</p>
-        <p id="instructionPara">default-string</p>
-        <input id="textbox" type="text" size=30 autocomplete="off" disabled><br>
-        <div id="buttonDiv">
-          <button id="startButton" onclick="startButtonClick()">default-string</button>
+
+      <div class="gameBoard">
+        <div class="display">
+          <p class="stageName">LEVEL 2</p>
+          <p id="timerPara">xx.xx</p>
+          <p id="typedCountPara">xx</p>
+          <p id="instructionPara">スタートボタンをクリックしてください</p>
+          <div class="textbox-container">
+            <p id="wrongIcon">×</p>
+            <input id="textbox" type="text" autocomplete="off" disabled/>
+          </div>
+        </div>
+        <div class="controller">
+          <div class="button-container">
+            <button id="startButton" onclick="startButtonClick()">スタート</button>
+          </div>
         </div>
       </div>
-      <div id="resultReport">
-        <p id="reportTitlePara">default-string</p>
-        <p id="reportMessagePara">default-string</p>
-        <a href="index.html">トップページへ戻る</a>
+
+      <div id="report">
+        <div class="reportHeader">結果レポート</div>
+        <div class="reportContent">
+          <div class="result"><span id="resultSpan">xxxx</span></div>
+          <div><span class="dataKey">プレイ時間</span><span id="playedTimeSpan" class="dataValue">xx.xx秒</span></div>
+          <div><span class="dataKey">入力できた単語数</span><span id="typedCountSpan" class="dataValue">xx</span></div>
+          <div><span class="dataKey">平均タイピング時間</span><span id="averageTypingTimeSpan" class="dataValue">xx.xx秒</span></div>
+        </div>
       </div>
+
     </main>
 
     <footer>
