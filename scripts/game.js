@@ -1,12 +1,12 @@
 const words = [
   [
     "愛","網","鮎","案","イカ","石","犬","居間",
-    "海老","貝","亀","ゴミ","鹿","島","舌","鯛",
+    "海老","貝","亀","象","鹿","島","舌","鯛",
     "鷹","なす","猫","灰","鳩","花","浜","富士",
     "赤","青","白","黒","桃","肌","虹","色",
     "ねぎ","塩","空","陸","海","雲","雪","雨",
     "棒","板","弓","矢","家","塀","部屋","蓋",
-    "牛","馬","鳥","豚","鷹","鳩","犬","猫","熊"
+    "牛","馬","鳥","人","鷹","鳩","犬","猫","熊"
   ],
   [
     "あさり","ごはん","きのこ","昆布","たけのこ","おかゆ","野菜","キャベツ",
@@ -35,11 +35,12 @@ const words = [
 //各要素のid取得
 const body = document.body;
 const timerPara = document.getElementById("timerPara");
-const instructionPara = document.getElementById("instructionPara");
-const textbox = document.getElementById("textbox");
 const typedCountPara = document.getElementById("typedCountPara");
+const instructionPara = document.getElementById("instructionPara");
+const wrongIcon = document.getElementById("wrongIcon");
+const textbox = document.getElementById("textbox");
 const startButton = document.getElementById("startButton");
-const popupReport = document.getElementById("popupReport");
+const report = document.getElementById("report");
 const reportTitlePara = document.getElementById("reportTitlePara");
 const reportMessagePara = document.getElementById("reportMessagePara");
 
@@ -126,7 +127,7 @@ function gameStart(){
   textbox.value = "";
   textbox.focus();
   startButton.innerHTML = "リタイア";
-  popupReport.style.display = "none";
+  report.style.transform = "scale(0)";
   updateInstructionPara();
   updateTypedCountPara();
   scaleup(typedCountPara, 1.05);
@@ -175,7 +176,7 @@ function gameCleared(){
 function gameStop(){
   isGamePlaying = false;
   textbox.disabled = true;
-  startButton.innerHTML = "リトライ";
+  startButton.innerHTML = "もう一度プレイ";
 }
 
 
@@ -201,10 +202,12 @@ function textboxCheck(){
       }
     }
     updateInstructionPara();
+    wrongIcon.style.display = "none";
 
   }else if(textbox.value != targetText){
-    instructionPara.innerHTML = "<span style='color: red;'>✕</span>「" + targetText + "」と入力してください。";
-    scaleup(instructionPara, 1.2);
+    wrongIcon.style.display = "block";
+    scaleup(wrongIcon, 1.2);
+    scaleup(instructionPara, 1.1);
   }
 }
 
@@ -236,7 +239,7 @@ function updateInstructionPara(){
 function updateTypedCountPara(){
   switch(gameType){
     case 0:
-    typedCountPara.innerHTML = "入力できた単語数：" + typedCount + " / " + goalCount;
+    typedCountPara.innerHTML = typedCount + " / " + goalCount;
     break;
 
     case 1:
@@ -247,7 +250,7 @@ function updateTypedCountPara(){
 
 
 function updateReport(gameResult){
-  popupReport.style.display = "block";
+  report.style.transform = "scale(1)";
   //リタイア処理
   if(gameResult == 0){
     reportTitlePara.innerHTML = "リタイア";

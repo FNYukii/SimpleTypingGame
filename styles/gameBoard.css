@@ -14,30 +14,57 @@
 
 .stageName {
   text-align: center;
-  font-size: 60px;
+  font-size:50px;
   font-family: fantasy;
   color: #94c29c;
+  margin-bottom: 20px;
 }
 #timerPara {
+  margin: 5px auto;
   text-align: center;
   color: #94c29c;
-  font-size: 30px;
+  font-size: 40px;
 }
 #typedCountPara {
+  margin: 5px auto;
   text-align: center;
+  color: #94c29c;
+  font-size:25px;
 }
 #instructionPara {
+  margin: 5px auto;
   text-align: center;
   font-weight: bold;
+  color: #5a805f;
 }
+
+
 .textbox-container {
-  width: 300px;
+  width: 450px;
   margin: 20px auto;
+  position: relative;
 }
 #textbox {
   width: 100%;
   font-size: 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: #888;
 }
+#textbox:disabled {
+  background-color: #ffffff;
+}
+#wrongIcon {
+  font-size: 40px;
+  position: absolute;
+  top: -8px;
+  left: -33px;
+  color: #ff6b6b;
+  display: none;
+}
+
 
 
 .controller {
@@ -48,7 +75,7 @@
 }
 
 .button-container {
-  width: 150px;
+  width: 170px;
   height: 50px;
   position: absolute;
   top: 0;
