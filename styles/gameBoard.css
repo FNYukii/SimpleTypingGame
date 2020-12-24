@@ -54,7 +54,7 @@
   color: #888;
 }
 #textbox:disabled {
-  background-color: #ffffff;
+  background-color: #f3f3f3;
 }
 #wrongIcon {
   font-size: 40px;
