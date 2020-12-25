@@ -39,16 +39,17 @@ header a {
   float: right;
   margin-right: 30px;
   line-height: 50px;
+  font-size: 0;
 }
 .nav-item {
   width: 80px;
   height: 100%;
   display: inline-block;
+  font-size: 16px;
   text-align: center;
   transition: 0.3s;
   cursor: pointer;
 }
 .nav-item:hover {
-  /* background-color: #b4d7ff; */
   background-color: #a1d8fd;
 }
