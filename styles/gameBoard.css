@@ -35,8 +35,9 @@
 }
 #instructionPara {
   margin: 20px auto;
+  font-size: 25px;
   font-weight: bold;
-  color: #888;
+  color: #555;
 }
 
 
@@ -90,5 +91,3 @@
 #startButton:active {
   transform: scale(0.98);
 }
-
-
