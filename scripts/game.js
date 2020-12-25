@@ -183,12 +183,13 @@ function gameStop(){
 function enterKeyListener(event){
   if(event.key == "Enter"){
     textboxCheck();
-    textbox.value = "";
+    // textbox.value = "";
   }
 }
 
 function textboxCheck(){
   if(textbox.value == targetText){
+    textbox.value = "";
     typedCount++;
     updateTypedCountPara();
     scaleup(typedCountPara, 1.05);
