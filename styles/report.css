@@ -58,40 +58,58 @@ input:checked ~ .overlay #report{
   background-color: #7bcaff;
   color: #fff;
 }
-
 .reportContent {
-  margin: 50px auto;
+  margin: 30px auto;
   width: 400px;
-  /* height: 300px; */
-  /* background-color: aquamarine; */
 
 }
 
-.result {
-  /* margin-top: 30px; */
+#resultPara {
   text-align: center;
-  /* line-height: 40px; */
   font-size: 50px;
   font-weight: bold;
   color: #7bcaff;
-  /* background-color: greenyellow; */
 }
-
-.reportContent div {
+.statistics {
   width: 100%;
   height: 40px;
-  /* line-height: 60px; */
-  font-size: 25px;
+  line-height: 40px;
+  font-size: 20px;
   border-bottom: 1px solid #ccc;
 }
 
 .dataKey {
-  /* background-color: tomato; */
   float: left;
   color: #555;
 }
 .dataValue {
-  /* background-color: greenyellow; */
   float: right;
   color: #555;
+}
+
+.closeButton {
+  width: 200px;
+  height: 50px;
+  margin: 30px auto;
+  background-color: #7bcaff;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  position: relative;
+}
+.closeButton label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.closeButton:hover {
+  opacity: 0.8;
+}
+.closeButton:active {
+  transform: scale(0.98);
 }
