@@ -1,11 +1,34 @@
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0009;
+
+
+  transition: opacity 0.5s, transform 0s 0.5s;
+  /* opacity: 0; */
+  /* transform: scale(0); */
+  cursor: pointer;
+}
+
+
 #report {
   width: 500px;
   height: 220px;
-  margin: 50px auto;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+
   background-color: #fff;
   border: 2px solid #7bcaff;
   transition: 0.5s;
-  transform: scale(0);
+  /* transform: scale(0); */
 }
 
 .reportHeader {
