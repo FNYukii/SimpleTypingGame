@@ -38,43 +38,60 @@ input:checked ~ .overlay #report{
   left: 0;
   margin: auto;
 
-  width: 500px;
-  height: 220px;
+  width: 600px;
+  height: 400px;
   
   background-color: #fff;
   border: 2px solid #7bcaff;
 
   transition: 0.5s;
   transform: scale(0.3);
+
 }
 
 .reportHeader {
   width: 100%;
-  height: 40px;
-  background-color: #7bcaff;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
   font-size: 30px;
+  background-color: #7bcaff;
   color: #fff;
-  text-align: center;
 }
-.reportContent div {
-  width: 300px;
-  height: 40px;
-  margin: 0 auto;
-  line-height: 40px;
-  border-bottom: 1px solid #eee;
+
+.reportContent {
+  margin: 50px auto;
+  width: 400px;
+  /* height: 300px; */
+  /* background-color: aquamarine; */
+
 }
+
 .result {
+  /* margin-top: 30px; */
   text-align: center;
-  line-height: 40px;
-  font-size: 20px;
+  /* line-height: 40px; */
+  font-size: 50px;
   font-weight: bold;
   color: #7bcaff;
+  /* background-color: greenyellow; */
 }
+
+.reportContent div {
+  width: 100%;
+  height: 40px;
+  /* line-height: 60px; */
+  font-size: 25px;
+  border-bottom: 1px solid #ccc;
+}
+
 .dataKey {
+  /* background-color: tomato; */
   float: left;
   color: #555;
 }
 .dataValue {
+  /* background-color: greenyellow; */
   float: right;
   color: #555;
 }

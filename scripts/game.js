@@ -49,7 +49,7 @@ const startButton = document.getElementById("startButton");
 //reportの要素のid取得
 const trigger = document.getElementById("trigger");
 const report = document.getElementById("report");
-const resultSpan = document.getElementById("resultSpan");
+const resultPara = document.getElementById("resultPara");
 const playedTimeSpan = document.getElementById("playedTimeSpan");
 const typedCountSpan = document.getElementById("typedCountSpan");
 const averageTypingTimeSpan = document.getElementById("averageTypingTimeSpan");
@@ -262,7 +262,7 @@ function updateTypedCountPara(){
 function openReport(result){
 
   
-  resultSpan.innerHTML = result;
+  resultPara.innerHTML = result;
   playedTimeSpan.innerHTML = playedTime.toFixed(2) + "秒";
   typedCountSpan.innerHTML = typedCount;
   if(typedCount == 0){
