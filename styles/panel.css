@@ -1,6 +1,6 @@
 .panels-container {
   max-width: 900px;
-  margin: 50px auto 0;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
 }
