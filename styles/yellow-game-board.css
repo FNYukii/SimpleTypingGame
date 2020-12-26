@@ -1,13 +1,12 @@
-.gameBoard {
+.game-board {
   border: 2px solid #ffad5f;
 }
-.gameBoardHeader {
+.game-board-header {
   background-color: #ffad5f;
 }
-.gameBoardContent {
+.game-board-content {
   background-color: #ffe0b3;
 }
-#startButton {
+.start-button {
   background-color: #ffad5f;
 }
-

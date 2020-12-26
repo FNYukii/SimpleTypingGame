@@ -5,49 +5,51 @@
     <title>LEVEL 3</title>
     <meta name="author" content="YuSan357">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/gameBoard.css">
+    <link rel="stylesheet" href="styles/game-board.css">
     <link rel="stylesheet" href="styles/report.css">
   </head>
   <body>
     
     <header>
-      <div class="logoAndNav">
-        <h1 class="logo">
-          <a href="index.html">シンプルタイピング☆</a>
+      <div class="global-nav">
+        <h1 class="global-nav-logo">
+          <a href="index.html">SimpleTyping</a>
         </h1>
-        <ul class="nav">
-          <li class="nav-item"><a href="index.html">Home</a></li>
-          <li class="nav-item"><a href="about.html">About</a></li>
-          <li class="nav-item"><a href="record.html">Record</a></li>
+        <ul class="global-nav-items-container">
+          <li class="global-nav-item"><a href="index.html">Top</a></li>
+          <li class="global-nav-item"><a href="about.html">About</a></li>
+          <li class="global-nav-item"><a href="record.html">Record</a></li>
         </ul>
-      </div>
+      </div>  
     </header>
 
     <main>
 
-      <div class="gameBoard">
-        <div class="gameBoardHeader">LEVEL 3</div>
-        <div class="gameBoardContent">
-          <p id="timerPara">xx.xx</p>
-          <p id="typedCountPara">xx</p>
-          <p id="instructionPara">スタートボタンをクリックしてください</p>
+      <!-- ゲームボード -->
+      <div class="game-board">
+        <div class="game-board-header">LEVEL 3</div>
+        <div class="game-board-content">
+          <p class="timer-para" id="timerPara">xx.xx</p>
+          <p class="typed-count-para" id="typedCountPara">xx</p>
+          <p class="instruction-para" id="instructionPara">スタートボタンをクリックしてください</p>
           <div class="textbox-container">
-            <p id="wrongIcon">×</p>
-            <input id="textbox" type="text" autocomplete="off" disabled/>
+            <p class="cross-mark" id="crossMark">×</p>
+            <input class="textbox" id="textbox" type="text" autocomplete="off" disabled/>
           </div>
-          <div class="button-container">
-            <button id="startButton" onclick="startButtonClick()">スタート</button>
+          <div class="start-button-container">
+            <button class="start-button" id="startButton" onclick="startButtonClick()">スタート</button>
           </div>
         </div>
       </div>
 
+      <!-- レポート -->
       <input type="checkbox" id="trigger">
       <div class="overlay">
         <label for="trigger"></label>
-        <div id="report">
-          <div class="reportHeader">結果レポート</div>
-          <div class="reportContent">
-            <p id="resultPara">xxxx</p>
+        <div class="report" id="report">
+          <div class="report-header">結果レポート</div>
+          <div class="report-content">
+            <p class="result-para" id="resultPara">xxxx</p>
             <div class="statistics">
               <span class="dataKey">プレイ時間</span>
               <span id="playedTimeSpan" class="dataValue">xx.xx秒</span>
@@ -67,6 +69,7 @@
           </div>
         </div>
       </div>
+
 
     </main>
 
