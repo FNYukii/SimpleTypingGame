@@ -1,0 +1,16 @@
+.game-board {
+  border: 2px solid #ff9b9b;
+}
+.game-board-header {
+  background-color: #ff9b9b;
+}
+.game-board-content {
+  background-color: #ffd0d0;
+}
+.start-button {
+  background-color: #ff9b9b;
+}
+
+.nav-button {
+  background-color: #ff9b9b;
+}

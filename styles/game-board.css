@@ -34,7 +34,7 @@
   font-size:25px;
 }
 .instruction-para {
-  margin: 20px auto;
+  margin: 10px auto;
   font-size: 25px;
   font-weight: bold;
   color: #555;
@@ -43,7 +43,7 @@
 
 .textbox-container {
   width: 450px;
-  margin: 30px auto;
+  margin: 20px auto;
   position: relative;
 }
 .textbox {
@@ -70,7 +70,7 @@
 
 
 .start-button-container {
-  width: 170px;
+  width: 200px;
   height: 50px;
   margin: 30px auto;
 }
