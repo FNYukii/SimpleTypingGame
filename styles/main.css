@@ -22,26 +22,27 @@ header a {
   color: #fff;
   text-decoration: none;
 }
-.logoAndNav {
+.global-nav {
   height: 100%;
   width: 700px;
   margin: 0 auto;
 }
-.logo{
+
+.global-nav-logo {
   height: 100%;
   float: left;
-  margin-left: 20px;
   line-height: 50px;
   font-size: 30px;
 }
-.nav {
+
+.global-nav-items-container {
   height: 100%;
   float: right;
   margin-right: 30px;
   line-height: 50px;
   font-size: 0;
 }
-.nav-item {
+.global-nav-item {
   width: 80px;
   height: 100%;
   display: inline-block;
@@ -50,6 +51,6 @@ header a {
   transition: 0.3s;
   cursor: pointer;
 }
-.nav-item:hover {
+.global-nav-item:hover {
   background-color: #a1d8fd;
 }
