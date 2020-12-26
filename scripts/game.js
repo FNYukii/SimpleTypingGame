@@ -131,6 +131,8 @@ function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
   playedTime = 0.00;
+  timerPara.style.color = "#777";
+  timerPara.style.transform = "scale(1)";
   crossMark.style.display = "none";
   textbox.disabled = false;
   textbox.value = "";
@@ -148,14 +150,29 @@ function gameStart(){
 function timerStart(){
   //countupメソッド
   let countup = function(){
-    if(remaingTime > 0.00){
+
+    // if(remaingTime > 0.00){
+    //   remaingTime -= 0.01;
+    //   playedTime += 0.01;
+    //   timerPara.innerHTML = remaingTime.toFixed(2);
+    // }else{
+    //   clearInterval(timerMethod);
+    //   gameTimeUp();
+    // }
+
+    if(remaingTime.toFixed(2) <= 0.00){
+      clearInterval(timerMethod);
+      gameTimeUp();
+    }else{
       remaingTime -= 0.01;
       playedTime += 0.01;
       timerPara.innerHTML = remaingTime.toFixed(2);
-    }else{
-      clearInterval(timerMethod);
-      gameTimeUp();
+      if(remaingTime.toFixed(2) <= 5.00){
+        timerPara.style.color = "red";
+        timerPara.style.transform = "scale(1.3)";
+      }
     }
+
   }
 
   remaingTime = defaultRemaingTime;
@@ -171,7 +188,6 @@ function gameRetired(){
 }
 //時間切れ
 function gameTimeUp(){
-  timerPara.innerHTML = "0.00";
   gameStop();
   openReport("タイムアップ!");
 }
