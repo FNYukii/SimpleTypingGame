@@ -249,12 +249,12 @@ function updateInstructionPara(){
 function updateTypedCountPara(){
   switch(gameType){
     case 0:
-    typedCountPara.innerHTML = typedCount + " / " + goalCount;
+    typedCountPara.innerHTML = "タイピング数：<span style='font-weight: bold;'>" + typedCount + " / " + goalCount + "</span>";
     break;
 
     case 1:
     case 2:
-    typedCountPara.innerHTML = typedCount;
+    typedCountPara.innerHTML = "タイピング数：<span style='font-weight: bold;'>" + typedCount + "</span>";
   }
 }
 
