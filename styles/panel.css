@@ -28,7 +28,7 @@
   transform: scale(0.98);
 }
 
-.stageName {
+.stage-name {
   width: 100%;
   height: 140px;
   text-align: center;
@@ -38,7 +38,7 @@
   color: #66ca6b;
   background-color: #ace4a3;
 }
-.stageInfo {
+.stage-info {
   width: 100%;
   height: 60px;
   text-align: center;
@@ -48,24 +48,25 @@
   background-color: #66ca6b;
 }
 
+
 .score-attack {
   border: 2px solid #ffad5f;
 }
-.score-attack .stageName {
+.score-attack .stage-name {
   color: #ffad5f;
   background-color: #ffe0b3;
 }
-.score-attack .stageInfo {
+.score-attack .stage-info {
   background-color: #ffad5f;
 }
 
 .survival {
   border: 2px solid #ff9b9b;
 }
-.survival .stageName {
+.survival .stage-name {
   color: #ff9b9b;
   background-color: #ffd0d0;
 }
-.survival .stageInfo {
+.survival .stage-info {
   background-color: #ff9b9b;
 }
