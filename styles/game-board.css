@@ -1,4 +1,4 @@
-.gameBoard {
+.game-board {
   margin: 50px auto;
   width: 700px;
   height: 400px;
@@ -7,7 +7,7 @@
 }
 
 
-.gameBoardHeader {
+.game-board-header {
   width: 100%;
   height: 70px;
   line-height: 70px;
@@ -16,24 +16,24 @@
   color: #ffffff;
   background-color: #66ca6b;
 }
-.gameBoardContent {
+.game-board-content {
   width: 100%;
   height: 330px;
   background-color: #c2ecbb;
 }
 
 
-#timerPara {
+.timer-para {
   margin: 0 auto;
   color: #777;
   font-size: 50px;
 }
-#typedCountPara {
+.typed-count-para {
   margin: 0 auto;
   color: #888;
   font-size:25px;
 }
-#instructionPara {
+.instruction-para {
   margin: 20px auto;
   font-size: 25px;
   font-weight: bold;
@@ -46,7 +46,7 @@
   margin: 30px auto;
   position: relative;
 }
-#textbox {
+.textbox {
   width: 100%;
   font-size: 20px;
   border: none;
@@ -56,10 +56,10 @@
   color: #888;
   background-color: #fff;
 }
-#textbox:disabled {
+.textbox:disabled {
   background-color: #f7f7f7;
 }
-#wrongIcon {
+.cross-mark {
   font-size: 40px;
   position: absolute;
   top: -8px;
@@ -69,12 +69,12 @@
 }
 
 
-.startButton-container {
+.start-button-container {
   width: 170px;
   height: 50px;
   margin: 30px auto;
 }
-#startButton {
+.start-button {
   width: 100%;
   height: 100%;
   background-color: #66ca6b;
@@ -85,9 +85,9 @@
   outline: none;
   cursor: pointer;
 }
-#startButton:hover {
+.start-button:hover {
   opacity: 0.6;
 }
-#startButton:active {
+.start-button:active {
   transform: scale(0.98);
 }

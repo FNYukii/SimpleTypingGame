@@ -30,7 +30,7 @@ input:checked ~ .overlay #report{
 }
 
 
-#report {
+.report {
   position: fixed;
   top: 0;
   right: 0;
@@ -49,7 +49,7 @@ input:checked ~ .overlay #report{
 
 }
 
-.reportHeader {
+.report-header {
   width: 100%;
   height: 50px;
   line-height: 50px;
@@ -58,13 +58,13 @@ input:checked ~ .overlay #report{
   background-color: #7bcaff;
   color: #fff;
 }
-.reportContent {
+.report-content {
   margin: 30px auto;
   width: 400px;
 
 }
 
-#resultPara {
+.result-para {
   text-align: center;
   font-size: 50px;
   font-weight: bold;

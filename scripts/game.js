@@ -40,10 +40,11 @@ const words = [
 
 
 //gameBoardの要素のid取得
+
 const timerPara = document.getElementById("timerPara");
 const typedCountPara = document.getElementById("typedCountPara");
 const instructionPara = document.getElementById("instructionPara");
-const wrongIcon = document.getElementById("wrongIcon");
+const crossMark = document.getElementById("crossMark");
 const textbox = document.getElementById("textbox");
 const startButton = document.getElementById("startButton");
 //reportの要素のid取得
@@ -130,7 +131,7 @@ function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
   playedTime = 0.00;
-  wrongIcon.style.display = "none";
+  crossMark.style.display = "none";
   textbox.disabled = false;
   textbox.value = "";
   textbox.focus();
@@ -152,19 +153,19 @@ function timerStart(){
       playedTime += 0.01;
       timerPara.innerHTML = remaingTime.toFixed(2);
     }else{
-      clearInterval(timer);
+      clearInterval(timerMethod);
       gameTimeUp();
     }
   }
 
   remaingTime = defaultRemaingTime;
-  timer = setInterval(countup,10);
+  timerMethod = setInterval(countup,10);
 }
 
 
 //リタイア
 function gameRetired(){
-  clearInterval(timer);
+  clearInterval(timerMethod);
   gameStop();
   openReport("リタイア");
 }
@@ -176,7 +177,7 @@ function gameTimeUp(){
 }
 //ゲームクリア
 function gameCleared(){
-  clearInterval(timer);
+  clearInterval(timerMethod);
   gameStop();
   openReport("ステージクリア!");
 }
@@ -212,11 +213,11 @@ function textboxCheck(){
       }
     }
     updateInstructionPara();
-    wrongIcon.style.display = "none";
+    crossMark.style.display = "none";
 
   }else if(textbox.value != targetText){
-    wrongIcon.style.display = "block";
-    scaleup(wrongIcon, 1.2);
+    crossMark.style.display = "block";
+    scaleup(crossMark, 1.2);
     scaleup(instructionPara, 1.1);
   }
 }
