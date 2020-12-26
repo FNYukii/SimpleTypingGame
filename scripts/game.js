@@ -38,9 +38,11 @@ const words = [
   ]
 ];
 
+//mp3
+var correctAnswerSound = new Audio("./material/correct-answer.mp3");
+var wrongBuzzerSound = new Audio("./material/wrong-buzzer.mp3");
 
 //gameBoardの要素のid取得
-
 const timerPara = document.getElementById("timerPara");
 const typedCountPara = document.getElementById("typedCountPara");
 const instructionPara = document.getElementById("instructionPara");
@@ -215,6 +217,7 @@ function enterKeyListener(event){
 
 function textboxCheck(){
   if(textbox.value == targetText){
+    playSound(0);
     textbox.value = "";
     typedCount++;
     updateTypedCountPara();
@@ -232,6 +235,7 @@ function textboxCheck(){
     crossMark.style.display = "none";
 
   }else if(textbox.value != targetText){
+    playSound(1);
     crossMark.style.display = "block";
     scaleup(crossMark, 1.2);
     scaleup(instructionPara, 1.1);
@@ -308,4 +312,14 @@ function getRandomNum(){
   }
   lastRandomNum = newRandomNum;
   return newRandomNum;
+}
+
+
+function playSound(soundNumber){
+  if(soundNumber == 0){
+    correctAnswerSound.play();
+  }
+  if(soundNumber == 1){
+    wrongBuzzerSound.play();
+  }
 }
