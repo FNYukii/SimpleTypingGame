@@ -114,3 +114,8 @@
 .start-button-container:active {
   transform: scale(0.95);
 }
+
+
+.tomato-style {
+  background-color: tomato;
+}

@@ -42,8 +42,11 @@ const words = [
 //mp3
 var correctAnswerSound = new Audio("./material/correct-answer.mp3");
 var wrongBuzzerSound = new Audio("./material/wrong-buzzer.mp3");
+var countdownSound = new Audio("./material/countdown.mp3");
+var piSound = new Audio("./material/pi.mp3");
 
 
+const body = document.body;
 //gameBoardの要素のid取得
 const soundToggleButton = document.getElementById("soundToggleButton");
 const timerPara = document.getElementById("timerPara");
@@ -70,7 +73,7 @@ switch(stageName){
   case "level1":
   gameType = 0;
   difficultyLevel = 0;
-  defaultRemaingTime = 30.00;
+  defaultRemaingTime = 7.00;
   goalCount = 5;
   break;
 
@@ -162,6 +165,7 @@ function gameRetired(){
 }
 //時間切れ
 function gameTimeUp(){
+  piSound.play();
   gameStop();
   timerPara.innerHTML = "0.00";
   openReport("タイムアップ!");
@@ -177,6 +181,7 @@ function gameCleared(){
 function gameStop(){
   isGamePlaying = false;
   isAutoFill = false;
+  body.style.backgroundColor = "#eee";
   textbox.disabled = true;
   startButton.innerHTML = "もう一度プレイ";
 }
@@ -192,10 +197,18 @@ function timerStart(){
     }else{
       remaingTime -= 0.01;
       playedTime += 0.01;
+
+      console.log("0: " + playedTime);
+      console.log("2: " + playedTime.toFixed(2));
+      console.log(" ");
+
       timerPara.innerHTML = remaingTime.toFixed(2);
       if(remaingTime.toFixed(2) <= 5.00){
         timerPara.style.color = "red";
         timerPara.style.transform = "scale(1.3)";
+        if(remaingTime.toFixed(2) % 1 == 0 && remaingTime > 0.5){
+          countdownSound.play();
+        }
       }
     }
 
@@ -220,11 +233,11 @@ function textboxCheck(){
     textbox.value = targetText;
     setTimeout(() => {
       textboxCheck();
-      // correctAnswer();
     }, 100);
   }else if(textbox.value == "auto fill"){
     isAutoFill = true;
     textbox.value = "OK.";
+    body.style.backgroundColor = "#bbb";
   }else if(textbox.value != targetText && !isAutoFill){
     wrongAnswer();
   }
@@ -352,15 +365,9 @@ function soundToggle(){
     isPlaySound = true;
     soundToggleButton.style.border = "3px solid #fff";
     soundToggleButton.style.fontSize = "25px";
-    // soundToggleButton.innerHTML = "♪";
-    // soundToggleButton.style.color = "tomato";
-    // soundToggleButton.style.border = "2px solid tomato";
   }else{
     isPlaySound = false;
     soundToggleButton.style.border = "1px solid #fff";
     soundToggleButton.style.fontSize = "20px";
-    // soundToggleButton.innerHTML = "";
-    // soundToggleButton.style.color = "#fff";
-    // soundToggleButton.style.border = "2px solid #fff";
   }
 }
