@@ -45,6 +45,7 @@ var wrongBuzzerSound = new Audio("./material/wrong-buzzer.mp3");
 
 
 //gameBoardの要素のid取得
+const soundToggleButton = document.getElementById("soundToggleButton");
 const timerPara = document.getElementById("timerPara");
 const typedCountPara = document.getElementById("typedCountPara");
 const instructionPara = document.getElementById("instructionPara");
@@ -114,7 +115,9 @@ let typedCount = 0;
 let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
 let isGamePlaying = false;
-let isAutoFill = false; //自動入力モード
+let isAutoFill = false; //true = 自動入力モード
+let isPlaySound = false; //true = 効果音ON
+
 
 //ゲーム開始準備
 timerPara.innerHTML = defaultRemaingTime.toFixed(2);
@@ -329,14 +332,35 @@ function getRandomNum(){
 
 
 function playSound(soundNumber){
-  if(soundNumber == 0){
-    correctAnswerSound.pause();
-    correctAnswerSound.currentTime = 0;
-    correctAnswerSound.play();
+  if(isPlaySound){
+    if(soundNumber == 0){
+      correctAnswerSound.pause();
+      correctAnswerSound.currentTime = 0;
+      correctAnswerSound.play();
+    }
+    if(soundNumber == 1){
+      wrongBuzzerSound.pause();
+      wrongBuzzerSound.currentTime = 0;
+      wrongBuzzerSound.play();
+    }
   }
-  if(soundNumber == 1){
-    wrongBuzzerSound.pause();
-    wrongBuzzerSound.currentTime = 0;
-    wrongBuzzerSound.play();
+}
+
+
+function soundToggle(){
+  if(!isPlaySound){
+    isPlaySound = true;
+    soundToggleButton.style.border = "3px solid #fff";
+    soundToggleButton.style.fontSize = "25px";
+    // soundToggleButton.innerHTML = "♪";
+    // soundToggleButton.style.color = "tomato";
+    // soundToggleButton.style.border = "2px solid tomato";
+  }else{
+    isPlaySound = false;
+    soundToggleButton.style.border = "1px solid #fff";
+    soundToggleButton.style.fontSize = "20px";
+    // soundToggleButton.innerHTML = "";
+    // soundToggleButton.style.color = "#fff";
+    // soundToggleButton.style.border = "2px solid #fff";
   }
 }
