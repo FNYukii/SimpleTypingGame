@@ -6,9 +6,6 @@
   border-radius: 10px;
   position: relative;
 }
-.nav-button:hover {
-  opacity: 0.7;
-}
 .nav-button a {
   position: absolute;
   top: 0;
@@ -21,4 +18,10 @@
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+}
+.nav-button:hover {
+  opacity: 0.7;
+}
+.nav-button:active {
+  transform: scale(0.95);
 }

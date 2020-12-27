@@ -111,5 +111,5 @@ input:checked ~ .overlay #report{
   opacity: 0.8;
 }
 .closeButton:active {
-  transform: scale(0.98);
+  transform: scale(0.95);
 }

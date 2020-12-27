@@ -153,15 +153,6 @@ function timerStart(){
   //countupメソッド
   let countup = function(){
 
-    // if(remaingTime > 0.00){
-    //   remaingTime -= 0.01;
-    //   playedTime += 0.01;
-    //   timerPara.innerHTML = remaingTime.toFixed(2);
-    // }else{
-    //   clearInterval(timerMethod);
-    //   gameTimeUp();
-    // }
-
     if(remaingTime.toFixed(2) <= 0.00){
       clearInterval(timerMethod);
       gameTimeUp();
@@ -191,6 +182,7 @@ function gameRetired(){
 //時間切れ
 function gameTimeUp(){
   gameStop();
+  timerPara.innerHTML = "0.00";
   openReport("タイムアップ!");
 }
 //ゲームクリア

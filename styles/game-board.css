@@ -85,9 +85,9 @@
   outline: none;
   cursor: pointer;
 }
-.start-button:hover {
+.start-button-container:hover {
   opacity: 0.6;
 }
-.start-button:active {
-  transform: scale(0.98);
+.start-button-container:active {
+  transform: scale(0.95);
 }
