@@ -112,7 +112,7 @@ let typedCount = 0;
 let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
 let isGamePlaying = false;
-// let result;
+let isAutoFill = false; //自動入力モード
 
 //ゲーム開始準備
 timerPara.innerHTML = defaultRemaingTime.toFixed(2);
@@ -133,6 +133,7 @@ function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
   playedTime = 0.00;
+
   timerPara.style.color = "#777";
   timerPara.style.transform = "scale(1)";
   crossMark.style.display = "none";
@@ -141,11 +142,38 @@ function gameStart(){
   textbox.focus();
   startButton.innerHTML = "リタイア";
 
-  
   updateInstructionPara();
   updateTypedCountPara();
   scaleup(typedCountPara, 1.05);
   timerStart();
+}
+
+
+//リタイア
+function gameRetired(){
+  clearInterval(timerMethod);
+  gameStop();
+  openReport("リタイア");
+}
+//時間切れ
+function gameTimeUp(){
+  gameStop();
+  timerPara.innerHTML = "0.00";
+  openReport("タイムアップ!");
+}
+//ゲームクリア
+function gameCleared(){
+  clearInterval(timerMethod);
+  gameStop();
+  openReport("ステージクリア!");
+}
+
+
+function gameStop(){
+  isGamePlaying = false;
+  isAutoFill = false;
+  textbox.disabled = true;
+  startButton.innerHTML = "もう一度プレイ";
 }
 
 
@@ -173,65 +201,54 @@ function timerStart(){
 }
 
 
-//リタイア
-function gameRetired(){
-  clearInterval(timerMethod);
-  gameStop();
-  openReport("リタイア");
-}
-//時間切れ
-function gameTimeUp(){
-  gameStop();
-  timerPara.innerHTML = "0.00";
-  openReport("タイムアップ!");
-}
-//ゲームクリア
-function gameCleared(){
-  clearInterval(timerMethod);
-  gameStop();
-  openReport("ステージクリア!");
-}
-
-
-function gameStop(){
-  isGamePlaying = false;
-  textbox.disabled = true;
-  startButton.innerHTML = "もう一度プレイ";
-}
-
-
 function enterKeyListener(event){
   if(event.key == "Enter"){
     textboxCheck();
-    // textbox.value = "";
   }
 }
 
+
 function textboxCheck(){
   if(textbox.value == targetText){
-    playSound(0);
-    textbox.value = "";
-    typedCount++;
-    updateTypedCountPara();
-    scaleup(typedCountPara, 1.05);
-
-    if(gameType == 2){
-      remaingTime += 2;
-      scaleup(timerPara, 1.1);
-    }else if(gameType == 0){
-      if(typedCount >= goalCount){
-        gameCleared();
-      }
-    }
-    updateInstructionPara();
-    crossMark.style.display = "none";
-
-  }else if(textbox.value != targetText){
-    playSound(1);
-    crossMark.style.display = "block";
-    scaleup(crossMark, 1.2);
-    scaleup(instructionPara, 1.1);
+    correctAnswer();
+  }else if(isAutoFill){
+    textbox.value = targetText;
+    setTimeout(() => {
+      textboxCheck();
+      // correctAnswer();
+    }, 100);
+  }else if(textbox.value == "auto fill"){
+    isAutoFill = true;
+    textbox.value = "OK.";
+  }else if(textbox.value != targetText && !isAutoFill){
+    wrongAnswer();
   }
+}
+
+
+function correctAnswer(){
+  playSound(0);
+  textbox.value = "";
+  typedCount++;
+  updateTypedCountPara();
+  scaleup(typedCountPara, 1.05);
+
+  if(gameType == 2){
+    remaingTime += 2;
+    scaleup(timerPara, 1.1);
+  }else if(gameType == 0){
+    if(typedCount >= goalCount){
+      gameCleared();
+    }
+  }
+  updateInstructionPara();
+  crossMark.style.display = "none";
+}
+function wrongAnswer(){
+  playSound(1);
+  crossMark.style.display = "block";
+  scaleup(crossMark, 1.2);
+  scaleup(instructionPara, 1.1);
 }
 
 
@@ -273,8 +290,6 @@ function updateTypedCountPara(){
 
 
 function openReport(result){
-
-  
   resultPara.innerHTML = result;
   playedTimeSpan.innerHTML = playedTime.toFixed(2) + "秒";
   typedCountSpan.innerHTML = typedCount;
@@ -283,7 +298,6 @@ function openReport(result){
   }else{
     averageTypingTimeSpan.innerHTML = (playedTime.toFixed(2) / typedCount).toFixed(2) + "秒";
   }
-
   trigger.checked = true;
 }
 
@@ -309,9 +323,13 @@ function getRandomNum(){
 
 function playSound(soundNumber){
   if(soundNumber == 0){
+    correctAnswerSound.pause();
+    correctAnswerSound.currentTime = 0;
     correctAnswerSound.play();
   }
   if(soundNumber == 1){
+    wrongBuzzerSound.pause();
+    wrongBuzzerSound.currentTime = 0;
     wrongBuzzerSound.play();
   }
 }
