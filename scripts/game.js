@@ -29,18 +29,20 @@ const words = [
   ],
   [
     "電動ドライバー","電気ストーブ","無線マウス","無線キーボード","ノートパソコン","リュックサック","クローゼット","パソコンケース",
-    "コンセントプラグ","電気自動車","アルコールランプ","カーネーション","フロントエンド","バックエンド","バランスボール","豚骨ラーメン",
+    "コンセントプラグ","電気自動車","アルコールランプ","カーネーション","鉄筋コンクリート","ローストビーフ","バランスボール","豚骨ラーメン",
     "スマートフォン","ガソリンスタンド","正面玄関","高速道路","洗濯ばさみ","発泡スチロール","オレンジジュース","アップルジュース",
     "スマートスピーカー","風林火山","貨物コンテナ","貨物列車","大阪城公園","非常階段","緊急事態","地方公共団体",
-    "スマートデバイス","味噌ラーメン","障害物","醤油ラーメン","家系ラーメン","クリスマスケーキ","アクセス修飾子","クリームチーズ",
+    "オーブンレンジ","味噌ラーメン","障害物","醤油ラーメン","家系ラーメン","クリスマスケーキ","アップルパイ","クリームチーズ",
     "スライスチーズ","チョコレートケーキ","キャンプファイヤー","ホットプレート","ポテトチップス","グレープフルーツ","グレープジュース","虫取り網",
     "体重計","ポケットティッシュ","オイスターソース","オリーブソース","マカロニグラタン","バナナジュース","ブルーベリージャム","フランスパン"
   ]
 ];
 
+
 //mp3
 var correctAnswerSound = new Audio("./material/correct-answer.mp3");
 var wrongBuzzerSound = new Audio("./material/wrong-buzzer.mp3");
+
 
 //gameBoardの要素のid取得
 const timerPara = document.getElementById("timerPara");
@@ -229,7 +231,9 @@ function textboxCheck(){
 function correctAnswer(){
   playSound(0);
   textbox.value = "";
+
   typedCount++;
+  
   updateTypedCountPara();
   scaleup(typedCountPara, 1.05);
 
@@ -283,6 +287,9 @@ function updateTypedCountPara(){
     break;
 
     case 1:
+    // typedCountPara.innerHTML = "ポイント：" + typedCount;
+    // break;
+    
     case 2:
     typedCountPara.innerHTML = "タイピング数：<span style='font-weight: bold;'>" + typedCount + "</span>";
   }
