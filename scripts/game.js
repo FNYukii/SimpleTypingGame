@@ -165,7 +165,9 @@ function gameRetired(){
 }
 //時間切れ
 function gameTimeUp(){
-  piSound.play();
+  if(isPlaySound){
+    piSound.play();
+  }
   gameStop();
   timerPara.innerHTML = "0.00";
   openReport("タイムアップ!");
@@ -207,7 +209,9 @@ function timerStart(){
         timerPara.style.color = "red";
         timerPara.style.transform = "scale(1.3)";
         if(remaingTime.toFixed(2) % 1 == 0 && remaingTime > 0.5){
-          countdownSound.play();
+          if(isPlaySound){
+            countdownSound.play();
+          }
         }
       }
     }
