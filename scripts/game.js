@@ -69,42 +69,42 @@ let gameType; //0 = timeAttack, 1 = scoreAttack, 2 = survival
 let difficultyLevel;
 let defaultRemaingTime;
 let goalCount;
-switch(stageName){
-  case "level1":
+switch(stageId){
+  case 1:
   gameType = 0;
   difficultyLevel = 0;
   defaultRemaingTime = 30.00;
   goalCount = 5;
   break;
 
-  case "level2":
+  case 2:
   gameType = 0;
   difficultyLevel = 1;
   defaultRemaingTime = 30.00;
   goalCount = 7;
   break;
 
-  case "level3":
+  case 3:
   gameType = 0;
   difficultyLevel = 2;
   defaultRemaingTime = 30.00;
   goalCount = 7;
   break;
 
-  case "level4":
+  case 4:
   gameType = 0;
   difficultyLevel = 3;
   defaultRemaingTime = 30.00;
   goalCount = 10;
   break;
 
-  case "scoreAttack":
+  case 5:
   gameType = 1;
   difficultyLevel = 0;
   defaultRemaingTime = 30.00;
   break;
 
-  case "survival":
+  case 6:
   gameType = 2;
   difficultyLevel = 0;
   defaultRemaingTime = 30.00;
@@ -206,6 +206,7 @@ function gameStop(){
   body.style.backgroundColor = "#eee";
   textbox.disabled = true;
   startButton.innerHTML = "もう一度プレイ";
+  saveRecord();
 }
 
 
@@ -391,4 +392,11 @@ function soundToggle(){
   }
   localStorage.setItem("ls_isPlaySound",isPlaySound);
   console.log("ls_isPlaySound: " + localStorage.getItem("ls_isPlaySound"));
+}
+
+
+function saveRecord(){
+  switch(stageName){
+
+  }
 }
