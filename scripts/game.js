@@ -40,10 +40,10 @@ const words = [
 
 
 //mp3
-var correctAnswerSound = new Audio("./material/correct-answer.mp3");
-var wrongBuzzerSound = new Audio("./material/wrong-buzzer.mp3");
-var countdownSound = new Audio("./material/countdown.mp3");
-var piSound = new Audio("./material/pi.mp3");
+let correctAnswerSound = new Audio("./material/correct-answer.mp3");
+let wrongBuzzerSound = new Audio("./material/wrong-buzzer.mp3");
+let countdownSound = new Audio("./material/countdown.mp3");
+let piSound = new Audio("./material/pi.mp3");
 
 
 const body = document.body;
