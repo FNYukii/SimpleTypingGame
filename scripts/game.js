@@ -117,20 +117,17 @@ let lastRandomNum = 0;
 let typedCount = 0;
 let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
+let gameResult; //0 = リタイア, 1 = タイムアップ, 2 = ステージクリア
 let isGamePlaying = false;
 let isAutoFill = false; //true = 自動入力モード
 let isPlaySound; //true = 効果音ON
 
 
 //isPlaySoundにlocalStorageの値を格納
-switch(localStorage.getItem("ls_isPlaySound")){
-  case "true":
-  isPlaySound = true;
-  break;
-
-  case "false":
-  default:
+if(!localStorage["isPlaySound"] || localStorage.getItem("isPlaySound") == "false"){
   isPlaySound = false;
+}else{
+  isPlaySound = true;
 }
 
 
@@ -180,23 +177,26 @@ function gameStart(){
 //リタイア
 function gameRetired(){
   clearInterval(timerMethod);
+  gameResult = 0;
+  openReport();
   gameStop();
-  openReport("リタイア");
 }
 //時間切れ
 function gameTimeUp(){
   if(isPlaySound){
     piSound.play();
   }
-  gameStop();
   timerPara.innerHTML = "0.00";
-  openReport("タイムアップ!");
+  gameResult = 1;
+  openReport();
+  gameStop();
 }
 //ゲームクリア
 function gameCleared(){
   clearInterval(timerMethod);
+  gameResult = 2;
+  openReport();
   gameStop();
-  openReport("ステージクリア!");
 }
 
 
@@ -221,9 +221,9 @@ function timerStart(){
       remaingTime -= 0.01;
       playedTime += 0.01;
 
-      console.log("0: " + playedTime);
-      console.log("2: " + playedTime.toFixed(2));
-      console.log(" ");
+      // console.log("0: " + playedTime);
+      // console.log("2: " + playedTime.toFixed(2));
+      // console.log(" ");
 
       timerPara.innerHTML = remaingTime.toFixed(2);
       if(remaingTime.toFixed(2) <= 5.00){
@@ -334,8 +334,19 @@ function updateTypedCountPara(){
 }
 
 
-function openReport(result){
-  resultPara.innerHTML = result;
+function openReport(){
+  switch(gameResult){
+    case 0:
+    resultPara.innerHTML = "リタイア";
+    break;
+
+    case 1:
+    resultPara.innerHTML = "タイムアップ";
+    break;
+
+    case 2:
+    resultPara.innerHTML = "ステージクリア";
+  }
   playedTimeSpan.innerHTML = playedTime.toFixed(2) + "秒";
   typedCountSpan.innerHTML = typedCount;
   if(typedCount == 0){
@@ -390,13 +401,58 @@ function soundToggle(){
     isPlaySound = false;
     soundToggleButton.innerHTML = "<i class='fas fa-volume-mute fa-1x'></i>";
   }
-  localStorage.setItem("ls_isPlaySound",isPlaySound);
-  console.log("ls_isPlaySound: " + localStorage.getItem("ls_isPlaySound"));
+  localStorage.setItem("isPlaySound",isPlaySound);
+  console.log("isPlaySound: " + localStorage.getItem("isPlaySound"));
 }
 
 
 function saveRecord(){
-  switch(stageName){
+  switch(stageId){
+    case 1:
+    if(gameResult == 2){
+      if(!localStorage["record_level1"] || playedTime < localStorage.getItem("record_level1")){
+        localStorage.setItem("record_level1",playedTime.toFixed(2));
+      }
+    }
+    break;
 
+    case 2:
+    if(gameResult == 2){
+      if(!localStorage["record_level2"] || playedTime < localStorage.getItem("record_level2")){
+        localStorage.setItem("record_level2",playedTime.toFixed(2));
+      }
+    }
+    break;
+    
+    case 3:
+    if(gameResult == 2){
+      if(!localStorage["record_level3"] || playedTime < localStorage.getItem("record_level3")){
+        localStorage.setItem("record_level3",playedTime.toFixed(2));
+      }
+    }
+    break;
+
+    case 4:
+    if(gameResult == 2){
+      if(!localStorage["record_level4"] || playedTime < localStorage.getItem("record_level4")){
+        localStorage.setItem("record_level4",playedTime.toFixed(2));
+      }
+    }
+    break;
+
+    case 5:
+    if(gameResult == 1){
+      if(!localStorage["record_scoreAttack"] || typedCount > localStorage.getItem("record_scoreAttack")){
+        localStorage.setItem("record_scoreAttack",typedCount);
+      }
+    }
+    break;
+
+    case 6:
+    if(gameResult == 1){
+      if(!localStorage["record_survival"] || playedTime > localStorage.getItem("record_survival")){
+        localStorage.setItem("record_survival",playedTime.toFixed(2));
+      }
+    }
   }
 }
