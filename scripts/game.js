@@ -327,9 +327,6 @@ function updateTypedCountPara(){
     break;
 
     case 1:
-    // typedCountPara.innerHTML = "ポイント：" + typedCount;
-    // break;
-    
     case 2:
     typedCountPara.innerHTML = "タイピング数：<span style='font-weight: bold;'>" + typedCount + "</span>";
   }
