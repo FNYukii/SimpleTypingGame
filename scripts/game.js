@@ -121,18 +121,20 @@ let isGamePlaying = false;
 let isAutoFill = false; //true = 自動入力モード
 let isPlaySound; //true = 効果音ON
 
-if(localStorage.getItem("ls_isPlaySound") == "true"){
+
+//isPlaySoundにlocalStorageの値を格納
+switch(localStorage.getItem("ls_isPlaySound")){
+  case "true":
   isPlaySound = true;
-}else if(localStorage.getItem("ls_isPlaySound") == "false"){
-  isPlaySound = false;
-}else{
+  break;
+
+  case "false":
+  default:
   isPlaySound = false;
 }
 
-console.log("ls_isPlaySound : " + localStorage.getItem("ls_isPlaySound"));
-console.log("isPlaySound : " + isPlaySound);
 
-
+//sound-toggle-buttonをセッティング
 if(isPlaySound){
   soundToggleButton.innerHTML = "<i class='fas fa-volume-up fa-1x'></i>";
 }else if(isPlaySound == false){
@@ -140,7 +142,7 @@ if(isPlaySound){
 }
 
 
-//ゲーム開始準備
+//その他ゲーム開始準備
 timerPara.innerHTML = defaultRemaingTime.toFixed(2);
 updateTypedCountPara();
 textbox.addEventListener("keypress",enterKeyListener);
