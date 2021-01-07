@@ -135,10 +135,8 @@ console.log("isPlaySound : " + isPlaySound);
 
 if(isPlaySound){
   soundToggleButton.innerHTML = "<i class='fas fa-volume-up fa-1x'></i>";
-  console.log("upにします");
 }else if(isPlaySound == false){
   soundToggleButton.innerHTML = "<i class='fas fa-volume-mute fa-1x'></i>";
-  console.log("muteにします");
 }
 
 
