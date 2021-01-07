@@ -367,11 +367,9 @@ function playSound(soundNumber){
 function soundToggle(){
   if(!isPlaySound){
     isPlaySound = true;
-    soundToggleButton.style.border = "3px solid #fff";
-    soundToggleButton.style.fontSize = "25px";
+    soundToggleButton.innerHTML = "<i class='fas fa-volume-up fa-1x'></i>";
   }else{
     isPlaySound = false;
-    soundToggleButton.style.border = "1px solid #fff";
-    soundToggleButton.style.fontSize = "20px";
+    soundToggleButton.innerHTML = "<i class='fas fa-volume-mute fa-1x'></i>";
   }
 }
