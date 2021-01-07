@@ -119,7 +119,27 @@ let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
 let isGamePlaying = false;
 let isAutoFill = false; //true = 自動入力モード
-let isPlaySound = false; //true = 効果音ON
+let isPlaySound; //true = 効果音ON
+
+if(localStorage.getItem("ls_isPlaySound") == "true"){
+  isPlaySound = true;
+}else if(localStorage.getItem("ls_isPlaySound") == "false"){
+  isPlaySound = false;
+}else{
+  isPlaySound = false;
+}
+
+console.log("ls_isPlaySound : " + localStorage.getItem("ls_isPlaySound"));
+console.log("isPlaySound : " + isPlaySound);
+
+
+if(isPlaySound){
+  soundToggleButton.innerHTML = "<i class='fas fa-volume-up fa-1x'></i>";
+  console.log("upにします");
+}else if(isPlaySound == false){
+  soundToggleButton.innerHTML = "<i class='fas fa-volume-mute fa-1x'></i>";
+  console.log("muteにします");
+}
 
 
 //ゲーム開始準備
@@ -372,4 +392,6 @@ function soundToggle(){
     isPlaySound = false;
     soundToggleButton.innerHTML = "<i class='fas fa-volume-mute fa-1x'></i>";
   }
+  localStorage.setItem("ls_isPlaySound",isPlaySound);
+  console.log("ls_isPlaySound: " + localStorage.getItem("ls_isPlaySound"));
 }
