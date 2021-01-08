@@ -6,11 +6,16 @@
     <title>Record</title>
     <link rel="stylesheet" href="styles/main.css">
     <style>
-      p {
-        margin-top: 50px;
-        text-align: center;
-        color: #3e98d4;
-        font-size: 30px;
+      main {
+        /* todo:heightを画面の下ぴったりにしたい。 */
+        /* height: 100%; */
+        height: calc(100% - 50px);
+      }
+      .content {
+        width: 700px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #fff;
       }
     </style>
   </head>
@@ -30,7 +35,10 @@
     </header>
 
     <main>
-      <p>Coming soon</p>
+      <div class="content">
+        <h2>最高記録</h2>
+        <p>各ステージの最高記録です。</p>
+      </div>
     </main>
 
   </body>
