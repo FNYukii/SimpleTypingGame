@@ -6,16 +6,33 @@
     <title>Record</title>
     <link rel="stylesheet" href="styles/main.css">
     <style>
-      main {
-        /* todo:heightを画面の下ぴったりにしたい。 */
-        /* height: 100%; */
-        height: calc(100% - 50px);
-      }
       .content {
         width: 700px;
-        margin: 0 auto;
+        margin: 20px auto;
         padding: 30px;
         background-color: #fff;
+        box-shadow: 4px 4px 4px #ccc;
+      }
+      h2,p {
+        text-align: center;
+      }
+      table {
+        margin: 20px auto;
+        
+        border-collapse: collapse;
+        border-spacing: 0;
+
+        /* background-color: #eee; */
+        font-size: 18px;
+
+      }
+      table tr {
+        border-bottom: 1px solid #ccc;
+        line-height: 50px;
+      }
+      table td {
+        width: 200px;
+        text-align: center;
       }
     </style>
   </head>
@@ -36,10 +53,94 @@
 
     <main>
       <div class="content">
-        <h2>最高記録</h2>
-        <p>各ステージの最高記録です。</p>
+        <h2>各ステージのスコア記録</h2>
+
+        <table>
+          <tr>
+            <th>ステージ名</th>
+            <th>最高記録</th>
+          </tr>
+          <tr>
+            <td>LEVEL 1</td>
+            <td><span id="record_level1Span">xx.xx秒</span></td>
+          </tr>
+          <tr>
+            <td>LEVEL 2</td>
+            <td><span id="record_level2Span">xx.xx秒</span></td>
+          </tr>
+          <tr>
+            <td>LEVEL 3</td>
+            <td><span id="record_level3Span">xx.xx秒</span></td>
+          </tr>
+          <tr>
+            <td>LEVEL 4</td>
+            <td><span id="record_level4Span">xx.xx秒</span></td>
+          </tr>
+          <tr>
+            <td>Score Attack</td>
+            <td><span id="record_scoreAttackSpan">xx.xx秒</span></td>
+          </tr>
+          <tr>
+            <td>Survival</td>
+            <td><span id="record_survivalSpan">xx.xx秒</span></td>
+          </tr>
+        </table>
+        
       </div>
     </main>
 
   </body>
 </html>
+<script>
+
+  const record_level1Span = document.getElementById("record_level1Span");
+  const record_level2Span = document.getElementById("record_level2Span");
+  const record_level3Span = document.getElementById("record_level3Span");
+  const record_level4Span = document.getElementById("record_level4Span");
+  const record_scoreAttackSpan = document.getElementById("record_scoreAttackSpan");
+  const record_survivalSpan = document.getElementById("record_survivalSpan");
+
+ 
+  //level1
+  if(!localStorage["record_level1"]){
+    record_level1Span.innerHTML = "記録なし";
+  }else{
+    record_level1Span.innerHTML = localStorage.getItem("record_level1") + "秒";
+  }
+
+  //level2
+  if(!localStorage["record_level2"]){
+    record_level2Span.innerHTML = "記録なし";
+  }else{
+    record_level2Span.innerHTML = localStorage.getItem("record_level2") + "秒";
+  }
+
+  //level3
+  if(!localStorage["record_level3"]){
+    record_level3Span.innerHTML = "記録なし";
+  }else{
+    record_level3Span.innerHTML = localStorage.getItem("record_level3") + "秒";
+  }
+
+  //level4
+  if(!localStorage["record_level4"]){
+    record_level4Span.innerHTML = "記録なし";
+  }else{
+    record_level4Span.innerHTML = localStorage.getItem("record_level4") + "秒";
+  }
+
+  //scoreAttack
+  if(!localStorage["record_scoreAttack"]){
+    record_scoreAttackSpan.innerHTML = "記録なし";
+  }else{
+    record_scoreAttackSpan.innerHTML = localStorage.getItem("record_scoreAttack") + "秒";
+  }
+
+  //survival
+  if(!localStorage["record_survival"]){
+    record_survivalSpan.innerHTML = "記録なし";
+  }else{
+    record_survivalSpan.innerHTML = localStorage.getItem("record_survival") + "秒";
+  }
+
+</script>
