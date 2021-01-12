@@ -149,7 +149,6 @@ textbox.addEventListener("keypress",enterKeyListener);
 function startButtonClick(){
   if(!isGamePlaying){
     startCountdown();
-    // gameStart();
   }else{
     gameRetired();
   }
@@ -164,10 +163,12 @@ function startCountdown(){
       second--;
     }else{
       clearInterval(countdownMethod);
+      instructionPara.style.color = "#555";
       gameStart();
     }
   }
   instructionPara.innerHTML = 3;
+  instructionPara.style.color = "red";
   countdownMethod = setInterval(countdown, 1000);
 }
 
