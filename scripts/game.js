@@ -142,15 +142,33 @@ if(isPlaySound){
 //その他ゲーム開始準備
 timerPara.innerHTML = defaultRemaingTime.toFixed(2);
 updateTypedCountPara();
+instructionPara.innerHTML = "スタートボタンを押してください";
 textbox.addEventListener("keypress",enterKeyListener);
 
 
 function startButtonClick(){
   if(!isGamePlaying){
-    gameStart();
+    startCountdown();
+    // gameStart();
   }else{
     gameRetired();
   }
+}
+
+
+function startCountdown(){
+  let second = 2;
+  let countdown = function(){
+    if(second > 0){
+      instructionPara.innerHTML = second;
+      second--;
+    }else{
+      clearInterval(countdownMethod);
+      gameStart();
+    }
+  }
+  instructionPara.innerHTML = 3;
+  countdownMethod = setInterval(countdown, 1000);
 }
 
 
@@ -158,6 +176,7 @@ function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
   playedTime = 0.00;
+
 
   timerPara.style.color = "#777";
   timerPara.style.transform = "scale(1)";
@@ -236,7 +255,6 @@ function timerStart(){
         }
       }
     }
-
   }
 
   remaingTime = defaultRemaingTime;
