@@ -119,6 +119,7 @@ let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
 let gameResult; //0 = リタイア, 1 = タイムアップ, 2 = ステージクリア
 let isGamePlaying = false;
+// let isGameCountdowning = false;
 let isAutoFill = false; //true = 自動入力モード
 let isPlaySound; //true = 効果音ON
 
@@ -140,10 +141,14 @@ if(isPlaySound){
 
 
 //その他ゲーム開始準備
-timerPara.innerHTML = defaultRemaingTime.toFixed(2);
-updateTypedCountPara();
-instructionPara.innerHTML = "スタートボタンを押してください";
-textbox.addEventListener("keypress",enterKeyListener);
+preparation();
+
+function preparation(){
+  timerPara.innerHTML = defaultRemaingTime.toFixed(2);
+  updateTypedCountPara();
+  instructionPara.innerHTML = "スタートボタンを押してください";
+  textbox.addEventListener("keypress",enterKeyListener);
+}
 
 
 function startButtonClick(){
@@ -156,6 +161,8 @@ function startButtonClick(){
 
 
 function startCountdown(){
+
+  isGameCountdowning = true;
 
   startButton.disabled = true;
   // startButton.style.opacity = "0.6";
@@ -170,6 +177,7 @@ function startCountdown(){
     }else{
       clearInterval(countdownMethod);
       instructionPara.style.color = "#555";
+      isGameCountdowning = false;
       gameStart();
     }
   }
