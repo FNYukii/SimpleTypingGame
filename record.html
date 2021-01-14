@@ -6,25 +6,32 @@
     <title>各ステージの最高記録</title>
     <link rel="stylesheet" href="styles/main.css">
     <style>
-      .content {
+      .record-panel {
         width: 700px;
         margin: 20px auto;
-        padding: 30px;
         background-color: #fff;
         box-shadow: 4px 4px 4px #ccc;
       }
-      h2,p {
+      .record-panel-header {
+        width: 100%;
+        height: 50px;
+        background-color: skyblue;
         text-align: center;
+        line-height: 50px;
+        color: #fff;
+        font-size: 30px;
       }
-      table {
-        margin: 20px auto;
-        
+      .record-panel-content{
+        width: 100%;
+        padding: 30px 0;
+      }
+  
+
+      table {        
+        margin: 0 auto;
         border-collapse: collapse;
         border-spacing: 0;
-
-        /* background-color: #eee; */
         font-size: 18px;
-
       }
       table tr {
         border-bottom: 1px solid #ccc;
@@ -51,42 +58,46 @@
       </div>  
     </header>
 
-    <main>
-      <div class="content">
-        <h2>各ステージの最高記録</h2>
-
-        <table>
-          <tr>
-            <th>ステージ名</th>
-            <th>スコア</th>
-          </tr>
-          <tr>
-            <td>LEVEL 1</td>
-            <td><span id="record_level1Span">xx.xx秒</span></td>
-          </tr>
-          <tr>
-            <td>LEVEL 2</td>
-            <td><span id="record_level2Span">xx.xx秒</span></td>
-          </tr>
-          <tr>
-            <td>LEVEL 3</td>
-            <td><span id="record_level3Span">xx.xx秒</span></td>
-          </tr>
-          <tr>
-            <td>LEVEL 4</td>
-            <td><span id="record_level4Span">xx.xx秒</span></td>
-          </tr>
-          <tr>
-            <td>Score Attack</td>
-            <td><span id="record_scoreAttackSpan">xx.xx秒</span></td>
-          </tr>
-          <tr>
-            <td>Survival</td>
-            <td><span id="record_survivalSpan">xx.xx秒</span></td>
-          </tr>
-        </table>
+    <main>  
+      <div class="record-panel">
+        <div class="record-panel-header">
+          <h2>Record</h2>
+        </div>
+        <div class="record-panel-content">
+          <table>
+            <tr>
+              <th>ステージ名</th>
+              <th>スコア</th>
+            </tr>
+            <tr>
+              <td>LEVEL 1</td>
+              <td><span id="record_level1Span">xx.xx秒</span></td>
+            </tr>
+            <tr>
+              <td>LEVEL 2</td>
+              <td><span id="record_level2Span">xx.xx秒</span></td>
+            </tr>
+            <tr>
+              <td>LEVEL 3</td>
+              <td><span id="record_level3Span">xx.xx秒</span></td>
+            </tr>
+            <tr>
+              <td>LEVEL 4</td>
+              <td><span id="record_level4Span">xx.xx秒</span></td>
+            </tr>
+            <tr>
+              <td>Score Attack</td>
+              <td><span id="record_scoreAttackSpan">xx.xx秒</span></td>
+            </tr>
+            <tr>
+              <td>Survival</td>
+              <td><span id="record_survivalSpan">xx.xx秒</span></td>
+            </tr>
+          </table>
+        </div>
         
       </div>
+
     </main>
 
   </body>
