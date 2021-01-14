@@ -78,7 +78,7 @@
   background-color: #fff;
 }
 .textbox:disabled {
-  background-color: #f7f7f7;
+  background-color: #ececec;
 }
 .cross-mark {
   font-size: 40px;

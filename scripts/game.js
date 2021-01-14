@@ -164,6 +164,7 @@ function startCountdown(){
 
   isGameCountdowning = true;
 
+  textbox.value = "";
   startButton.disabled = true;
   // startButton.style.opacity = "0.6";
   startButton.innerHTML = "";
