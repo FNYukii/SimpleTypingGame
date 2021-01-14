@@ -156,10 +156,16 @@ function startButtonClick(){
 
 
 function startCountdown(){
+
+  startButton.disabled = true;
+  // startButton.style.opacity = "0.6";
+  startButton.innerHTML = "";
+
   let second = 2;
   let countdown = function(){
     if(second > 0){
       instructionPara.innerHTML = second;
+      scaleup(instructionPara, 1.2);
       second--;
     }else{
       clearInterval(countdownMethod);
@@ -168,6 +174,7 @@ function startCountdown(){
     }
   }
   instructionPara.innerHTML = 3;
+  scaleup(instructionPara, 1.2);
   instructionPara.style.color = "red";
   countdownMethod = setInterval(countdown, 1000);
 }
@@ -177,6 +184,10 @@ function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
   playedTime = 0.00;
+
+  startButton.disabled = false;
+  // startButton.style.opacity = "1";
+
 
 
   timerPara.style.color = "#777";
