@@ -42,7 +42,7 @@ input:checked ~ .overlay #report{
   height: 400px;
   
   background-color: #fff;
-  border: 2px solid #7bcaff;
+  border: 2px solid skyblue;
 
   transition: 0.5s;
   transform: scale(0.3);
@@ -55,7 +55,7 @@ input:checked ~ .overlay #report{
   line-height: 50px;
   text-align: center;
   font-size: 30px;
-  background-color: #7bcaff;
+  background-color: skyblue;
   color: #fff;
 }
 .report-content {
@@ -68,7 +68,7 @@ input:checked ~ .overlay #report{
   text-align: center;
   font-size: 50px;
   font-weight: bold;
-  color: #7bcaff;
+  color: skyblue;
 }
 .statistics {
   width: 100%;
@@ -91,7 +91,7 @@ input:checked ~ .overlay #report{
   width: 200px;
   height: 50px;
   margin: 30px auto;
-  background-color: #7bcaff;
+  background-color: skyblue;
   border-radius: 10px;
   color: #fff;
   text-align: center;
