@@ -121,7 +121,7 @@ let playedTime = 0.00;
 let gameResult; //0 = リタイア, 1 = タイムアップ, 2 = ステージクリア
 let isGamePlaying = false;
 let isGameCountdowning = false;
-let isAutoFill = false; //true = 自動入力モード
+let isAutoTyping = false; //true = 自動入力モード
 let isPlaySound; //true = 効果音ON
 
 
@@ -147,12 +147,14 @@ readyToStart();
 function readyToStart(){
   //変数をリセット
   isGamePlaying = false;
-  isAutoFill = false;
+  isAutoTyping = false;
   typedCount = 0;
   playedTime = 0.00;
 
   //UIをリセット
   body.style.backgroundColor = "#eee";
+  timerPara.style.color = "#555";
+  timerPara.style.transform = "scale(1)";
   timerPara.innerHTML = defaultRemaingTime.toFixed(2);
   typedCount = 0;
   updateTypedCountPara();
@@ -289,16 +291,16 @@ function enterKeyListener(event){
 function textboxCheck(){
   if(textbox.value == targetText){
     correctAnswer();
-  }else if(isAutoFill){
+  }else if(isAutoTyping){
     textbox.value = targetText;
     setTimeout(() => {
       textboxCheck();
     }, 100);
-  }else if(textbox.value == "auto fill"){
-    isAutoFill = true;
+  }else if(textbox.value == "auto typing"){
+    isAutoTyping = true;
     textbox.value = "OK.";
     body.style.backgroundColor = "#bbb";
-  }else if(textbox.value != targetText && !isAutoFill){
+  }else if(textbox.value != targetText && !isAutoTyping){
     wrongAnswer();
   }
 }
@@ -327,6 +329,8 @@ function correctAnswer(){
   }
   crossMark.style.display = "none";
 }
+
+
 function wrongAnswer(){
   playSound(1);
   crossMark.style.display = "block";
