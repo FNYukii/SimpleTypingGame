@@ -114,12 +114,12 @@ switch(stageId){
 //その他の変数を宣言
 let targetText;
 let lastRandomNum = 0;
-let typedCount = 0;
+let typedCount;
 let remaingTime = defaultRemaingTime;
 let playedTime = 0.00;
 let gameResult; //0 = リタイア, 1 = タイムアップ, 2 = ステージクリア
 let isGamePlaying = false;
-// let isGameCountdowning = false;
+let isGameCountdowning = false;
 let isAutoFill = false; //true = 自動入力モード
 let isPlaySound; //true = 効果音ON
 
@@ -140,13 +140,25 @@ if(isPlaySound){
 }
 
 
-//その他ゲーム開始準備
-preparation();
+//ゲーム開始準備
+readyToStart();
 
-function preparation(){
+function readyToStart(){
+  //変数をリセット
+  isGamePlaying = false;
+  isAutoFill = false;
+  typedCount = 0;
+  playedTime = 0.00;
+
+  //UIをリセット
+  body.style.backgroundColor = "#eee";
   timerPara.innerHTML = defaultRemaingTime.toFixed(2);
+  typedCount = 0;
   updateTypedCountPara();
   instructionPara.innerHTML = "スタートボタンを押してください";
+  textbox.disabled = true;
+  crossMark.style.display = "none";
+  startButton.innerHTML = "スタート";
   textbox.addEventListener("keypress",enterKeyListener);
 }
 
@@ -155,7 +167,9 @@ function startButtonClick(){
   if(!isGamePlaying){
     startCountdown();
   }else{
-    gameRetired();
+    //リタイア
+    gameResult = 0;
+    gameStop();
   }
 }
 
@@ -166,7 +180,6 @@ function startCountdown(){
 
   textbox.value = "";
   startButton.disabled = true;
-  // startButton.style.opacity = "0.6";
   startButton.innerHTML = "";
 
   let second = 2;
@@ -192,12 +205,8 @@ function startCountdown(){
 function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
-  playedTime = 0.00;
 
   startButton.disabled = false;
-  // startButton.style.opacity = "1";
-
-
 
   timerPara.style.color = "#777";
   timerPara.style.transform = "scale(1)";
@@ -214,39 +223,16 @@ function gameStart(){
 }
 
 
-//リタイア
-function gameRetired(){
-  clearInterval(timerMethod);
-  gameResult = 0;
-  openReport();
-  gameStop();
-}
-//時間切れ
-function gameTimeUp(){
-  if(isPlaySound){
-    piSound.play();
-  }
-  timerPara.innerHTML = "0.00";
-  gameResult = 1;
-  openReport();
-  gameStop();
-}
-//ゲームクリア
-function gameCleared(){
-  clearInterval(timerMethod);
-  gameResult = 2;
-  openReport();
-  gameStop();
-}
-
-
 function gameStop(){
-  isGamePlaying = false;
-  isAutoFill = false;
-  body.style.backgroundColor = "#eee";
-  textbox.disabled = true;
-  startButton.innerHTML = "もう一度プレイ";
+  //ゲームタイマー停止
+  clearInterval(gameTimer);
+  //レポート表示
+  openReport();
+  //記録更新なら保存
   saveRecord();
+
+  //変数とUIをリセット
+  readyToStart();
 }
 
 
@@ -255,8 +241,11 @@ function timerStart(){
   let countup = function(){
 
     if(remaingTime.toFixed(2) <= 0.00){
-      clearInterval(timerMethod);
-      gameTimeUp();
+      clearInterval(gameTimer);
+      //タイムアップ
+      gameResult = 1;
+      gameStop();
+      // gameTimeUp(); //todo:fix
     }else{
       remaingTime -= 0.01;
       playedTime += 0.01;
@@ -279,7 +268,7 @@ function timerStart(){
   }
 
   remaingTime = defaultRemaingTime;
-  timerMethod = setInterval(countup,10);
+  gameTimer = setInterval(countup,10);
 }
 
 
@@ -316,16 +305,20 @@ function correctAnswer(){
   
   updateTypedCountPara();
   scaleup(typedCountPara, 1.05);
+  
+  updateInstructionPara();
 
   if(gameType == 2){
     remaingTime += 2;
     scaleup(timerPara, 1.1);
   }else if(gameType == 0){
     if(typedCount >= goalCount){
-      gameCleared();
+      //ステージクリア
+      gameResult = 2;
+      gameStop();
+      // gameCleared(); //todo:fix
     }
   }
-  updateInstructionPara();
   crossMark.style.display = "none";
 }
 function wrongAnswer(){
@@ -356,6 +349,7 @@ function updateInstructionPara(){
 
   targetText = words[difficultyLevel][getRandomNum()];
   instructionPara.innerHTML = "「" + targetText + "」 と入力してください。";
+  console.log("問題更新");
   scaleup(instructionPara, 1.05);
 }
 
@@ -386,12 +380,12 @@ function openReport(){
     case 2:
     resultPara.innerHTML = "ステージクリア";
   }
-  playedTimeSpan.innerHTML = playedTime.toFixed(2) + "秒";
+  playedTimeSpan.innerHTML = playedTime.toFixed(2) + " 秒";
   typedCountSpan.innerHTML = typedCount;
   if(typedCount == 0){
-    averageTypingTimeSpan.innerHTML = "0.00秒";
+    averageTypingTimeSpan.innerHTML = "0.00 秒";
   }else{
-    averageTypingTimeSpan.innerHTML = (playedTime.toFixed(2) / typedCount).toFixed(2) + "秒";
+    averageTypingTimeSpan.innerHTML = (playedTime.toFixed(2) / typedCount).toFixed(2) + " 秒";
   }
   trigger.checked = true;
 }
