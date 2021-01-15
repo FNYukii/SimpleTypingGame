@@ -155,6 +155,7 @@ function readyToStart(){
   timerPara.innerHTML = defaultRemaingTime.toFixed(2);
   typedCount = 0;
   updateTypedCountPara();
+  instructionPara.style.color = "#555";
   instructionPara.innerHTML = "スタートボタンを押してください";
   textbox.disabled = true;
   crossMark.style.display = "none";
@@ -164,9 +165,11 @@ function readyToStart(){
 
 
 function startButtonClick(){
-  if(!isGamePlaying){
+  if(!isGameCountdowning && !isGamePlaying){
     startCountdown();
-  }else{
+  }else if(isGameCountdowning && !isGamePlaying){
+    startCountdownStop();
+  }else if(isGamePlaying && !isGameCountdowning){
     //リタイア
     gameResult = 0;
     gameStop();
@@ -179,8 +182,7 @@ function startCountdown(){
   isGameCountdowning = true;
 
   textbox.value = "";
-  startButton.disabled = true;
-  startButton.innerHTML = "";
+  startButton.innerHTML = "ストップ";
 
   let second = 2;
   let countdown = function(){
@@ -189,7 +191,7 @@ function startCountdown(){
       scaleup(instructionPara, 1.2);
       second--;
     }else{
-      clearInterval(countdownMethod);
+      clearInterval(countdownTimer);
       instructionPara.style.color = "#555";
       isGameCountdowning = false;
       gameStart();
@@ -198,7 +200,13 @@ function startCountdown(){
   instructionPara.innerHTML = 3;
   scaleup(instructionPara, 1.2);
   instructionPara.style.color = "red";
-  countdownMethod = setInterval(countdown, 1000);
+  countdownTimer = setInterval(countdown, 1000);
+}
+
+function startCountdownStop(){
+  clearInterval(countdownTimer);
+  isGameCountdowning = false;
+  readyToStart();
 }
 
 
@@ -206,7 +214,6 @@ function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
 
-  startButton.disabled = false;
 
   timerPara.style.color = "#777";
   timerPara.style.transform = "scale(1)";
