@@ -39,6 +39,7 @@ const words = [
 ];
 
 
+
 //mp3
 let correctAnswerSound = new Audio("./material/correct-answer.mp3");
 let wrongBuzzerSound = new Audio("./material/wrong-buzzer.mp3");
@@ -181,9 +182,6 @@ function startCountdown(){
 
   isGameCountdowning = true;
 
-  textbox.value = "";
-  startButton.innerHTML = "ストップ";
-
   let second = 2;
   let countdown = function(){
     if(second > 0){
@@ -197,9 +195,12 @@ function startCountdown(){
       gameStart();
     }
   }
+
   instructionPara.innerHTML = 3;
-  scaleup(instructionPara, 1.2);
   instructionPara.style.color = "red";
+  startButton.innerHTML = "ストップ";
+  scaleup(instructionPara, 1.2);
+
   countdownTimer = setInterval(countdown, 1000);
 }
 
@@ -252,7 +253,6 @@ function timerStart(){
       //タイムアップ
       gameResult = 1;
       gameStop();
-      // gameTimeUp(); //todo:fix
     }else{
       remaingTime -= 0.01;
       playedTime += 0.01;
@@ -323,7 +323,6 @@ function correctAnswer(){
       //ステージクリア
       gameResult = 2;
       gameStop();
-      // gameCleared(); //todo:fix
     }
   }
   crossMark.style.display = "none";
@@ -356,7 +355,6 @@ function updateInstructionPara(){
 
   targetText = words[difficultyLevel][getRandomNum()];
   instructionPara.innerHTML = "「" + targetText + "」 と入力してください。";
-  console.log("問題更新");
   scaleup(instructionPara, 1.05);
 }
 
