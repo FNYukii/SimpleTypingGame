@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\FirstController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FirstController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', [FirstController::class, 'index']);
 Route::get('/about', [FirstController::class, 'about']);
@@ -27,4 +27,3 @@ Route::get('/level3', [FirstController::class, 'level3']);
 Route::get('/level4', [FirstController::class, 'level4']);
 Route::get('/score-attack', [FirstController::class, 'scoreAttack']);
 Route::get('/survival', [FirstController::class, 'survival']);
-
