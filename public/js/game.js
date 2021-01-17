@@ -161,6 +161,7 @@ function readyToStart(){
   instructionPara.style.color = "#555";
   instructionPara.innerHTML = "スタートボタンを押してください";
   textbox.disabled = true;
+  textbox.value = "";
   crossMark.style.display = "none";
   startButton.innerHTML = "スタート";
   textbox.addEventListener("keypress",enterKeyListener);
