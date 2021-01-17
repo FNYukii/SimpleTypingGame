@@ -241,9 +241,12 @@ function gameStop(){
   openReport();
   //記録更新なら保存
   saveRecord();
-
   //変数とUIをリセット
   readyToStart();
+  //結果に応じて音を鳴らす
+  if(gameResult == 1){
+    piSound.play();
+  }
 }
 
 
