@@ -262,22 +262,16 @@ function timerStart(){
     }else{
       remaingTime -= 0.01;
       playedTime += 0.01;
-
-      // console.log("0: " + playedTime);
-      // console.log("2: " + playedTime.toFixed(2));
-      // console.log(" ");
-
       timerPara.innerHTML = remaingTime.toFixed(2);
       if(remaingTime.toFixed(2) <= 5.00){
         timerPara.style.color = "red";
         timerPara.style.transform = "scale(1.3)";
-        if(remaingTime.toFixed(2) % 1 == 0 && remaingTime > 0.5){
-          if(isPlaySound){
-            countdownSound.play();
-          }
+        if(remaingTime.toFixed(2) % 1 == 0 && remaingTime > 0.5 && isPlaySound){
+          countdownSound.play();
         }
       }
     }
+    
   }
 
   remaingTime = defaultRemaingTime;
