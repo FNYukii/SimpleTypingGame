@@ -95,7 +95,7 @@ switch(stageId){
   case 4:
   gameType = 0;
   difficultyLevel = 3;
-  defaultRemaingTime = 30.00;
+  defaultRemaingTime = 5.00;
   goalCount = 10;
   break;
 
@@ -244,7 +244,7 @@ function gameStop(){
   //変数とUIをリセット
   readyToStart();
   //結果に応じて音を鳴らす
-  if(gameResult == 1){
+  if(gameResult == 1 && isPlaySound){
     piSound.play();
   }
 }
