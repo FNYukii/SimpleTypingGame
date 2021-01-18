@@ -95,7 +95,7 @@ switch(stageId){
   case 4:
   gameType = 0;
   difficultyLevel = 3;
-  defaultRemaingTime = 5.00;
+  defaultRemaingTime = 30.00;
   goalCount = 10;
   break;
 
