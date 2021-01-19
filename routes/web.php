@@ -19,6 +19,7 @@ use App\Http\Controllers\MainController;
 Route::get('/', [MainController::class, 'index']);
 Route::get('/about', [MainController::class, 'about']);
 Route::get('/record', [MainController::class, 'record']);
+
 Route::get('/level1', [GameController::class, 'level1']);
 Route::get('/level2', [GameController::class, 'level2']);
 Route::get('/level3', [GameController::class, 'level3']);
