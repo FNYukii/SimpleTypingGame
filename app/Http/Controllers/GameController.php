@@ -4,17 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FirstController extends Controller
+class GameController extends Controller
 {
-  public function index(){
-    return view('index');
-  }
-  public function about(){
-    return view('about');
-  }
-  public function record(){
-    return view('record');
-  }
+  //
   public function level1(){
     return view('level1');
   }

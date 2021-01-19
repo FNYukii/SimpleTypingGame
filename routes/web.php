@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirstController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +16,12 @@ use App\Http\Controllers\FirstController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/', [FirstController::class, 'index']);
-Route::get('/about', [FirstController::class, 'about']);
-Route::get('/record', [FirstController::class, 'record']);
-Route::get('/level1', [FirstController::class, 'level1']);
-Route::get('/level2', [FirstController::class, 'level2']);
-Route::get('/level3', [FirstController::class, 'level3']);
-Route::get('/level4', [FirstController::class, 'level4']);
-Route::get('/score-attack', [FirstController::class, 'scoreAttack']);
-Route::get('/survival', [FirstController::class, 'survival']);
+Route::get('/', [MainController::class, 'index']);
+Route::get('/about', [MainController::class, 'about']);
+Route::get('/record', [MainController::class, 'record']);
+Route::get('/level1', [GameController::class, 'level1']);
+Route::get('/level2', [GameController::class, 'level2']);
+Route::get('/level3', [GameController::class, 'level3']);
+Route::get('/level4', [GameController::class, 'level4']);
+Route::get('/score-attack', [GameController::class, 'scoreAttack']);
+Route::get('/survival', [GameController::class, 'survival']);
