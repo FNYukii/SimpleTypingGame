@@ -41,10 +41,10 @@ const words = [
 
 
 //mp3
-let correctAnswerSound = new Audio("./mp3/correct-answer.mp3");
-let wrongBuzzerSound = new Audio("./mp3/wrong-buzzer.mp3");
-let countdownSound = new Audio("./mp3/countdown.mp3");
-let piSound = new Audio("./mp3/pi.mp3");
+let correctAnswerSound = new Audio("./mp3/correct-answer.mp3"); //soundNumber = 0
+let wrongBuzzerSound = new Audio("./mp3/wrong-buzzer.mp3"); //1
+let countdownSound = new Audio("./mp3/countdown.mp3"); //2
+let timeupSound = new Audio("./mp3/timeup.mp3"); //3
 
 
 const body = document.body;
@@ -122,22 +122,22 @@ let gameResult; //0 = リタイア, 1 = タイムアップ, 2 = ステージク�
 let isGamePlaying = false;
 let isGameCountdowning = false;
 let isAutoTyping = false; //true = 自動入力モード
-let isPlaySound; //true = 効果音ON
+// let isPlaySound; //true = 効果音ON
 
 
 //isPlaySoundにlocalStorageの値を格納
-if(!localStorage["isPlaySound"] || localStorage.getItem("isPlaySound") == "false"){
-  isPlaySound = false;
-}else{
-  isPlaySound = true;
-}
+// if(!localStorage["isPlaySound"] || localStorage.getItem("isPlaySound") == "false"){
+//   isPlaySound = false;
+// }else{
+//   isPlaySound = true;
+// }
 
 
 //sound-toggle-buttonをセッティング
-if(isPlaySound){
-  soundToggleButton.innerHTML = "<i class='fas fa-volume-up fa-1x'></i>";
-}else if(isPlaySound == false){
+if(!localStorage["isPlaySound"] || localStorage.getItem("isPlaySound") == "false"){
   soundToggleButton.innerHTML = "<i class='fas fa-volume-mute fa-1x'></i>";
+}else{
+  soundToggleButton.innerHTML = "<i class='fas fa-volume-up fa-1x'></i>";
 }
 
 
@@ -244,8 +244,8 @@ function gameStop(){
   //変数とUIをリセット
   readyToStart();
   //結果に応じて音を鳴らす
-  if(gameResult == 1 && isPlaySound){
-    piSound.play();
+  if(gameResult == 1){
+    playSound(3);
   }
 }
 
@@ -266,8 +266,8 @@ function timerStart(){
       if(remaingTime.toFixed(2) <= 5.00){
         timerPara.style.color = "red";
         timerPara.style.transform = "scale(1.3)";
-        if(remaingTime.toFixed(2) % 1 == 0 && remaingTime > 0.5 && isPlaySound){
-          countdownSound.play();
+        if(remaingTime.toFixed(2) % 1 == 0 && remaingTime > 0.5){
+          playSound(2);
         }
       }
     }
@@ -418,7 +418,7 @@ function getRandomNum(){
 
 
 function playSound(soundNumber){
-  if(isPlaySound){
+  if(localStorage.getItem("isPlaySound") == "true"){
     if(soundNumber == 0){
       correctAnswerSound.pause();
       correctAnswerSound.currentTime = 0;
@@ -429,20 +429,24 @@ function playSound(soundNumber){
       wrongBuzzerSound.currentTime = 0;
       wrongBuzzerSound.play();
     }
+    if(soundNumber == 2){
+      countdownSound.play();
+    }
+    if(soundNumber == 3){
+      timeupSound.play();
+    }
   }
 }
 
 
 function soundToggle(){
-  if(!isPlaySound){
-    isPlaySound = true;
-    soundToggleButton.innerHTML = "<i class='fas fa-volume-up fa-1x'></i>";
-  }else{
-    isPlaySound = false;
+  if(localStorage.getItem("isPlaySound") == "true"){
+    localStorage.setItem("isPlaySound", "false");
     soundToggleButton.innerHTML = "<i class='fas fa-volume-mute fa-1x'></i>";
+  }else{
+    localStorage.setItem("isPlaySound", "true");
+    soundToggleButton.innerHTML = "<i class='fas fa-volume-up fa-1x'></i>";
   }
-  localStorage.setItem("isPlaySound",isPlaySound);
-  console.log("isPlaySound: " + localStorage.getItem("isPlaySound"));
 }
 
 
