@@ -211,12 +211,12 @@ input:checked ~ .overlay #report{
   color: #fff;
 }
 .report-content {
-  margin: 30px auto;
+  margin: 0 auto;
   width: 400px;
-
 }
 
 .result-para {
+  margin-top: 20px;
   text-align: center;
   font-size: 50px;
   font-weight: bold;
@@ -239,10 +239,17 @@ input:checked ~ .overlay #report{
   color: #555;
 }
 
+.new-highest-record-para {
+  text-align: center;
+  font-weight: bold;
+  color: skyblue;
+  font-size: 30px;
+}
+
 .closeButton {
   width: 200px;
   height: 50px;
-  margin: 30px auto;
+  margin: 20px auto;
   background-color: skyblue;
   border-radius: 10px;
   color: #fff;

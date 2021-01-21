@@ -67,6 +67,7 @@
               <span class="dataKey">平均タイピング時間</span>
               <span id="averageTypingTimeSpan" class="dataValue">xx.xx秒</span>
             </div>
+            <p class="new-highest-record-para" id="newHighestRecordPara">xxx xxxx xxx</p>
             <div class="closeButton">
               <label for="trigger"></label>
               閉じる
@@ -74,6 +75,7 @@
           </div>
         </div>
       </div>
+
     </main>
   </body>
 </html>

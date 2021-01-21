@@ -63,6 +63,7 @@ const resultPara = document.getElementById("resultPara");
 const playedTimeSpan = document.getElementById("playedTimeSpan");
 const typedCountSpan = document.getElementById("typedCountSpan");
 const averageTypingTimeSpan = document.getElementById("averageTypingTimeSpan");
+const newHighestRecordPara = document.getElementById("newHighestRecordPara");
 
 
 //どのステージなのか取得して難易度や制限時間を決定
@@ -122,15 +123,7 @@ let gameResult; //0 = リタイア, 1 = タイムアップ, 2 = ステージク�
 let isGamePlaying = false;
 let isGameCountdowning = false;
 let isAutoTyping = false; //true = 自動入力モード
-// let isPlaySound; //true = 効果音ON
-
-
-//isPlaySoundにlocalStorageの値を格納
-// if(!localStorage["isPlaySound"] || localStorage.getItem("isPlaySound") == "false"){
-//   isPlaySound = false;
-// }else{
-//   isPlaySound = true;
-// }
+let isNewHighestRecord = false;
 
 
 //sound-toggle-buttonをセッティング
@@ -150,6 +143,7 @@ function readyToStart(){
   isAutoTyping = false;
   typedCount = 0;
   playedTime = 0.00;
+  isNewHighestRecord = false;
 
   //UIをリセット
   body.style.backgroundColor = "#eee";
@@ -235,10 +229,10 @@ function gameStart(){
 function gameStop(){
   //ゲームタイマー停止
   clearInterval(gameTimer);
-  //レポート表示
-  openReport();
   //記録更新なら保存
   saveRecord();
+  //レポート表示
+  openReport();
   //変数とUIをリセット
   readyToStart();
   //結果に応じて音を鳴らす
@@ -390,6 +384,11 @@ function openReport(){
   }else{
     averageTypingTimeSpan.innerHTML = (playedTime.toFixed(2) / typedCount).toFixed(2) + " 秒";
   }
+  if(isNewHighestRecord){
+    newHighestRecordPara.innerHTML = "新記録更新!";
+  }else{
+    newHighestRecordPara.innerHTML = "　";
+  }
   trigger.checked = true;
 }
 
@@ -452,6 +451,7 @@ function saveRecord(){
     if(gameResult == 2){
       if(!localStorage["record_level1"] || playedTime < localStorage.getItem("record_level1")){
         localStorage.setItem("record_level1",playedTime.toFixed(2));
+        isNewHighestRecord = true;
       }
     }
     break;
@@ -460,6 +460,7 @@ function saveRecord(){
     if(gameResult == 2){
       if(!localStorage["record_level2"] || playedTime < localStorage.getItem("record_level2")){
         localStorage.setItem("record_level2",playedTime.toFixed(2));
+        isNewHighestRecord = true;
       }
     }
     break;
@@ -468,6 +469,7 @@ function saveRecord(){
     if(gameResult == 2){
       if(!localStorage["record_level3"] || playedTime < localStorage.getItem("record_level3")){
         localStorage.setItem("record_level3",playedTime.toFixed(2));
+        isNewHighestRecord = true;
       }
     }
     break;
@@ -476,6 +478,7 @@ function saveRecord(){
     if(gameResult == 2){
       if(!localStorage["record_level4"] || playedTime < localStorage.getItem("record_level4")){
         localStorage.setItem("record_level4",playedTime.toFixed(2));
+        isNewHighestRecord = true;
       }
     }
     break;
@@ -484,6 +487,7 @@ function saveRecord(){
     if(gameResult == 1){
       if(!localStorage["record_scoreAttack"] || typedCount > localStorage.getItem("record_scoreAttack")){
         localStorage.setItem("record_scoreAttack",typedCount);
+        isNewHighestRecord = true;
       }
     }
     break;
@@ -492,6 +496,7 @@ function saveRecord(){
     if(gameResult == 1){
       if(!localStorage["record_survival"] || playedTime > localStorage.getItem("record_survival")){
         localStorage.setItem("record_survival",playedTime.toFixed(2));
+        isNewHighestRecord = true;
       }
     }
   }
