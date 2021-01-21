@@ -5,42 +5,42 @@ Record
 @endsection
 
 @section('link')
-<link rel="stylesheet" href="/css/record.css">
+<link rel="stylesheet" href="/css/about-and-record.css">
 @endsection
 
 @section('main')
-<div class="record-panel">
-  <div class="record-panel-header">
+<div class="content-card">
+  <div class="content-card-header">
     <h2>Record</h2>
   </div>
-  <div class="record-panel-content">
+  <div class="content-card-content">
     <table>
       <tr>
         <th>ステージ名</th>
         <th>最高記録</th>
       </tr>
       <tr>
-        <td>LEVEL 1</td>
+        <td class="stage-name nomalmode-color">LEVEL 1</td>
         <td><span id="record_level1Span">xx.xx秒</span></td>
       </tr>
       <tr>
-        <td>LEVEL 2</td>
+        <td class="stage-name nomalmode-color">LEVEL 2</td>
         <td><span id="record_level2Span">xx.xx秒</span></td>
       </tr>
       <tr>
-        <td>LEVEL 3</td>
+        <td class="stage-name nomalmode-color">LEVEL 3</td>
         <td><span id="record_level3Span">xx.xx秒</span></td>
       </tr>
       <tr>
-        <td>LEVEL 4</td>
+        <td class="stage-name nomalmode-color">LEVEL 4</td>
         <td><span id="record_level4Span">xx.xx秒</span></td>
       </tr>
       <tr>
-        <td>Score Attack</td>
+        <td class="stage-name score-attack-color">Score Attack</td>
         <td><span id="record_scoreAttackSpan">xx個</span></td>
       </tr>
       <tr>
-        <td>Survival</td>
+        <td class="stage-name survival-color">Survival</td>
         <td><span id="record_survivalSpan">xx.xx秒</span></td>
       </tr>
     </table>

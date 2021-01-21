@@ -5,7 +5,7 @@
 @endsection
 
 @section('link')
-<link rel="stylesheet" href="/css/panel.css">
+<link rel="stylesheet" href="/css/index.css">
 @endsection
 
 @section('main')

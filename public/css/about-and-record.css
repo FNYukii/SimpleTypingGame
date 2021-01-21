@@ -1,10 +1,10 @@
-.record-panel {
+.content-card {
   width: 700px;
   margin: 20px auto;
   background-color: #fff;
   box-shadow: 4px 4px 4px #ccc;
 }
-.record-panel-header {
+.content-card-header {
   width: 100%;
   height: 50px;
   background-color: skyblue;
@@ -13,12 +13,31 @@
   color: #fff;
   font-size: 30px;
 }
-.record-panel-content{
-  width: 100%;
+.content-card-content {
+  width: 90%;
+  margin: 0 auto;
   padding: 30px 0;
 }
 
+.stage-name {
+  font-weight: bold;
+}
 
+.nomalmode-color {
+  color: #66ca6b;
+}
+.score-attack-color {
+  color: #ffad5f;
+}
+.survival-color {
+  color: #ff9b9b;
+}
+
+/* about.blade.php */
+p {
+  margin-bottom: 20px;
+}
+/* record.blade.php */
 table {        
   margin: 0 auto;
   border-collapse: collapse;
