@@ -174,7 +174,6 @@ function startButtonClick(){
   }else if(isGameCountdowning && !isGamePlaying){
     startCountdownStop();
   }else if(isGamePlaying && !isGameCountdowning){
-    //リタイア
     gameResult = 0;
     gameStop();
   }
@@ -218,7 +217,6 @@ function gameStart(){
   isGamePlaying = true;
   typedCount = 0;
 
-
   timerPara.style.color = "#777";
   timerPara.style.transform = "scale(1)";
   crossMark.style.display = "none";
@@ -256,7 +254,6 @@ function timerStart(){
 
     if(remaingTime.toFixed(2) <= 0.00){
       clearInterval(gameTimer);
-      //タイムアップ
       gameResult = 1;
       gameStop();
     }else{
@@ -320,7 +317,6 @@ function correctAnswer(){
     scaleup(timerPara, 1.1);
   }else if(gameType == 0){
     if(typedCount >= goalCount){
-      //ステージクリア
       gameResult = 2;
       gameStop();
     }
