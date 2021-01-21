@@ -21,3 +21,13 @@
 p {
   margin-bottom: 20px;
 }
+
+.nomalmode-h2 {
+  color: #66ca6b;
+}
+.score-attack-h2 {
+  color: #ffad5f;
+}
+.survival-h2 {
+  color: #ff9b9b;
+}
