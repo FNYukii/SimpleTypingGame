@@ -200,6 +200,7 @@ function startCountdown(){
   countdownTimer = setInterval(countdown, 1000);
 }
 
+
 function startCountdownStop(){
   clearInterval(countdownTimer);
   isGameCountdowning = false;
@@ -446,58 +447,63 @@ function soundToggle(){
 
 
 function saveRecord(){
-  switch(stageId){
-    case 1:
-    if(gameResult == 2){
-      if(!localStorage["record_level1"] || playedTime < localStorage.getItem("record_level1")){
-        localStorage.setItem("record_level1",playedTime.toFixed(2));
-        isNewHighestRecord = true;
-      }
-    }
-    break;
+  
+  if(!isAutoTyping){
 
-    case 2:
-    if(gameResult == 2){
-      if(!localStorage["record_level2"] || playedTime < localStorage.getItem("record_level2")){
-        localStorage.setItem("record_level2",playedTime.toFixed(2));
-        isNewHighestRecord = true;
+    switch(stageId){
+      case 1:
+      if(gameResult == 2){
+        if(!localStorage["record_level1"] || playedTime < localStorage.getItem("record_level1")){
+          localStorage.setItem("record_level1",playedTime.toFixed(2));
+          isNewHighestRecord = true;
+        }
+      }
+      break;
+  
+      case 2:
+      if(gameResult == 2){
+        if(!localStorage["record_level2"] || playedTime < localStorage.getItem("record_level2")){
+          localStorage.setItem("record_level2",playedTime.toFixed(2));
+          isNewHighestRecord = true;
+        }
+      }
+      break;
+      
+      case 3:
+      if(gameResult == 2){
+        if(!localStorage["record_level3"] || playedTime < localStorage.getItem("record_level3")){
+          localStorage.setItem("record_level3",playedTime.toFixed(2));
+          isNewHighestRecord = true;
+        }
+      }
+      break;
+  
+      case 4:
+      if(gameResult == 2){
+        if(!localStorage["record_level4"] || playedTime < localStorage.getItem("record_level4")){
+          localStorage.setItem("record_level4",playedTime.toFixed(2));
+          isNewHighestRecord = true;
+        }
+      }
+      break;
+  
+      case 5:
+      if(gameResult == 1){
+        if(!localStorage["record_scoreAttack"] || typedCount > localStorage.getItem("record_scoreAttack")){
+          localStorage.setItem("record_scoreAttack",typedCount);
+          isNewHighestRecord = true;
+        }
+      }
+      break;
+  
+      case 6:
+      if(gameResult == 1){
+        if(!localStorage["record_survival"] || playedTime > localStorage.getItem("record_survival")){
+          localStorage.setItem("record_survival",playedTime.toFixed(2));
+          isNewHighestRecord = true;
+        }
       }
     }
-    break;
-    
-    case 3:
-    if(gameResult == 2){
-      if(!localStorage["record_level3"] || playedTime < localStorage.getItem("record_level3")){
-        localStorage.setItem("record_level3",playedTime.toFixed(2));
-        isNewHighestRecord = true;
-      }
-    }
-    break;
 
-    case 4:
-    if(gameResult == 2){
-      if(!localStorage["record_level4"] || playedTime < localStorage.getItem("record_level4")){
-        localStorage.setItem("record_level4",playedTime.toFixed(2));
-        isNewHighestRecord = true;
-      }
-    }
-    break;
-
-    case 5:
-    if(gameResult == 1){
-      if(!localStorage["record_scoreAttack"] || typedCount > localStorage.getItem("record_scoreAttack")){
-        localStorage.setItem("record_scoreAttack",typedCount);
-        isNewHighestRecord = true;
-      }
-    }
-    break;
-
-    case 6:
-    if(gameResult == 1){
-      if(!localStorage["record_survival"] || playedTime > localStorage.getItem("record_survival")){
-        localStorage.setItem("record_survival",playedTime.toFixed(2));
-        isNewHighestRecord = true;
-      }
-    }
   }
 }
