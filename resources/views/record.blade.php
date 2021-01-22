@@ -11,38 +11,46 @@ Record
 @section('main')
 <div class="content-card">
   <div class="content-card-header">
-    <h2>Record</h2>
+    <h2>最高記録</h2>
   </div>
   <div class="content-card-content">
     <table>
       <tr>
         <th>ステージ名</th>
-        <th>最高記録</th>
+        <th>プレイ時間</th>
+        <th>入力した単語数</th>
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 1</td>
-        <td><span id="record_level1Span">xx.xx秒</span></td>
+        <td><span id="level1_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="level1_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 2</td>
-        <td><span id="record_level2Span">xx.xx秒</span></td>
+        <td><span id="level2_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="level2_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 3</td>
-        <td><span id="record_level3Span">xx.xx秒</span></td>
+        <td><span id="level3_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="level3_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 4</td>
-        <td><span id="record_level4Span">xx.xx秒</span></td>
+        <td><span id="level4_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="level4_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name score-attack-color">Score Attack</td>
-        <td><span id="record_scoreAttackSpan">xx個</span></td>
+        <td><span id="scoreAttack_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="scoreAttack_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name survival-color">Survival</td>
-        <td><span id="record_survivalSpan">xx.xx秒</span></td>
+        <td><span id="survival_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="survival_typedCountSpan">xx 個</span></td>
       </tr>
+      
     </table>
   </div>
 </div>

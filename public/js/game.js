@@ -200,6 +200,7 @@ function startCountdown(){
   countdownTimer = setInterval(countdown, 1000);
 }
 
+
 function startCountdownStop(){
   clearInterval(countdownTimer);
   isGameCountdowning = false;
@@ -446,58 +447,70 @@ function soundToggle(){
 
 
 function saveRecord(){
-  switch(stageId){
-    case 1:
-    if(gameResult == 2){
-      if(!localStorage["record_level1"] || playedTime < localStorage.getItem("record_level1")){
-        localStorage.setItem("record_level1",playedTime.toFixed(2));
-        isNewHighestRecord = true;
-      }
-    }
-    break;
+  
+  if(!isAutoTyping){
 
-    case 2:
-    if(gameResult == 2){
-      if(!localStorage["record_level2"] || playedTime < localStorage.getItem("record_level2")){
-        localStorage.setItem("record_level2",playedTime.toFixed(2));
-        isNewHighestRecord = true;
+    switch(stageId){
+      case 1:
+      if(gameResult == 2){
+        if(!localStorage["level1_playedTime"] || playedTime < localStorage.getItem("level1_playedTime")){
+          localStorage.setItem("level1_playedTime",playedTime.toFixed(2));
+          localStorage.setItem("level1_typedCount",typedCount);
+          isNewHighestRecord = true;
+        }
       }
-    }
-    break;
-    
-    case 3:
-    if(gameResult == 2){
-      if(!localStorage["record_level3"] || playedTime < localStorage.getItem("record_level3")){
-        localStorage.setItem("record_level3",playedTime.toFixed(2));
-        isNewHighestRecord = true;
+      break;
+  
+      case 2:
+      if(gameResult == 2){
+        if(!localStorage["level2_playedTime"] || playedTime < localStorage.getItem("level2_playedTime")){
+          localStorage.setItem("level2_playedTime",playedTime.toFixed(2));
+          localStorage.setItem("level2_typedCount",typedCount);
+          isNewHighestRecord = true;
+        }
       }
+      break;
+      
+      case 3:
+      if(gameResult == 2){
+        if(!localStorage["level3_playedTime"] || playedTime < localStorage.getItem("level3_playedTime")){
+          localStorage.setItem("level3_playedTime",playedTime.toFixed(2));
+          localStorage.setItem("level3_typedCount",typedCount);
+          isNewHighestRecord = true;
+        }
+      }
+      break;
+  
+      case 4:
+      if(gameResult == 2){
+        if(!localStorage["level4_playedTime"] || playedTime < localStorage.getItem("level4_playedTime")){
+          localStorage.setItem("level4_playedTime",playedTime.toFixed(2));
+          localStorage.setItem("level4_typedCount",typedCount);
+          isNewHighestRecord = true;
+        }
+      }
+      break;
+        
+      case 5:
+      if(gameResult == 1){
+        if(!localStorage["scoreAttack_typedCount"] || typedCount > localStorage.getItem("scoreAttack_typedCount")){
+          localStorage.setItem("scoreAttack_typedCount",typedCount);
+          localStorage.setItem("scoreAttack_playedTime",playedTime.toFixed(2));
+          isNewHighestRecord = true;
+        }
+      }
+      break;
+  
+      case 6:
+      if(gameResult == 1){
+        if(!localStorage["survival_playedTime"] || playedTime > localStorage.getItem("survival_playedTime")){
+          localStorage.setItem("survival_playedTime",playedTime.toFixed(2));
+          localStorage.setItem("survival_typedCount",typedCount);
+          isNewHighestRecord = true;
+        }
+      }
+      break;
     }
-    break;
 
-    case 4:
-    if(gameResult == 2){
-      if(!localStorage["record_level4"] || playedTime < localStorage.getItem("record_level4")){
-        localStorage.setItem("record_level4",playedTime.toFixed(2));
-        isNewHighestRecord = true;
-      }
-    }
-    break;
-
-    case 5:
-    if(gameResult == 1){
-      if(!localStorage["record_scoreAttack"] || typedCount > localStorage.getItem("record_scoreAttack")){
-        localStorage.setItem("record_scoreAttack",typedCount);
-        isNewHighestRecord = true;
-      }
-    }
-    break;
-
-    case 6:
-    if(gameResult == 1){
-      if(!localStorage["record_survival"] || playedTime > localStorage.getItem("record_survival")){
-        localStorage.setItem("record_survival",playedTime.toFixed(2));
-        isNewHighestRecord = true;
-      }
-    }
   }
 }
