@@ -11,13 +11,13 @@ Record
 @section('main')
 <div class="content-card">
   <div class="content-card-header">
-    <h2>Record</h2>
+    <h2>最高記録</h2>
   </div>
   <div class="content-card-content">
     <table>
       <tr>
         <th>ステージ名</th>
-        <th>最高記録</th>
+        <th>プレイ時間</th>
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 1</td>

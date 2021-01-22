@@ -11,7 +11,7 @@ About
 @section('main')
 <div class="content-card">
   <div class="content-card-header">
-    <h2>About</h2>
+    <h2>ゲームの遊び方</h2>
   </div>
   <div class="content-card-content">
     <h2>概要</h2>

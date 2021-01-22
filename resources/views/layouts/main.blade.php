@@ -15,8 +15,8 @@
         </h1>
         <ul class="global-nav-items-container">
           <li class="global-nav-item"><a href="/">Top</a></li>
-          <li class="global-nav-item"><a href="about">About</a></li>
-          <li class="global-nav-item"><a href="record">Record</a></li>
+          <li class="global-nav-item"><a href="about">遊び方</a></li>
+          <li class="global-nav-item"><a href="record">記録</a></li>
         </ul>
       </div>  
     </header>
