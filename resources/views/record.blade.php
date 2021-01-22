@@ -22,34 +22,35 @@ Record
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 1</td>
-        <td><span id="record_level1Span">xx.xx秒</span></td>
-        <td><span id="">xx 個</span></td>
+        <td><span id="level1_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="level1_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 2</td>
-        <td><span id="record_level2Span">xx.xx 秒</span></td>
-        <td><span id="">xx 個</span></td>
+        <td><span id="level2_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="level2_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 3</td>
-        <td><span id="record_level3Span">xx.xx 秒</span></td>
-        <td><span id="">xx 個</span></td>
+        <td><span id="level3_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="level3_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name nomalmode-color">LEVEL 4</td>
-        <td><span id="record_level4Span">xx.xx 秒</span></td>
-        <td><span id="">xx 個</span></td>
+        <td><span id="level4_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="level4_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name score-attack-color">Score Attack</td>
-        <td><span id="">xx.xx 秒</span></td>
-        <td><span id="record_scoreAttackSpan">xx 個</span></td>
+        <td><span id="scoreAttack_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="scoreAttack_typedCountSpan">xx 個</span></td>
       </tr>
       <tr>
         <td class="stage-name survival-color">Survival</td>
-        <td><span id="record_survivalSpan">xx.xx 秒</span></td>
-        <td><span id="">xx 個</span></td>
+        <td><span id="survival_playedTimeSpan">xx.xx 秒</span></td>
+        <td><span id="survival_typedCountSpan">xx 個</span></td>
       </tr>
+      
     </table>
   </div>
 </div>
