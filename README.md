@@ -52,6 +52,3 @@ Removing simpletyping_web_1 ... done
 Removing simpletyping_app_1 ... done
 Removing network simpletyping_default
 ```
-
-## 使用素材
-効果音用素材：[OtoLogic](https://otologic.jp)(GitHubへのアップロードはしていません)
