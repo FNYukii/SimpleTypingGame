@@ -52,7 +52,7 @@ header a {
     width: 600px;
   }
   .global-nav-logo {
-    margin-left: 0;
+    margin-left: 10px;
   }
   .global-nav-items-container {
     float: none;
