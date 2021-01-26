@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  /* box-sizing: border-box; */
 }
 html {
   height: 100%;
@@ -38,12 +39,24 @@ header a {
   font-family: fantasy;
 }
 
+
 .global-nav-items-container {
   height: 100%;
   float: right;
   margin-right: 30px;
   line-height: 50px;
   font-size: 0;
+}
+@media (max-width: 670px){
+  .global-nav {
+    width: 600px;
+  }
+  .global-nav-logo {
+    margin-left: 0;
+  }
+  .global-nav-items-container {
+    float: none;
+  }
 }
 .global-nav-item {
   width: 80px;
