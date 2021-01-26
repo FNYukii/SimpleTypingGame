@@ -8,9 +8,9 @@
 
 @media (max-width: 700px){
   .game-board {
-    width: 100%;
-    border-left: none;
-    border-right: none;
+    width: 95%;
+    /* border-left: none; */
+    /* border-right: none; */
   }
 }
 
@@ -74,6 +74,11 @@
   width: 450px;
   margin: 20px auto;
   position: relative;
+}
+@media (max-width: 700px){
+  .textbox-container {
+    width: 300px;
+  }
 }
 .textbox {
   width: 100%;
