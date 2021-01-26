@@ -57,6 +57,3 @@ Dockerコンテナを停止するには以下のコマンドを入力してく�
 $ docker-compose down
 Stopping simpletyping-docker_web_1 ... done                                                                                                                                                                                                               Stopping simpletyping-docker_app_1 ... done                                                                                                                                                                                                               Removing simpletyping-docker_web_1 ... done                                                                                                                                                                                                               Removing simpletyping-docker_app_1 ... done                                                                                                                                                                                                               Removing network simpletyping-docker_default
 ```
-
-## 使用素材
-効果音用素材：[OtoLogic](https://otologic.jp)
