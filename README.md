@@ -1,4 +1,4 @@
-# Simple Typing (Docker版)
+# Simple Typing
 
 ## 実行環境
 Dockerのコンテナ上のwebサーバーで動作
