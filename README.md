@@ -43,8 +43,8 @@ $ docker-compose up -d --build
 $ docker-compose ps
           Name                         Command               State           Ports
 ------------------------------------------------------------------------------------------
-simpletyping-docker_app_1   docker-php-entrypoint php-fpm    Up      9000/tcp
-simpletyping-docker_web_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:10080->80/tcp
+simpletyping_app_1   docker-php-entrypoint php-fpm    Up      9000/tcp
+simpletyping_web_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:10080->80/tcp
 ```
 
 ### Webブラウザで確認
@@ -55,5 +55,9 @@ ChromeやMicrosoft Edgeなどお好きなWebブラウザを開き、アドレス
 Dockerコンテナを停止するには以下のコマンドを入力してください。
 ```
 $ docker-compose down
-Stopping simpletyping-docker_web_1 ... done                                                                                                                                                                                                               Stopping simpletyping-docker_app_1 ... done                                                                                                                                                                                                               Removing simpletyping-docker_web_1 ... done                                                                                                                                                                                                               Removing simpletyping-docker_app_1 ... done                                                                                                                                                                                                               Removing network simpletyping-docker_default
+Stopping simpletyping_web_1 ... done
+Stopping simpletyping_app_1 ... done
+Removing simpletyping_web_1 ... done
+Removing simpletyping_web_1 ... done
+Removing network simpletyping_default
 ```
