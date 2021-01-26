@@ -22,12 +22,12 @@ const survival_typedCountSpan = document.getElementById("survival_typedCountSpan
 if(localStorage["level1_playedTime"]){
   level1_playedTimeSpan.innerHTML = localStorage.getItem("level1_playedTime") + " 秒";
 }else{
-  level1_playedTimeSpan.innerHTML = "記録なし";
+  level1_playedTimeSpan.innerHTML = "---";
 }
 if(localStorage["level1_typedCount"]){
   level1_typedCountSpan.innerHTML = localStorage.getItem("level1_typedCount") + " 個";
 }else{
-  level1_typedCountSpan.innerHTML = "記録なし";
+  level1_typedCountSpan.innerHTML = "---";
 }
 
 
@@ -35,12 +35,12 @@ if(localStorage["level1_typedCount"]){
 if(localStorage["level2_playedTime"]){
   level2_playedTimeSpan.innerHTML = localStorage.getItem("level2_playedTime") + " 秒";
 }else{
-  level2_playedTimeSpan.innerHTML = "記録なし";
+  level2_playedTimeSpan.innerHTML = "---";
 }
 if(localStorage["level2_typedCount"]){
   level2_typedCountSpan.innerHTML = localStorage.getItem("level2_typedCount") + " 個";
 }else{
-  level2_typedCountSpan.innerHTML = "記録なし";
+  level2_typedCountSpan.innerHTML = "---";
 }
 
 
@@ -48,12 +48,12 @@ if(localStorage["level2_typedCount"]){
 if(localStorage["level3_playedTime"]){
   level3_playedTimeSpan.innerHTML = localStorage.getItem("level3_playedTime") + " 秒";
 }else{
-  level3_playedTimeSpan.innerHTML = "記録なし";
+  level3_playedTimeSpan.innerHTML = "---";
 }
 if(localStorage["level3_typedCount"]){
   level3_typedCountSpan.innerHTML = localStorage.getItem("level3_typedCount") + " 個";
 }else{
-  level3_typedCountSpan.innerHTML = "記録なし";
+  level3_typedCountSpan.innerHTML = "---";
 }
 
 
@@ -61,12 +61,12 @@ if(localStorage["level3_typedCount"]){
 if(localStorage["level4_playedTime"]){
   level4_playedTimeSpan.innerHTML = localStorage.getItem("level4_playedTime") + " 秒";
 }else{
-  level4_playedTimeSpan.innerHTML = "記録なし";
+  level4_playedTimeSpan.innerHTML = "---";
 }
 if(localStorage["level4_typedCount"]){
   level4_typedCountSpan.innerHTML = localStorage.getItem("level4_typedCount") + " 個";
 }else{
-  level4_typedCountSpan.innerHTML = "記録なし";
+  level4_typedCountSpan.innerHTML = "---";
 }
 
 
@@ -74,12 +74,12 @@ if(localStorage["level4_typedCount"]){
 if(localStorage["scoreAttack_playedTime"]){
   scoreAttack_playedTimeSpan.innerHTML = localStorage.getItem("scoreAttack_playedTime") + " 秒";
 }else{
-  scoreAttack_playedTimeSpan.innerHTML = "記録なし";
+  scoreAttack_playedTimeSpan.innerHTML = "---";
 }
 if(localStorage["scoreAttack_typedCount"]){
   scoreAttack_typedCountSpan.innerHTML = localStorage.getItem("scoreAttack_typedCount") + " 個";
 }else{
-  scoreAttack_typedCountSpan.innerHTML = "記録なし";
+  scoreAttack_typedCountSpan.innerHTML = "---";
 }
 
 
@@ -87,10 +87,10 @@ if(localStorage["scoreAttack_typedCount"]){
 if(localStorage["survival_playedTime"]){
   survival_playedTimeSpan.innerHTML = localStorage.getItem("survival_playedTime") + " 秒";
 }else{
-  survival_playedTimeSpan.innerHTML = "記録なし";
+  survival_playedTimeSpan.innerHTML = "---";
 }
 if(localStorage["survival_typedCount"]){
   survival_typedCountSpan.innerHTML = localStorage.getItem("survival_typedCount") + " 個";
 }else{
-  survival_typedCountSpan.innerHTML = "記録なし";
+  survival_typedCountSpan.innerHTML = "---";
 }
