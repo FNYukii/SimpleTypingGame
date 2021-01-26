@@ -47,17 +47,6 @@ header a {
   line-height: 50px;
   font-size: 0;
 }
-@media (max-width: 670px){
-  .global-nav {
-    width: 600px;
-  }
-  .global-nav-logo {
-    margin-left: 10px;
-  }
-  .global-nav-items-container {
-    float: none;
-  }
-}
 .global-nav-item {
   width: 80px;
   height: 100%;
@@ -66,6 +55,17 @@ header a {
   text-align: center;
   transition: 0.3s;
   cursor: pointer;
+}
+@media (max-width: 670px){
+  .global-nav {
+    width: 100%;
+  }
+  .global-nav-logo {
+    margin-left: 10px;
+  }
+  .global-nav-items-container {
+    margin-right: 0;
+  }
 }
 .global-nav-item:hover {
   background-color: #a1d8fd;
