@@ -26,6 +26,10 @@ docker-compose version 1.27.4, build 40524192
 ```
 
 ### 起動する
+Docker for Desktopが起動していない場合は、まず以下のコマンドで起動を行ってください。
+```
+docker run -d -p 80:80 docker/getting-started
+```
 コマンドラインでSimpleTyping-dockerディレクトリの直下へ移動し、以下のコマンドを実行してください。Dockerコンテナが作成され、起動します。
 ```
 $ docker-compose up -d --build
